@@ -2,10 +2,24 @@ import React,{useState} from 'react'
 
 const SendPost = (props) => {
   const [activeDiv, setActiveDiv] = useState('1'); // State to track active div
+  const [desc,setDesc] = useState('');
+  const [coin,setCoin] = useState(10);
+  const [ hash,setHash] = useState('');
+  const [image, setImage] = useState(null);
 
   const handleDivToggle = (id) => {
     setActiveDiv(id); // Update active div based on clicked div
   };
+
+  const handleImageUpload = (e) => {
+    const selectedImage = e.target.files[0];
+    setImage(selectedImage);
+  };
+
+  const handleDescChange=(e)=>{
+    console.log(e.target.value);
+    setDesc(e.target.value);
+  }
 
   function convertHashToString(originalString) {
     return originalString.replace(/#/g, '').split(' ').join(',');
@@ -47,7 +61,7 @@ const SendPost = (props) => {
           </div>
 
           <div className='w-[90%]'>
-            <textarea style={{'height': 'calc(100% - 1rem)','scrollbar-width': 'none','-ms-overflow-style': 'none'}}  className='overflow-hidden resize-none appearance-none  leading-tight focus:outline-none focus:shadow-outline bg-transparent outline-none text-white h-[200pxpx]  w-full' type="text" placeholder="What is happening?"/>
+            <textarea onChange={handleDescChange} style={{'height': 'calc(100% - 1rem)','scrollbar-width': 'none','-ms-overflow-style': 'none'}}  className='overflow-hidden resize-none appearance-none  leading-tight focus:outline-none focus:shadow-outline bg-transparent outline-none text-white h-[200pxpx]  w-full' type="text" placeholder="What is happening?"/>
           </div>
 
         </div>
@@ -55,8 +69,21 @@ const SendPost = (props) => {
 <input className="absolute bg-transparent outline-none text-white top-[0.81rem] left-[0.75rem]" placeholder='#dscoial #deso'/>
 </div>
         <div className='flex w-full mt-5'>
-          <div className='flex justify-start'>
-            <img className='relative w-auto h-[1.63rem] overflow-hidden object-cover" alt="" src="ion:image-outline.png' src="https://cdn.discordapp.com/attachments/1177493315898314792/1184481280616828947/image.png?ex=658c2127&is=6579ac27&hm=addae38478352496e554b7490d7c8e7d720f7e167f9e9b91d9a9e39001d5550d&" alt="" />
+        <div className='flex justify-start'>
+            {/* Input element for image upload */}
+            <input
+              type='file'
+              id='imageUpload'
+              onChange={handleImageUpload}
+              className='hidden' // Hide the input element
+            />
+            <label htmlFor='imageUpload'>
+              <img
+                className='relative w-auto h-[1.63rem] overflow-hidden object-cover cursor-pointer'
+                alt="a"
+                src="https://cdn.discordapp.com/attachments/1177493315898314792/1184481280616828947/image.png?ex=658c2127&is=6579ac27&hm=addae38478352496e554b7490d7c8e7d720f7e167f9e9b91d9a9e39001d5550d&"
+              />
+            </label>
           </div>
           <div className='flex-grow'></div> 
           <div className="relative flex justify-end rounded-[97px] bg-cornflowerblue box-border w-[81px] h-[2.06rem] overflow-hidden text-left text-[1.13rem] text-white font-inter border-t-[1px] border-solid border-lightskyblue border-r-[1px] border-l-[1px]">
