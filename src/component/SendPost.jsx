@@ -42,7 +42,7 @@ const SendPost = () => {
 
         </div>
         <div className="relative rounded bg-darkslategray-200 box-border w-full h-[5.56rem] overflow-hidden text-left text-[0.88rem] text-gray font-inter border-[1px] border-solid border-[#374151]">
-<input className="absolute top-[0.81rem] left-[0.75rem]" placeholder='#dscoial #deso'/>
+<input className="absolute bg-transparent outline-none text-white top-[0.81rem] left-[0.75rem]" placeholder='#dscoial #deso'/>
 </div>
         <div className='flex w-full mt-4'>
           <div className='flex justify-start'>

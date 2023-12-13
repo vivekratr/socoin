@@ -22,8 +22,9 @@ const Home1 = () => {
   const [url, setUrl] = useState(null);
   const [spin,setSpin] =useState(false);
   const [selectedInterests, setSelectedInterests] = useState([]);
-  const [fillForm,setFillForm] = useState(true)
-  const [userData,setUserData] = useState([])
+  const [fillForm,setFillForm] = useState(true);
+  const [userData,setUserData] = useState([]);
+  const [isPost,setIsPost] = useState(false);
 
   // Function to handle file change
   const handleFileChange =  (event) => {
@@ -168,6 +169,11 @@ console.log('num',num,'type',typeof(num));
 </div>
 </div>
 {/* spinner end */}
+<div className={`fixed top-0 left-0 w-full h-full z-10 backdrop-filter backdrop-blur-sm ${isPost === 0 && num === 0 && currentAccount !== '' ? 'block' : 'hidden'}`}>
+</div>
+{/* post modal */}
+
+{/* post modal end */}
       {/* register modal */}
       <div className={`fixed top-0 left-0 w-full h-full z-10 backdrop-filter backdrop-blur-sm ${isRegister === 0 && num === 0 && currentAccount !== '' ? 'block' : 'hidden'}`}>
 <div
