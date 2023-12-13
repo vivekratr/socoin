@@ -1,6 +1,6 @@
 import React,{useState} from 'react'
 
-const SendPost = () => {
+const SendPost = (props) => {
   const [activeDiv, setActiveDiv] = useState('1'); // State to track active div
 
   const handleDivToggle = (id) => {
@@ -9,10 +9,10 @@ const SendPost = () => {
   return (
    
 
-      <div className="w-[568px] h-auto relative bg-black border border-white">
+      <div className="min-w-[568px] min-h-[30rem] relative bg-black rounded-xl">
         <div className='flex flex-col p-5'>
           <div className='flex'>
-        <img className="relative right-3 bottom-2 w-auto h-[1rem] overflow-hidden object-cover" alt="" src="https://cdn.discordapp.com/attachments/1177493315898314792/1184480958360076439/image.png?ex=658c20db&is=6579abdb&hm=c246e426d10817641944ad7b6a197d1f2f68d8b0c82aced7a97222e7e40e0f5e&" />
+        <img  onClick={() => props.close(false)} className="relative right-3 bottom-2 w-auto h-[1rem] overflow-hidden object-cover" alt="" src="https://cdn.discordapp.com/attachments/1177493315898314792/1184480958360076439/image.png?ex=658c20db&is=6579abdb&hm=c246e426d10817641944ad7b6a197d1f2f68d8b0c82aced7a97222e7e40e0f5e&" />
 
         <div id='1'
             className={`flex gap-2 ml-3 ${activeDiv === '1' ? 'border-b-2 border-cornflowerblue border-solid' : ''}`}
@@ -36,15 +36,15 @@ const SendPost = () => {
             <img className='relative rounded-full w-auto h-[2.29rem] object-cover' src="https://cdn.discordapp.com/attachments/1177492390949441610/1184455231728255027/image_32.png?ex=658c08e5&is=657993e5&hm=2515c1925ba753fa5f16fa244df6dc3b9a01cbb1b5531b473b25d6c7c188c622&" alt="" />
           </div>
 
-          <div className='w-[70%]'>
+          <div className='w-[90%]'>
             <textarea style={{'height': 'calc(100% - 1rem)','scrollbar-width': 'none','-ms-overflow-style': 'none'}}  className='overflow-hidden resize-none appearance-none  leading-tight focus:outline-none focus:shadow-outline bg-transparent outline-none text-white h-[200pxpx]  w-full' type="text" placeholder="What is happening?"/>
           </div>
 
         </div>
-        <div className="relative rounded bg-darkslategray-200 box-border w-full h-[5.56rem] overflow-hidden text-left text-[0.88rem] text-gray font-inter border-[1px] border-solid border-[#374151]">
+        <div className="relative rounded mt-5 bg-darkslategray-200 box-border w-full h-[5.56rem] overflow-hidden text-left text-[0.88rem] text-gray font-inter border-[1px] border-solid border-[#374151]">
 <input className="absolute bg-transparent outline-none text-white top-[0.81rem] left-[0.75rem]" placeholder='#dscoial #deso'/>
 </div>
-        <div className='flex w-full mt-4'>
+        <div className='flex w-full mt-5'>
           <div className='flex justify-start'>
             <img className='relative w-auto h-[1.63rem] overflow-hidden object-cover" alt="" src="ion:image-outline.png' src="https://cdn.discordapp.com/attachments/1177493315898314792/1184481280616828947/image.png?ex=658c2127&is=6579ac27&hm=addae38478352496e554b7490d7c8e7d720f7e167f9e9b91d9a9e39001d5550d&" alt="" />
           </div>

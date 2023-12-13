@@ -6,6 +6,7 @@ import Popup from "./Popup";
 import "reactjs-popup/dist/index.css";
 import PostComponent from "./PostComponent";
 import axios from 'axios';
+import SendPost from './SendPost';
 
 const Home1 = () => {
   const navigate = useNavigate();
@@ -24,7 +25,7 @@ const Home1 = () => {
   const [selectedInterests, setSelectedInterests] = useState([]);
   const [fillForm,setFillForm] = useState(true);
   const [userData,setUserData] = useState([]);
-  const [isPost,setIsPost] = useState(false);
+  const [isPost,setIsPost] = useState(true);
 
   // Function to handle file change
   const handleFileChange =  (event) => {
@@ -169,9 +170,13 @@ console.log('num',num,'type',typeof(num));
 </div>
 </div>
 {/* spinner end */}
-<div className={`fixed top-0 left-0 w-full h-full z-10 backdrop-filter backdrop-blur-sm ${isPost === 0 && num === 0 && currentAccount !== '' ? 'block' : 'hidden'}`}>
-</div>
 {/* post modal */}
+<div className={`fixed top-0 left-0 w-full h-full z-10 backdrop-filter backdrop-blur-sm `}>
+  <div className='absolute left-[37rem] top-[10rem] mx-auto z-10 flex flex-col items-center justify-center min-h-[70vh] '>
+
+  <SendPost close={setIsPost}/>
+  </div>
+</div>
 
 {/* post modal end */}
       {/* register modal */}
