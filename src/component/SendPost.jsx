@@ -6,11 +6,15 @@ const SendPost = (props) => {
   const handleDivToggle = (id) => {
     setActiveDiv(id); // Update active div based on clicked div
   };
+
+  function convertHashToString(originalString) {
+    return originalString.replace(/#/g, '').split(' ').join(',');
+  }
   return (
    
 
       <div className="min-w-[568px] min-h-[30rem] relative bg-black rounded-xl">
-        <div className='flex flex-col p-5'>
+        <div className='flex flex-col p-7'>
           <div className='flex'>
         <img  onClick={() => props.close(false)} className="relative right-3 bottom-2 w-auto h-[1rem] overflow-hidden object-cover" alt="" src="https://cdn.discordapp.com/attachments/1177493315898314792/1184480958360076439/image.png?ex=658c20db&is=6579abdb&hm=c246e426d10817641944ad7b6a197d1f2f68d8b0c82aced7a97222e7e40e0f5e&" />
 
@@ -29,6 +33,12 @@ const SendPost = (props) => {
         <img className="relative w-auto h-[1.45rem] overflow-hidden object-cover" alt="" src="https://cdn.discordapp.com/attachments/1177493315898314792/1184481202229485588/image.png?ex=658c2115&is=6579ac15&hm=96f2b83803098efc8b550054e17ac6b244c78e30218c7e0101ead45dca7af191&" />
         <div className="relative text-[1.13rem] font-medium font-inter text-cornflowerblue text-left">Private Post</div>
         </div>
+
+
+        <div  className={`relative left-11 flex items-center justify-center rounded-[25px] bg-white w-[6rem] h-[1.94rem] overflow-hidden text-left text-[0.38rem] text-black font-inter ${activeDiv==2?'flex':'hidden'}`}>
+<input value={10} type='number' className="absolute w-[4rem] h-[1rem] outline-none border-none  top-[27.04%] left-[11.15%] font-medium"/>
+<img className="absolute h-[2rem] w-auto top-[1.7%] right-[6.56%] bottom-[4.35%] left-[63.93%]  overflow-hidden  object-cover" alt="" src="https://cdn.discordapp.com/attachments/1177493315898314792/1184074100763795456/image.png?ex=658aa5f0&is=657830f0&hm=56f437a8feb464628765049711c4cf1d08f05c532a8972598d0b44065b616292&" />
+</div>
         </div>
 
         <div className='flex mt-5 ml-3 gap-4 h-[200px] border-b-2 border-gray-100 border-solid'>
@@ -63,4 +73,4 @@ const SendPost = (props) => {
   )
 }
 
-export default SendPost
+export default SendPost;

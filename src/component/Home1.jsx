@@ -25,7 +25,7 @@ const Home1 = () => {
   const [selectedInterests, setSelectedInterests] = useState([]);
   const [fillForm,setFillForm] = useState(true);
   const [userData,setUserData] = useState([]);
-  const [isPost,setIsPost] = useState(true);
+  const [isPost,setIsPost] = useState(false);
 
   // Function to handle file change
   const handleFileChange =  (event) => {
@@ -171,8 +171,8 @@ console.log('num',num,'type',typeof(num));
 </div>
 {/* spinner end */}
 {/* post modal */}
-<div className={`fixed top-0 left-0 w-full h-full z-10 backdrop-filter backdrop-blur-sm `}>
-  <div className='absolute left-[37rem] top-[10rem] mx-auto z-10 flex flex-col items-center justify-center min-h-[70vh] '>
+<div className={` top-0 left-0 w-full h-full z-10 backdrop-filter backdrop-blur-sm ${isPost?'fixed':'hidden'} `}>
+  <div className='absolute left-[30rem] top-[7rem] mx-auto z-10 flex flex-col items-center justify-center min-h-[70vh] '>
 
   <SendPost close={setIsPost}/>
   </div>
@@ -324,7 +324,11 @@ console.log('num',num,'type',typeof(num));
 </div>
 </div>
 
-<div className="relative rounded-[97px] bg-cornflowerblue box-border w-[13rem] h-[3.06rem] overflow-hidden text-left text-[1.25rem] text-white font-inter border-t-[1px] border-solid border-lightskyblue border-r-[1px] border-l-[1px]">
+<div onClick={()=>{
+  if (num===1) {
+    setIsPost(true)   
+  }
+ }} className="relative rounded-[97px] bg-cornflowerblue box-border w-[13rem] h-[3.06rem] overflow-hidden text-left text-[1.25rem] text-white font-inter border-t-[1px] border-solid border-lightskyblue border-r-[1px] border-l-[1px]">
 <div className="absolute py-[0.81rem] px-[5.13rem] font-semibold">Post</div>
 </div>
 
