@@ -1,4 +1,5 @@
-import React,{useState} from 'react'
+import React,{useState,useEffect} from 'react'
+import axios from 'axios';
 
 const SendPost = (props) => {
   const [activeDiv, setActiveDiv] = useState('1'); 
@@ -6,6 +7,43 @@ const SendPost = (props) => {
   const [coin,setCoin] = useState(10);
   const [ hash,setHash] = useState('');
   const [image, setImage] = useState(null);
+  const [file, setFile] = useState(null);
+  const [cid, setCid] = useState(null);
+  const [url, setUrl] = useState(null);
+
+  const handleFileChange =  (event) => {
+    setFile(event.target.files[0]);
+    
+  
+    };
+
+    const handleUpload = async () => {
+      if (!file) {
+        console.error('No file selected.');
+        return;
+      }
+  console.log("spin activated")
+  
+      const formData = new FormData();
+      formData.append('file', file);
+      console.log("file",formData);
+  
+      try {
+        const response = await axios.post('https://api.nft.storage/upload', formData, {
+          headers: {
+            'Authorization': `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkaWQ6ZXRocjoweDRCOWM5Q0UwQmE3NENiRjA4QkJlZjIwNDMzZEUwYjczNzUxNjI4RTgiLCJpc3MiOiJuZnQtc3RvcmFnZSIsImlhdCI6MTY5ODUwNDQ1NzM3MywibmFtZSI6IkZ1bmRFVEgifQ.JxTH4iRtScscfmb9mvZqhSqF9MKs2b0JJS2yof7hzF4`,
+            'Content-Type': 'multipart/form-data',
+          },
+        });
+  
+        setCid(response.data.value.cid);
+        
+        console.log('NFT Storage response:', response.data.value.cid);
+      } catch (error) {
+  
+        console.error('Error uploading to NFT Storage:', error);
+      }
+    };
 
   const handleDivToggle = (id) => {
     setActiveDiv(id); // Update active div based on clicked div
@@ -19,11 +57,7 @@ const SendPost = (props) => {
     setHash(e.target.value);
   }
 
-  const handleImageUpload = (e) => {
-    const selectedImage = e.target.files[0];
-    setImage(selectedImage);
-    console.log("image",image)
-  };
+ 
 
   const handleDescChange=(e)=>{
     console.log(e.target.value);
@@ -33,6 +67,11 @@ const SendPost = (props) => {
   function convertHashToString(originalString) {
     return originalString.replace(/#/g, '').split(' ').join(',');
   }
+  useEffect(() => {
+    if (cid) {
+      setUrl(`https://${cid}.ipfs.nftstorage.link/${file.name}`);
+    }
+  }, [cid, file]);
   return (
    
 
@@ -83,11 +122,15 @@ const SendPost = (props) => {
             <input
               type='file'
               id='imageUpload'
-              onChange={handleImageUpload}
+              onChange={(e)=>{
+                 handleFileChange(e)
+              
+              }}
+              accept="image/*"
               className='hidden' // Hide the input element
             />
             <label htmlFor='imageUpload'>
-              <img
+              <img 
                 className='relative w-auto h-[1.63rem] overflow-hidden object-cover cursor-pointer'
                 alt="a"
                 src="https://cdn.discordapp.com/attachments/1177493315898314792/1184481280616828947/image.png?ex=658c2127&is=6579ac27&hm=addae38478352496e554b7490d7c8e7d720f7e167f9e9b91d9a9e39001d5550d&"
@@ -98,7 +141,7 @@ const SendPost = (props) => {
           <div className="relative flex justify-end rounded-[97px] bg-cornflowerblue box-border w-[81px] h-[2.06rem] overflow-hidden text-left text-[1.13rem] text-white font-inter border-t-[1px] border-solid border-lightskyblue border-r-[1px] border-l-[1px]">
 <div onClick={()=>{
   console.log()
-  console.log(`description ${desc} hash ${hash} file ${image} coin ${coin} activeDiv ${activeDiv}`)
+  console.log(`description ${desc} hash ${convertHashToString(hash)} file ${image} coin ${coin} activeDiv ${activeDiv}`)
 }} className="absolute top-[0.38rem] left-[1.31rem] font-semibold">Post</div>
 </div>
 
