@@ -125,6 +125,8 @@ const Home1 = () => {
     userPost,
     userDatar,
     createPrivatePost,
+    getAllPost,
+    refresh
   } = useContext(Context);
   const handleConnectWallet = async () => {
     await ConnectWallet();
@@ -160,7 +162,7 @@ const Home1 = () => {
   useEffect(() => {
     console.log("running the useeffect")
     getBal();
-  }, [currentAccount,spin,userDatar, createUser, num, userPost, likePost, getUserData,createPost,createPrivatePost,transactionCount]);
+  }, [currentAccount,spin,refresh,userDatar, createUser, num, userPost, likePost, getUserData,createPost,createPrivatePost,transactionCount]);
   return (
     <div className="bg-black h-full">
       <div className="flex h-[100vh]">

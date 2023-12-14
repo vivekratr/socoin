@@ -203,17 +203,17 @@ const getEthereumContract = () => {
     }
   }
 
-  async function getUserData(addr){
+  async function getAllPost(){
     try {
       if (!ethereum) return alert("Please install Phantom wallet");
 
       const contracts = getEthereumContract();
       let userDatas;
       if(currentAccount){  
-         userDatas = await contracts.user_data(utils.getAddress(addr));
+         userDatas = await contracts.getAllPost();
         
-        console.log("userData",Number(userDatas.token));
-        setUserDatar(userDatas);
+        console.log("All post",userDatas);
+        setRefresh((r)=> r+1);
       return userDatas;
       }
     
@@ -254,6 +254,8 @@ const getEthereumContract = () => {
         createPrivatePost,
         getEthereumContract,
         userDatar,
+        getAllPost,
+        refresh,
       }}
     >
       {children}
