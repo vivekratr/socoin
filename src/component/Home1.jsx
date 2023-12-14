@@ -136,12 +136,16 @@ const Home1 = () => {
     console.log("currentAccount useeffect", currentAccount);
     if (currentAccount) {
       const bal = await getUserData(currentAccount);
+      const post = await getAllPost();
       //  const login =async ()=>{num= await isNewUser()} ;
       //  login();
       // let num= await isNewUser();
       setNum(Number(bal.user_id));
+      console.log('postData,',post[0]);
+      setAllPost(post)
       console.log("numm", num, "type", typeof num);
 
+      console.log('refresh',refresh)
       if (!num) {
         //  const create = async()=>{
         //    await createUser('tt',1);
@@ -156,13 +160,13 @@ const Home1 = () => {
       setUserBal(Number(bal.token));
       setUserData(bal);
       console.log("bal", bal);
-      userPost();
+      // userPost();
     }
   };
   useEffect(() => {
     console.log("running the useeffect")
     getBal();
-  }, [currentAccount,spin,refresh,userDatar, createUser, num, userPost, likePost, getUserData,createPost,createPrivatePost,transactionCount]);
+  }, [currentAccount,refresh, num]);
   return (
     <div className="bg-black h-full">
       <div className="flex h-[100vh]">
@@ -454,13 +458,35 @@ const Home1 = () => {
             </div>
           </div>
           <div className="flex items-center justify-start left-5   relative w-full top-[2rem]">
-            <img
+            <img id="arrow1"
               className="relative mr-5  w-[3.625rem] hover: h-[3.63rem] overflow-hidden"
               alt=""
               src="https://cdn.discordapp.com/attachments/1177493315898314792/1184104350436560906/image.png?ex=658ac21c&is=65784d1c&hm=3285308a6c83a4d8205ea999e393be2c3fd9d017d80e021cf1a96e6bd8e96d7d&"
             />
-            <PostCard />
+
+{
+  allPost.map( (p,i) => {
+    // const d = await getUserData(p[4]);
+
+    return (
+      <PostCard
+      key={p+i}
+        keys={p[4]}
+        // profile={d[2]}
+        // name={d[0]}
+        // username={d[1]}
+        desc={p[1]}
+        post={p[5]}
+        like={Number(p[3])}
+        hash={p[2]}
+      />
+    );
+  }
+)}
+
+            {/* <PostCard  /> */}
             <img
+            id="arrow2"
               className="relative ml-5  w-[3.625rem] hover: h-[3.63rem] overflow-hidden rotate-180"
               alt=""
               src="https://cdn.discordapp.com/attachments/1177493315898314792/1184104350436560906/image.png?ex=658ac21c&is=65784d1c&hm=3285308a6c83a4d8205ea999e393be2c3fd9d017d80e021cf1a96e6bd8e96d7d&"

@@ -134,11 +134,7 @@ const getEthereumContract = () => {
       const createdPost = await contracts.createPost(props.file,1,props.description,props.hash);
       console.log("createdPost",createdPost);
       // console.log("minContribution",minContributionNumber);
-      setTimeout(async() => {
-        props.countFunc((prev)=>{return prev+1});
-
-        await getUserData();
-      }, 2000);
+      
       
 
     } catch (error) {
@@ -157,10 +153,7 @@ const getEthereumContract = () => {
       const createdPost = await contracts.createPrivatePost(props.file,props.description,props.coin,props.hash);
       console.log("createdPost",createdPost);
       // console.log("minContribution",minContributionNumber);
-      setTimeout(() => {
-        props.countFunc((prev)=>{return prev+1});
-        
-      }, 2000);
+     
     } catch (error) {
       props.countFunc((prev)=>{return prev+1});
 
@@ -213,7 +206,7 @@ const getEthereumContract = () => {
          userDatas = await contracts.getAllPost();
         
         console.log("All post",userDatas);
-        setRefresh((r)=> r+1);
+      
       return userDatas;
       }
     
@@ -256,6 +249,7 @@ const getEthereumContract = () => {
         userDatar,
         getAllPost,
         refresh,
+        setRefresh,
       }}
     >
       {children}
