@@ -119,7 +119,7 @@ const SendPost = (props) => {
 
 
         <div  className={`relative left-11 flex items-center justify-center rounded-[25px] bg-white w-[6rem] h-[1.94rem] overflow-hidden text-left text-[0.38rem] text-black font-inter ${activeDiv==2?'flex':'hidden'}`}>
-<input  onChange={handleCoin} type='number' className="absolute w-[4rem] h-[1rem] outline-none border-none  top-[27.04%] left-[11.15%] font-medium"/>
+<input  onChange={handleCoin} placeholder='10' title='Coin' type='number' className="absolute w-[4rem] h-[1rem] outline-none border-none  top-[27.04%] left-[11.15%] font-medium"/>
 <img className="absolute h-[2rem] w-auto top-[1.7%] right-[6.56%] bottom-[4.35%] left-[63.93%]  overflow-hidden  object-cover" alt="" src="https://cdn.discordapp.com/attachments/1177493315898314792/1184074100763795456/image.png?ex=658aa5f0&is=657830f0&hm=56f437a8feb464628765049711c4cf1d08f05c532a8972598d0b44065b616292&" />
 </div>
         </div>
@@ -135,10 +135,10 @@ const SendPost = (props) => {
 
         </div>
         <div className="relative rounded mt-5 bg-darkslategray-200 box-border w-full h-[5.56rem] overflow-hidden text-left text-[0.88rem] text-gray font-inter border-[1px] border-solid border-[#374151]">
-<input onChange={handleHash} className="absolute bg-transparent outline-none text-white top-[0.81rem] left-[0.75rem]" placeholder='#dscoial #deso'/>
+<input onChange={handleHash} className="absolute bg-transparent outline-none w-full h-max p-2 text-white top-[0.81rem] left-[0.75rem]" placeholder='#dscoial #deso'/>
 </div>
         <div className='flex w-full mt-5'>
-        <div className='flex justify-start'>
+        <div title='Upload Image' className='flex justify-start'>
             {/* Input element for image upload */}
             <input
               type='file'
@@ -159,8 +159,8 @@ const SendPost = (props) => {
             </label>
           </div>
           <div className='flex-grow'></div> 
-          <div className="relative flex justify-end rounded-[97px] bg-cornflowerblue box-border w-[81px] h-[2.06rem] overflow-hidden text-left text-[1.13rem] text-white font-inter border-t-[1px] border-solid border-lightskyblue border-r-[1px] border-l-[1px]">
-<div onClick={async()=>{
+          <div title='Post' className="relative flex justify-end rounded-[97px] bg-cornflowerblue box-border w-[81px] h-[2.06rem] overflow-hidden text-left text-[1.13rem] text-white font-inter border-t-[1px] border-solid border-lightskyblue border-r-[1px] border-l-[1px]">
+<div  onClick={async()=>{
   setUrl(`https://${cid}.ipfs.nftstorage.link/${file.name}`);
   props.spin(true);
   await handleUpload();
