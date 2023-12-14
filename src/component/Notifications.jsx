@@ -6,7 +6,7 @@ import Popup from "./Popup";
 import "reactjs-popup/dist/index.css";
 import PostComponent from "./PostComponent";
 
-const Profile1 = () => {
+const Notifications = () => {
   const navigate = useNavigate();
   const [commentOpen, setCommentOpen] = useState(false);
   const [userBal, setUserBal] = useState(0);
@@ -14,14 +14,7 @@ const Profile1 = () => {
   const [isRegister, setIsRegister] = useState(1);
   const [regUsername, setRegUsername] = useState("");
   const [num, setNum] = useState(0);
-  const [allUserPublicPost,setAllUserPublicPost]= useState([]);
-  const [allPost,setAllPost]= useState([]);
-  const [userData, setUserData] = useState([]);
 
-
-
-
-  
   console.log("num", num, "type", typeof num);
   function handleUsername(e) {
     console.log("handleusername", e.target.value);
@@ -46,9 +39,6 @@ const Profile1 = () => {
     likePost,
     getUserData,
     userPost,
-    getAllPost,
-    refresh,
-    getUserPost,
   } = useContext(Context);
   const handleConnectWallet = async () => {
     await ConnectWallet();
@@ -59,21 +49,11 @@ const Profile1 = () => {
       console.log("currentAccount useeffect", currentAccount);
       if (currentAccount) {
         const bal = await getUserData(currentAccount);
-      const post = await getAllPost();
-
         //  const login =async ()=>{num= await isNewUser()} ;
         //  login();
         // let num= await isNewUser();
         setNum(Number(bal.user_id));
-      setUserData(bal);
-
-      setAllPost( post);
-      console.log("post in useffect: ", post);
-
         console.log("numm", num, "type", typeof num);
-        const publicUserPost =await getUserPost(currentAccount);
-        console.log("public user post",publicUserPost);
-        setAllUserPublicPost(publicUserPost);
 
         if (!num) {
           //  const create = async()=>{
@@ -91,7 +71,7 @@ const Profile1 = () => {
       }
     };
     getBal();
-  }, [currentAccount,refresh, num]);
+  }, [currentAccount, createUser, num, userPost, likePost, getUserData]);
   return (
     <div className="bg-black min-h-max  h-[150vh]">
       <div className="flex max-h-[150vh] h-[100vh]">
@@ -139,11 +119,11 @@ const Profile1 = () => {
             </div>
             <button className="border border-[color:var(--gray-600,#4B5563)] bg-white w-[127px] self-center px-5 py-2.5 rounded-3xl">
               <div
-                // onClick={() => {
-                //   createUser(regUsername);
-                //   console.log(regUsername);
-                //   setIsRegister(1);
-                // }}
+                onClick={() => {
+                  createUser(regUsername);
+                  console.log(regUsername);
+                  setIsRegister(1);
+                }}
                 className="text-black text-sm font-medium self-center"
               >
                 Continue
@@ -206,26 +186,34 @@ const Profile1 = () => {
             <div></div>
           </div>
 
-          <div className="relative rounded-[97px] bg-cornflowerblue box-border w-[13rem] h-[3.06rem] overflow-hidden text-left text-[1.25rem] text-white font-inter border-t-[1px] border-solid border-lightskyblue border-r-[1px] border-l-[1px]">
+          {/* <div className="relative rounded-[97px] bg-cornflowerblue box-border w-[13rem] h-[3.06rem] overflow-hidden text-left text-[1.25rem] text-white font-inter border-t-[1px] border-solid border-lightskyblue border-r-[1px] border-l-[1px]">
             <div className="absolute py-[0.81rem] px-[5.13rem] font-semibold">
               Post
             </div>
-          </div>
+          </div> */}
 
-          <div className="relative w-[12rem] h-[2.25rem] text-left text-[0.8rem] text-white font-inter">
-            <b className="absolute top-[0rem] left-[2.56rem] h-max w-max"> {userData.name}</b>
+          {/* <div className="relative rounded-[97px] bg-cornflowerblue box-border w-[13rem] h-[3.06rem] overflow-hidden text-left text-[1.25rem] text-white font-inter border-t-[1px] border-solid border-lightskyblue border-r-[1px] border-l-[1px] transition-all duration-300 hover:bg-white hover:text-cornflowerblue">
+            <div className="absolute py-[0.81rem] px-[5.13rem] font-semibold">
+              Post
+            </div>
+          </div> */}
+
+          
+
+          <div className="relative w-[12rem] h-[2.25rem] text-left text-[1rem] text-white font-inter">
+            <b className="absolute top-[0rem] left-[2.56rem]">Amit Sinha</b>
             <div className="absolute top-[1.31rem] left-[2.5rem] text-[0.75rem] text-colours-gray-500">
-            @{userData.username}.dso
+              @amitsinha.dso
             </div>
             <div className="absolute top-[0rem] left-[0rem] rounded-[69px] bg-white w-[2.06rem] h-[2.06rem] overflow-hidden">
               <img
                 className="absolute top-[0rem] left-[0rem] rounded-[30px] w-[2.25rem] h-[2.25rem] object-cover"
                 alt=""
-                src={userData.profile}
+                src="https://cdn.discordapp.com/attachments/1177493315898314792/1184072438695338046/image.png?ex=658aa464&is=65782f64&hm=633b38526fb6b6da794465b600fb96b51339200700063e89bf541465c40aec95&"
               />
             </div>
             <img
-              className="absolute cursor-pointer top-[0rem] left-[11.75rem] w-[1.5rem] h-[1.5rem] overflow-hidden"
+              className="absolute top-[0rem] left-[11.75rem] w-[1.5rem] h-[1.5rem] overflow-hidden"
               alt=""
               src="https://cdn.discordapp.com/attachments/1177493315898314792/1184074199577415741/image.png?ex=658aa608&is=65783108&hm=49441e880ec9e668ecd4fb83e21c896b03b202d851882189adb757ce47dd3e6f&"
             />
@@ -235,109 +223,173 @@ const Profile1 = () => {
 
         {/* mid portion */}
         <div className="flex flex-col min-w-[48.138rem] bg-black border-r-[1px] border-solid border-gray-700 box-border">
-         
-
-          <div className="relative w-full h-[883px] text-left text-[24px] text-white font-inter">
-            <div className="absolute top-[0px] left-[0px] w-[759px] h-[388px]">
-              <div className="absolute top-[0px] left-[34px] w-[691px] h-[341px] shrink-0 border-b-2 border-gray-500 border-solid">
-                <div className="absolute top-[10px] left-[0px] shrink-0 flex flex-row items-start justify-start gap-[17px]">
-                  <img
-                  onClick={()=>{navigate(-1)}}
-                    className="relative hover:opacity-50 cursor-pointer w-7 h-7 overflow-hidden shrink-0 object-cover"
-                    alt=""
-                    src="  https://cdn.discordapp.com/attachments/1177493315898314792/1184825516964982887/image.png?ex=658d61c0&is=657aecc0&hm=03d7d2eec4cc415f0b7ed3a05ed98e0ab55fee03bd1acfbd38122334b4cf65b4&"
-                  />
-                  <div className="relative font-semibold">{userData.name}</div>
-                </div>
-                <div className="absolute top-[106px] left-[0px] w-[691px] h-[205px] shrink-0 text-lg">
-                  <img
-                    className="absolute top-[0px] left-[0px] rounded-[17px] w-[185px] h-[204px] object-cover"
-                    alt=""
-                    src={userData.profile}
-                  />
-                  <div className="absolute top-[0px] left-[210px] w-[481px] h-[205px] shrink-0">
-                    <div className="absolute top-[0px] left-[0px] w-[150px] h-[59px] shrink-0 text-[18px]">
-                      <b className="absolute top-[0px] left-[0px]">
-                      {userData.name}
-                      </b>
-                      <div className="absolute top-[35px] left-[0px] text-[20px] text-colours-gray-500">
-                      @{userData.username}.dso
-                      </div>
-                    </div>
-                    <div className="absolute top-[0px] left-[239px] w-[242px] h-[41px] shrink-0 text-[14px] text-black">
-                      <div className="absolute top-[0px] left-[0px] rounded-[46px] [background:linear-gradient(106.75deg,_#fdd835,_#fff_49.15%,_#ffd000)] w-[103px] h-[41px] overflow-hidden">
-                        <div className="absolute top-[12px] left-[18px] font-medium">
-                          Buy Coins
-                        </div>
-                      </div>
-                      <div className="absolute top-[0px] left-[117px] rounded-[40px] bg-black box-border w-[125px] h-[41px] overflow-hidden text-[16px] text-white border-[1px] border-solid border-white">
-                        <div className="absolute top-[11px] left-[21px] font-medium">
-                          Edit Profile
-                        </div>
-                      </div>
-                    </div>
-                    <div className="absolute top-[77px] left-[0px] w-[405px] h-10 shrink-0">
-                      <div className="absolute top-[0px] left-[0px]">
-                      {userData && userData.interest && (
-    <div>
-      {userData.interest.split(',').map((item, index) => (
-        <span key={index}>#{item.trim()} </span>
-      ))}
-    </div>
-  )}
-                      </div>
-                      
-                    </div>
-                    <div className="absolute top-[143px] left-[0px] w-[229px] h-[22px] shrink-0 text-colors-gray-500">
-                      {/* <img
-                        className="absolute top-[2.5px] left-[0px] w-[17px] h-[17px] overflow-hidden object-cover"
-                        alt=""
-                        src="/fontistodate@2x.png"
-                      /> */}
-                    </div>
-                    <div className="absolute top-[183px] left-[0px] w-[228px] h-[22px] shrink-0 text-colors-gray-50">
-                      <div className="absolute top-[0px] left-[0px]">20</div>
-                      <div className="absolute top-[0px] left-[30px] text-colors-gray-500">
-                        Following
-                      </div>
-                      <div className="absolute top-[0px] left-[117px]">20</div>
-                      <div className="absolute top-[0px] left-[147px] text-colors-gray-500">
-                        Followers
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+          {/* <div className="h-[5.75rem] w-full] flex items-center justify-center border-b-[1px] border-solid border-gray-700 box-border">
+            <div className="relative mx-auto my-auto rounded-[67px] bg-colours-gray-900 w-[39.375rem] h-[2.75rem] overflow-hidden text-left text-[1rem] text-gray font-inter ">
+             
               <img
-                className="absolute top-[388px] left-[0px] max-h-full w-[759px] object-cover"
+                className="absolute top-[0.75rem] left-[2.13rem] w-[1.19rem] h-[1.19rem] overflow-hidden"
                 alt=""
-                src="/line-11@2x.png"
+                src="https://cdn.discordapp.com/attachments/1177493315898314792/1184078012669501510/image.png?ex=658aa995&is=65783495&hm=9f770576644efc3f8eccaf92aae7308b731a06ed7ac8a6e87f06211be40c03c1&"
               />
             </div>
-            <div className="absolute top-[430px] left-[45px] flex flex-col items-start justify-start gap-[27px] text-5xs text-black">
-              <div className="relative w-[669px] h-max flex shrink-0">
-                <div className="relative w-[207px] h-[213px]">
-                  <img
-                    className=" rounded-3xs w-[207px] h-[213px] object-cover"
-                    alt=""
-                    src="https://cdn.discordapp.com/attachments/1177492390949441610/1184573213477449900/image.png?ex=658c76c6&is=657a01c6&hm=7ad60633d26fe513eb60f36c750ac51b8228b2cf2b2e4480c1d70bd65bc6aeae&"
-                  />
-                  <div className="absolute top-[9px] left-[161px] rounded-3xs bg-white w-[37px] h-[18px] overflow-hidden">
-                    <div className="absolute text-[0.6rem] top-[2px] left-[4.8px]  font-normal">
-                      10
-                    </div>
-                    <img
-                      className="absolute top-[1px] left-[18px] w-4 h-[17px] object-cover"
-                      alt=""
-                      src=" https://cdn.discordapp.com/attachments/1177492390949441610/1184823446287433860/image.png?ex=658d5fd2&is=657aead2&hm=bf916ea068b2cd8f24d35cc70c22a220e39a9baece0dc56e600186abc3f776f6&"
-                    />
-                  </div>
-                </div>
-                
-                
-              </div>
-              
+          </div> */}
+
+          <div className="relative w-full h-[612px] text-left text-lg text-white font-inter">
+            <img
+              className="absolute top-[12px] left-[8px] w-7 h-7 overflow-hidden object-cover"
+              alt=""
+              src="  https://cdn.discordapp.com/attachments/1177493315898314792/1184825516964982887/image.png?ex=658d61c0&is=657aecc0&hm=03d7d2eec4cc415f0b7ed3a05ed98e0ab55fee03bd1acfbd38122334b4cf65b4&"
+            />
+            <b className="absolute top-[95px] left-[28px] text-[20px]">
+              Notifications
+            </b>
+            <div className="absolute top-[189px] left-[72px]">
+              <b>{`Linda `}</b>
+              <span className="font-medium">and 4 others liked your post</span>
             </div>
+            <div className="absolute top-[354px] left-[80px]">
+              <b>{`Linda `}</b>
+              <span className="font-medium">and 4 others liked your post</span>
+            </div>
+            <div className="absolute top-[519px] left-[80px]">
+              <b>{`Linda `}</b>
+              <span className="font-medium">and 4 others liked your post</span>
+            </div>
+            <div className="absolute top-[0px] left-[65px] rounded-[67px] bg-colours-gray-900 w-[630px] h-[53px] overflow-hidden text-gray-400">
+              <div className="absolute top-[16px] left-[62px] font-medium">
+                Search
+              </div>
+              <img
+                className="absolute top-[15px] left-[29px] w-[23px] h-[23px] overflow-hidden object-cover"
+                alt=""
+                src="   https://cdn.discordapp.com/attachments/1177493315898314792/1184078012669501510/image.png?ex=658aa995&is=65783495&hm=9f770576644efc3f8eccaf92aae7308b731a06ed7ac8a6e87f06211be40c03c1&"
+              />
+            </div>
+            <img
+              className="absolute top-[83px] left-[0px] max-h-full w-[759px] object-cover"
+              alt=""
+              src="/line-14@2x.png"
+            />
+            <img
+              className="absolute top-[282px] left-[0px] max-h-full w-[759px] object-cover"
+              alt=""
+              src="/line-15@2x.png"
+            />
+            <img
+              className="absolute top-[447px] left-[0px] max-h-full w-[759px] object-cover"
+              alt=""
+              src="/line-16@2x.png"
+            />
+            <img
+              className="absolute top-[612px] left-[0px] max-h-full w-[759px] object-cover"
+              alt=""
+              src="/line-17@2x.png"
+            />
+            <div className="absolute top-[147px] left-[72px] w-[198px] h-[34px]">
+              <img
+                className="absolute top-[0px] left-[0px] rounded-11xl w-[34px] h-[34px] object-cover"
+                alt=""
+                src="https://cdn.discordapp.com/attachments/1177493315898314792/1184834164336377937/image.png?ex=658d69cd&is=657af4cd&hm=4e6452341bbbbd4598264cbca53b144ed7be7af2da805f001f8895c10f260968&"
+              />
+              <img
+                className="absolute top-[0px] left-[41px] rounded-11xl w-[34px] h-[34px] object-cover"
+                alt=""
+                src=" https://cdn.discordapp.com/attachments/1177493315898314792/1184834176738934804/image.png?ex=658d69d0&is=657af4d0&hm=938099bed1506f44f0a56947ab247f7a3bc4ac48e7d4e108390a4f57da44acea&"
+              />
+              <img
+                className="absolute top-[0px] left-[82px] rounded-11xl w-[34px] h-[34px] object-cover"
+                alt=""
+                src="https://cdn.discordapp.com/attachments/1177493315898314792/1184834190542385222/image.png?ex=658d69d4&is=657af4d4&hm=86a6d3c219e1a8ac2a6c6abcbc0c564c9642b92353767ca73ff64b5091d11256&"
+              />
+              <img
+                className="absolute top-[0px] left-[123px] rounded-11xl w-[34px] h-[34px] object-cover"
+                alt=""
+                src=" https://cdn.discordapp.com/attachments/1177493315898314792/1184834205994193077/image.png?ex=658d69d7&is=657af4d7&hm=28e4ba9591a0b55fe4f31706bfe6bbfd482cc11bc8d8318fbe2121435146e77f&"
+              />
+              <img
+                className="absolute top-[0px] left-[164px] rounded-11xl w-[34px] h-[34px] object-cover"
+                alt=""
+                src="https://cdn.discordapp.com/attachments/1177493315898314792/1184834239817072710/image.png?ex=658d69df&is=657af4df&hm=dc1aded63d23ca814306fb6874df8735201fab2e025c1dda33a892fb1a416c01&"
+              />
+            </div>
+            <div className="absolute top-[312px] left-[80px] w-[198px] h-[34px]">
+              <img
+                className="absolute top-[0px] left-[0px] rounded-11xl w-[34px] h-[34px] object-cover"
+                alt=""
+                src="https://cdn.discordapp.com/attachments/1177493315898314792/1184834164336377937/image.png?ex=658d69cd&is=657af4cd&hm=4e6452341bbbbd4598264cbca53b144ed7be7af2da805f001f8895c10f260968&"
+              />
+              <img
+                className="absolute top-[0px] left-[41px] rounded-11xl w-[34px] h-[34px] object-cover"
+                alt=""
+                src="https://cdn.discordapp.com/attachments/1177493315898314792/1184834176738934804/image.png?ex=658d69d0&is=657af4d0&hm=938099bed1506f44f0a56947ab247f7a3bc4ac48e7d4e108390a4f57da44acea&"
+              />
+              <img
+                className="absolute top-[0px] left-[82px] rounded-11xl w-[34px] h-[34px] object-cover"
+                alt=""
+                src="https://cdn.discordapp.com/attachments/1177493315898314792/1184834190542385222/image.png?ex=658d69d4&is=657af4d4&hm=86a6d3c219e1a8ac2a6c6abcbc0c564c9642b92353767ca73ff64b5091d11256&"
+              />
+              <img
+                className="absolute top-[0px] left-[123px] rounded-11xl w-[34px] h-[34px] object-cover"
+                alt=""
+                src=" https://cdn.discordapp.com/attachments/1177493315898314792/1184834205994193077/image.png?ex=658d69d7&is=657af4d7&hm=28e4ba9591a0b55fe4f31706bfe6bbfd482cc11bc8d8318fbe2121435146e77f&"
+              />
+              <img
+                className="absolute top-[0px] left-[164px] rounded-11xl w-[34px] h-[34px] object-cover"
+                alt=""
+                src=" https://cdn.discordapp.com/attachments/1177493315898314792/1184834239817072710/image.png?ex=658d69df&is=657af4df&hm=dc1aded63d23ca814306fb6874df8735201fab2e025c1dda33a892fb1a416c01&"
+              />
+            </div>
+            <div className="absolute top-[477px] left-[80px] w-[198px] h-[34px]">
+              <img
+                className="absolute top-[0px] left-[0px] rounded-11xl w-[34px] h-[34px] object-cover"
+                alt=""
+                src="https://cdn.discordapp.com/attachments/1177493315898314792/1184834164336377937/image.png?ex=658d69cd&is=657af4cd&hm=4e6452341bbbbd4598264cbca53b144ed7be7af2da805f001f8895c10f260968&"
+              />
+              <img
+                className="absolute top-[0px] left-[41px] rounded-11xl w-[34px] h-[34px] object-cover"
+                alt=""
+                src=" https://cdn.discordapp.com/attachments/1177493315898314792/1184834176738934804/image.png?ex=658d69d0&is=657af4d0&hm=938099bed1506f44f0a56947ab247f7a3bc4ac48e7d4e108390a4f57da44acea&"
+              />
+              <img
+                className="absolute top-[0px] left-[82px] rounded-11xl w-[34px] h-[34px] object-cover"
+                alt=""
+                src="   https://cdn.discordapp.com/attachments/1177493315898314792/1184834190542385222/image.png?ex=658d69d4&is=657af4d4&hm=86a6d3c219e1a8ac2a6c6abcbc0c564c9642b92353767ca73ff64b5091d11256&"
+              />
+              <img
+                className="absolute top-[0px] left-[123px] rounded-11xl w-[34px] h-[34px] object-cover"
+                alt=""
+                src=" https://cdn.discordapp.com/attachments/1177493315898314792/1184834205994193077/image.png?ex=658d69d7&is=657af4d7&hm=28e4ba9591a0b55fe4f31706bfe6bbfd482cc11bc8d8318fbe2121435146e77f&"
+              />
+              <img
+                className="absolute top-[0px] left-[164px] rounded-11xl w-[34px] h-[34px] object-cover"
+                alt=""
+                src=" https://cdn.discordapp.com/attachments/1177493315898314792/1184834239817072710/image.png?ex=658d69df&is=657af4df&hm=dc1aded63d23ca814306fb6874df8735201fab2e025c1dda33a892fb1a416c01&"
+              />
+            </div>
+            <div className="absolute top-[223px] left-[72px] text-base text-[#545454]">
+              Tried these thumbnails with a sporty aesthetic
+            </div>
+            <div className="absolute top-[388px] left-[80px] text-base text-[#545454]">
+              Tried these thumbnails with a sporty aesthetic
+            </div>
+            <div className="absolute top-[553px] left-[80px] text-base text-[#545454]">
+              Tried these thumbnails with a sporty aesthetic
+            </div>
+            <img
+              className="absolute h-[4%] w-[3.8%] top-[24.84%] right-[92.51%] bottom-[71.16%] left-[3.69%] max-w-full overflow-hidden max-h-full object-cover"
+              alt=""
+              src="https://cdn.discordapp.com/attachments/1177493315898314792/1184075111532331038/image.png?ex=658aa6e1&is=657831e1&hm=b436aa28a50bac7704c280b6687c5eeaf94096d00765f395fc7f2039b533353d&"
+            />
+            <img
+              className="absolute h-[4%] w-[3.8%] top-[51.8%] right-[91.45%] bottom-[44.2%] left-[4.74%] max-w-full overflow-hidden max-h-full object-cover"
+              alt=""
+              src="https://cdn.discordapp.com/attachments/1177493315898314792/1184075111532331038/image.png?ex=658aa6e1&is=657831e1&hm=b436aa28a50bac7704c280b6687c5eeaf94096d00765f395fc7f2039b533353d&"
+            />
+            <img
+              className="absolute h-[4%] w-[3.8%] top-[78.76%] right-[91.45%] bottom-[17.24%] left-[4.74%] max-w-full overflow-hidden max-h-full object-cover"
+              alt=""
+              src="https://cdn.discordapp.com/attachments/1177493315898314792/1184075111532331038/image.png?ex=658aa6e1&is=657831e1&hm=b436aa28a50bac7704c280b6687c5eeaf94096d00765f395fc7f2039b533353d&"
+            />
           </div>
 
           <div className="flex items-center justify-start left-5   relative w-full top-[2rem]"></div>
@@ -487,4 +539,4 @@ asssd
   );
 };
 
-export default Profile1;
+export default Notifications;

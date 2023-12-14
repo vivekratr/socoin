@@ -12,6 +12,7 @@ import Profile from './component/Profile1'
 import SendPost from "./component/SendPost";
 import Profile1 from "./component/Profile1";
 import Communities from "./component/Communities";
+import Notifications from "./component/Notifications";
 function App() {
  
 
@@ -30,6 +31,7 @@ function App() {
                     <Route path="/posts" element={<PostComponent /*state = {state}*/ />} />
                     <Route path="/send" element={<SendPost /*state = {state}*/ />} />
                     <Route path="/communities" element={<Communities /*state = {state}*/ />} />
+                    <Route path="/notifications" element={<Notifications /*state = {state}*/ />} />
 
 
             <Route

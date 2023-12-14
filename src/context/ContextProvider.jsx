@@ -216,6 +216,46 @@ const getEthereumContract = () => {
     }
   }
 
+  async function getUserPost(addr){
+    try {
+      if (!ethereum) return alert("Please install Phantom wallet");
+
+      const contracts = getEthereumContract();
+      let userDatas;
+      if(currentAccount){  
+         userDatas = await contracts.getPublicPosts(utils.getAddress(addr));
+        
+        console.log("user's post",userDatas);
+      
+      return userDatas;
+      }
+    
+      // console.log("minContribution",minContributionNumber);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async function getUserPrivatePost(addr){
+    try {
+      if (!ethereum) return alert("Please install Phantom wallet");
+
+      const contracts = getEthereumContract();
+      let userDatas;
+      if(currentAccount){  
+         userDatas = await contracts.getPrivatePosts(utils.getAddress(addr));
+        
+        console.log("user's private post",userDatas);
+      
+      return userDatas;
+      }
+    
+      // console.log("minContribution",minContributionNumber);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   // useEffect(() => {
   //   const fetchData = async () => {
   //     try {
@@ -250,6 +290,7 @@ const getEthereumContract = () => {
         getAllPost,
         refresh,
         setRefresh,
+        getUserPost,
       }}
     >
       {children}
