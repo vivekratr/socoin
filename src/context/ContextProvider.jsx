@@ -198,7 +198,7 @@ const getEthereumContract = () => {
 
   async function getAllPost(){
     try {
-      if (!ethereum) return alert("Please install Phantom wallet");
+      if (!ethereum) return alert("Please install Metamask wallet");
 
       const contracts = getEthereumContract();
       let userDatas;
@@ -215,6 +215,27 @@ const getEthereumContract = () => {
       console.log(error);
     }
   }
+
+  async function getAllPrivatePost(){
+    try {
+      if (!ethereum) return alert("Please install Metamask wallet");
+
+      const contracts = getEthereumContract();
+      let userDatas;
+      if(currentAccount){  
+         userDatas = await contracts.getAllPrivatePost();
+        
+        console.log("All private post",userDatas);
+      
+      return userDatas;
+      }
+    
+      // console.log("minContribution",minContributionNumber);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
 
   async function getUserPost(addr){
     try {
@@ -291,6 +312,7 @@ const getEthereumContract = () => {
         refresh,
         setRefresh,
         getUserPost,
+        getAllPrivatePost,
       }}
     >
       {children}
