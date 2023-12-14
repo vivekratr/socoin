@@ -92,6 +92,11 @@
 				"internalType": "uint256",
 				"name": "_price",
 				"type": "uint256"
+			},
+			{
+				"internalType": "string",
+				"name": "_hash",
+				"type": "string"
 			}
 		],
 		"name": "createPrivatePost",
@@ -501,6 +506,11 @@
 						"type": "string"
 					},
 					{
+						"internalType": "string",
+						"name": "hash",
+						"type": "string"
+					},
+					{
 						"internalType": "uint256",
 						"name": "likes",
 						"type": "uint256"
@@ -682,6 +692,11 @@
 					{
 						"internalType": "string",
 						"name": "post_content",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "hash",
 						"type": "string"
 					},
 					{
@@ -922,6 +937,11 @@
 			{
 				"internalType": "string",
 				"name": "post_content",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "hash",
 				"type": "string"
 			},
 			{

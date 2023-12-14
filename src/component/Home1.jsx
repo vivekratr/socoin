@@ -26,6 +26,8 @@ const Home1 = () => {
   const [fillForm, setFillForm] = useState(true);
   const [userData, setUserData] = useState([]);
   const [isPost, setIsPost] = useState(false);
+  const [transactionCount, setTransactionCount] = useState(0);
+  const [allPost,setAllPost]= useState([])
 
   // Function to handle file change
   const handleFileChange = (event) => {
@@ -121,41 +123,44 @@ const Home1 = () => {
     likePost,
     getUserData,
     userPost,
+    userDatar,
+    createPrivatePost,
   } = useContext(Context);
   const handleConnectWallet = async () => {
     await ConnectWallet();
   };
 
-  useEffect(() => {
-    const getBal = async () => {
-      console.log("currentAccount useeffect", currentAccount);
-      if (currentAccount) {
-        const bal = await getUserData(currentAccount);
-        //  const login =async ()=>{num= await isNewUser()} ;
-        //  login();
-        // let num= await isNewUser();
-        setNum(Number(bal.user_id));
-        console.log("numm", num, "type", typeof num);
+  const getBal = async () => {
+    console.log("currentAccount useeffect", currentAccount);
+    if (currentAccount) {
+      const bal = await getUserData(currentAccount);
+      //  const login =async ()=>{num= await isNewUser()} ;
+      //  login();
+      // let num= await isNewUser();
+      setNum(Number(bal.user_id));
+      console.log("numm", num, "type", typeof num);
 
-        if (!num) {
-          //  const create = async()=>{
-          //    await createUser('tt',1);
-          //  }
-          //  create();
+      if (!num) {
+        //  const create = async()=>{
+        //    await createUser('tt',1);
+        //  }
+        //  create();
 
-          setIsRegister(0);
+        setIsRegister(0);
 
-          // navigate("/register");
-        }
-        console.log("bal", Number(bal.token));
-        setUserBal(Number(bal.token));
-        setUserData(bal);
-        console.log("bal", bal);
-        userPost();
+        // navigate("/register");
       }
-    };
+      console.log("bal", Number(bal.token));
+      setUserBal(Number(bal.token));
+      setUserData(bal);
+      console.log("bal", bal);
+      userPost();
+    }
+  };
+  useEffect(() => {
+    console.log("running the useeffect")
     getBal();
-  }, [currentAccount, createUser, num, userPost, likePost, getUserData]);
+  }, [currentAccount,spin,userDatar, createUser, num, userPost, likePost, getUserData,createPost,createPrivatePost,transactionCount]);
   return (
     <div className="bg-black h-full">
       <div className="flex h-[100vh]">
@@ -193,7 +198,7 @@ const Home1 = () => {
           } `}
         >
           <div className="absolute left-[30rem] top-[7rem] mx-auto z-10 flex flex-col items-center justify-center min-h-[70vh] ">
-            <SendPost close={setIsPost} spin={setSpin} />
+            <SendPost close={setIsPost} spin={setSpin} count={setTransactionCount} />
           </div>
         </div>
 
@@ -404,7 +409,7 @@ const Home1 = () => {
           </div>
 
           <div
-            className={`relative w-[12rem] h-[2.25rem] text-left text-[1rem] text-white font-inter ${
+            className={`  relative w-[12rem] h-[2.25rem] text-left text-[1rem] text-white font-inter ${
               userData.length > 1 ? "" : "hidden"
             }`}
           >
@@ -421,8 +426,8 @@ const Home1 = () => {
                 src={userData.profile}
               />
             </div>
-            <img
-              className="absolute top-[0rem] left-[11.75rem] w-[1.5rem] h-[1.5rem] overflow-hidden"
+            <img 
+              className=" hover:opacity-50  absolute cursor-pointer top-[0rem] left-[11.75rem] w-[1.5rem] h-[1.5rem] overflow-hidden"
               alt=""
               src="https://cdn.discordapp.com/attachments/1177493315898314792/1184074199577415741/image.png?ex=658aa608&is=65783108&hm=49441e880ec9e668ecd4fb83e21c896b03b202d851882189adb757ce47dd3e6f&"
             />
@@ -431,7 +436,7 @@ const Home1 = () => {
         {/* options end */}
 
         {/* mid portion */}
-        <div className="flex flex-col min-w-[48.138rem] bg-black border-r-[1px] border-solid border-gray-700 box-border">
+        <div className="flex flex-col min-w-[48.138rem] max-w-max bg-black border-r-[1px] border-solid border-gray-700 box-border">
           <div className="h-[5.75rem] w-full] flex items-center justify-center border-b-[1px] border-solid border-gray-700 box-border">
             <div className="relative mx-auto my-auto rounded-[67px] bg-colours-gray-900 w-[39.375rem] h-[2.75rem] overflow-hidden text-left text-[1rem] text-gray font-inter ">
               <input
@@ -486,7 +491,9 @@ const Home1 = () => {
                 </div>
               </div>
             ) : (
-              <div className="relative rounded-lg hover:bg-violet-400 transition-transform transform hover:scale-75 bg-blueviolet box-border w-[9.875rem] h-[2.56rem] overflow-hidden text-left text-[1rem] text-white font-inter border-t-[1px] border-solid border-mediumslateblue border-r-[1px] border-l-[1px]">
+              <div onClick={()=>{
+                console.log("transactionCount",transactionCount)
+              }} className="relative rounded-lg hover:bg-violet-400 transition-transform transform hover:scale-75 bg-blueviolet box-border w-[9.875rem] h-[2.56rem] overflow-hidden text-left text-[1rem] text-white font-inter border-t-[1px] border-solid border-mediumslateblue border-r-[1px] border-l-[1px]">
                 <div className="text-center relative top-2 font-medium">
                   Logout
                 </div>

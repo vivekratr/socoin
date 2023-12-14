@@ -15,15 +15,16 @@ const SendPost = (props) => {
 
 
   const {
-    checkIfWalletIsConnected,
-    ConnectWallet,
-    currentAccount,
-    isNewUser,
-    createUser,
+    // checkIfWalletIsConnected,
+    // ConnectWallet,
+    // currentAccount,
+    // isNewUser,
+    // createUser,
     createPost,
-    likePost,
-    getUserData,
-    userPost,
+    // likePost,
+    // getUserData,
+    // userPost,
+    createPrivatePost,
   } = useContext(Context);
 
   var generatedUrl='';
@@ -174,9 +175,13 @@ const SendPost = (props) => {
       description:desc,
       hash: convertHashToString(hash),
       file: generatedUrl,
+      countFunc:props.count
+
     }
     console.log(obj,"obj")
+    props.spin(true);
     await createPost(obj)
+    props.count((prev)=>{return prev+1})
   props.spin(false);
 
   }
@@ -185,7 +190,12 @@ const SendPost = (props) => {
       description:desc,
       file: generatedUrl,
       coin: coin,
+      hash:convertHashToString(hash),
+      countFunc:props.count
     }
+    console.log(obj,"obj")
+await createPrivatePost(obj)
+
   props.spin(false);
   
       // await createPrivatPost(obj)

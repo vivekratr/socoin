@@ -26,6 +26,9 @@ const getEthereumContract = () => {
 
   export const SocoinProvider = ({ children }) => {
   const [currentAccount, setCurrentAccount] = useState("");
+  const [userDatar,setUserDatar]=useState([])
+  const [refresh,setRefresh]=useState(0)
+  
 
   const checkIfWalletIsConnected = async () => {
     try {
@@ -131,7 +134,36 @@ const getEthereumContract = () => {
       const createdPost = await contracts.createPost(props.file,1,props.description,props.hash);
       console.log("createdPost",createdPost);
       // console.log("minContribution",minContributionNumber);
+      setTimeout(async() => {
+        props.countFunc((prev)=>{return prev+1});
+
+        await getUserData();
+      }, 2000);
+      
+
     } catch (error) {
+      props.countFunc((prev)=>{return prev+1});
+
+      console.log(error);
+    }
+  }
+
+  // string memory _img,string memory _description,uint _price,string memory _hash
+  async function  createPrivatePost(props){
+    try {
+      if (!ethereum) return alert("Please install Phantom wallet");
+
+      const contracts = getEthereumContract();
+      const createdPost = await contracts.createPrivatePost(props.file,props.description,props.coin,props.hash);
+      console.log("createdPost",createdPost);
+      // console.log("minContribution",minContributionNumber);
+      setTimeout(() => {
+        props.countFunc((prev)=>{return prev+1});
+        
+      }, 2000);
+    } catch (error) {
+      props.countFunc((prev)=>{return prev+1});
+
       console.log(error);
     }
   }
@@ -156,12 +188,33 @@ const getEthereumContract = () => {
       if (!ethereum) return alert("Please install Phantom wallet");
 
       const contracts = getEthereumContract();
-      let userData;
+      let userDatas;
       if(currentAccount){  
-         userData = await contracts.user_data(utils.getAddress(addr));
+         userDatas = await contracts.user_data(utils.getAddress(addr));
         
-        console.log("userData",Number(userData.token));
-      return userData;
+        console.log("userData",Number(userDatas.token));
+        setUserDatar(userDatas);
+      return userDatas;
+      }
+    
+      // console.log("minContribution",minContributionNumber);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async function getUserData(addr){
+    try {
+      if (!ethereum) return alert("Please install Phantom wallet");
+
+      const contracts = getEthereumContract();
+      let userDatas;
+      if(currentAccount){  
+         userDatas = await contracts.user_data(utils.getAddress(addr));
+        
+        console.log("userData",Number(userDatas.token));
+        setUserDatar(userDatas);
+      return userDatas;
       }
     
       // console.log("minContribution",minContributionNumber);
@@ -197,7 +250,10 @@ const getEthereumContract = () => {
         createPost,
         likePost,
         getUserData,
-        userPost
+        userPost,
+        createPrivatePost,
+        getEthereumContract,
+        userDatar,
       }}
     >
       {children}
