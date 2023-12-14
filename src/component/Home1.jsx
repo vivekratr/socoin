@@ -29,6 +29,10 @@ const Home1 = () => {
   const [transactionCount, setTransactionCount] = useState(0);
   const [allPost,setAllPost]= useState([]);
   const [postIndex, setPostIndex] = useState(0);
+  const [allPrivatePost,setAllPrivatePost]= useState([]);
+  const [userPrivatePost,setUserPrivatePost] = useState([])
+
+
 
   // Function to handle file change
   const handleFileChange = (event) => {
@@ -139,6 +143,10 @@ const Home1 = () => {
     getAllPost,
     refresh,
     getUserPost,
+    getAllPrivatePost,
+    getUserPrivatePost,
+
+
   } = useContext(Context);
   const handleConnectWallet = async () => {
     await ConnectWallet();
@@ -149,10 +157,16 @@ const Home1 = () => {
     if (currentAccount) {
       const bal = await getUserData(currentAccount);
       const post = await getAllPost();
+      const privatePost = await getAllPrivatePost();
+      const userPrivate = await getUserPrivatePost();
+
+
       //  const login =async ()=>{num= await isNewUser()} ;
       //  login();
       // let num= await isNewUser();
       setNum(Number(bal.user_id));
+      setUserPrivatePost(userPrivate);
+      console.log('userPrivate',userPrivate)
       console.log('postData,',post[0]);
       const shuffleArray = (array) => {
         const shuffled = [...array]; // Create a copy of the array
@@ -162,7 +176,10 @@ const Home1 = () => {
         }
         return shuffled;
       };
-      setAllPost( shuffleArray(post))
+      setAllPost( shuffleArray(post));
+      setAllPrivatePost(privatePost)
+
+
       
       // setAllPost(post)
       console.log("numm", num, "type", typeof num);

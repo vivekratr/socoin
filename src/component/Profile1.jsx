@@ -18,7 +18,7 @@ const Profile1 = () => {
   const [allUserPublicPost,setAllUserPublicPost]= useState([]);
   const [allPost,setAllPost]= useState([]);
   const [allPrivatePost,setAllPrivatePost]= useState([]);
-
+  const [userPrivatePost,setUserPrivatePost] = useState([])
   const [userData, setUserData] = useState([]);
 
 
@@ -53,6 +53,7 @@ const Profile1 = () => {
     refresh,
     getUserPost,
     getAllPrivatePost,
+    getUserPrivatePost,
   } = useContext(Context);
   const handleConnectWallet = async () => {
     await ConnectWallet();
@@ -65,6 +66,7 @@ const Profile1 = () => {
         const bal = await getUserData(currentAccount);
       const post = await getAllPost();
       const privatePost = await getAllPrivatePost();
+      const userPrivate = await getUserPrivatePost(currentAccount);
 
         //  const login =async ()=>{num= await isNewUser()} ;
         //  login();
@@ -73,8 +75,11 @@ const Profile1 = () => {
       setUserData(bal);
 
       setAllPost( post);
+      setUserPrivatePost(userPrivate);
+      console.log("user private post",userPrivate);
       console.log("post in useffect: ", post);
       console.log("private post",privatePost);
+      setAllPrivatePost(privatePost)
 
         console.log("numm", num, "type", typeof num);
         const publicUserPost =await getUserPost(currentAccount);
@@ -324,12 +329,21 @@ const Profile1 = () => {
               <div className="relative w-[669px] h-max flex flex-wrap gap-5 shrink-0">
                 
 
-{allUserPublicPost.map((p)=>{
+{allUserPublicPost && allUserPublicPost.map((p)=>{
   const a = allPost[Number(p)];
     return <div>
 
 
       <ProfilePost id={1} post={a[5]}/>
+    </div>
+})}
+
+{userPrivatePost && userPrivatePost.map((p)=>{
+  const a = allPrivatePost[Number(p)];
+    return <div>
+
+
+      <ProfilePost id={2} post={a[6]}/>
     </div>
 })}
 

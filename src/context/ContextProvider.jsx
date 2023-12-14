@@ -313,6 +313,7 @@ const getEthereumContract = () => {
         setRefresh,
         getUserPost,
         getAllPrivatePost,
+        getUserPrivatePost   ,
       }}
     >
       {children}
