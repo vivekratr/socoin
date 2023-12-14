@@ -6,7 +6,7 @@ import Popup from "./Popup";
 import "reactjs-popup/dist/index.css";
 import PostComponent from "./PostComponent";
 
-const Profile1 = () => {
+const Communities = () => {
   const navigate = useNavigate();
   const [commentOpen, setCommentOpen] = useState(false);
   const [userBal, setUserBal] = useState(0);
@@ -226,186 +226,166 @@ const Profile1 = () => {
             </div>
           </div> */}
 
-          <div className="relative w-full h-[883px] text-left text-[24px] text-white font-inter">
-            <div className="absolute top-[0px] left-[0px] w-[759px] h-[388px]">
-              <div className="absolute top-[0px] left-[34px] w-[691px] h-[311px] shrink-0">
-                <div className="absolute top-[10px] left-[0px] shrink-0 flex flex-row items-start justify-start gap-[17px]">
-                  <img
-                    className="relative w-7 h-7 overflow-hidden shrink-0 object-cover"
-                    alt=""
-                    src="  https://cdn.discordapp.com/attachments/1177493315898314792/1184825516964982887/image.png?ex=658d61c0&is=657aecc0&hm=03d7d2eec4cc415f0b7ed3a05ed98e0ab55fee03bd1acfbd38122334b4cf65b4&"
-                  />
-                  <div className="relative font-semibold">Amit Sinha</div>
-                </div>
-                <div className="absolute top-[106px] left-[0px] w-[691px] h-[205px] shrink-0 text-lg">
-                  <img
-                    className="absolute top-[0px] left-[0px] rounded-[17px] w-[185px] h-[204px] object-cover"
-                    alt=""
-                    src="https://cdn.discordapp.com/attachments/1177492390949441610/1184455231728255027/image_32.png?ex=658c08e5&is=657993e5&hm=2515c1925ba753fa5f16fa244df6dc3b9a01cbb1b5531b473b25d6c7c188c622&"
-                  />
-                  <div className="absolute top-[0px] left-[210px] w-[481px] h-[205px] shrink-0">
-                    <div className="absolute top-[0px] left-[0px] w-[150px] h-[59px] shrink-0 text-[26px]">
-                      <b className="absolute top-[0px] left-[0px]">
-                        Amit Sinha
-                      </b>
-                      <div className="absolute top-[35px] left-[0px] text-[20px] text-colours-gray-500">
-                        @amitsinha.dso
-                      </div>
-                    </div>
-                    <div className="absolute top-[0px] left-[239px] w-[242px] h-[41px] shrink-0 text-[14px] text-black">
-                      <div className="absolute top-[0px] left-[0px] rounded-[46px] [background:linear-gradient(106.75deg,_#fdd835,_#fff_49.15%,_#ffd000)] w-[103px] h-[41px] overflow-hidden">
-                        <div className="absolute top-[12px] left-[18px] font-medium">
-                          Buy Coins
-                        </div>
-                      </div>
-                      <div className="absolute top-[0px] left-[117px] rounded-[40px] bg-black box-border w-[125px] h-[41px] overflow-hidden text-[16px] text-white border-[1px] border-solid border-white">
-                        <div className="absolute top-[11px] left-[21px] font-medium">
-                          Edit Profile
-                        </div>
-                      </div>
-                    </div>
-                    <div className="absolute top-[77px] left-[0px] w-[405px] h-10 shrink-0">
-                      <div className="absolute top-[0px] left-[0px]">
-                        UI/UX Designer | Developer
-                      </div>
-                      <div className="absolute top-[26px] left-[0px]">
-                        Designing dreams Shaping Realities
-                      </div>
-                    </div>
-                    <div className="absolute top-[143px] left-[0px] w-[229px] h-[22px] shrink-0 text-colors-gray-500">
-                      {/* <img
-                        className="absolute top-[2.5px] left-[0px] w-[17px] h-[17px] overflow-hidden object-cover"
-                        alt=""
-                        src="/fontistodate@2x.png"
-                      /> */}
-                    </div>
-                    <div className="absolute top-[183px] left-[0px] w-[228px] h-[22px] shrink-0 text-colors-gray-50">
-                      <div className="absolute top-[0px] left-[0px]">20</div>
-                      <div className="absolute top-[0px] left-[30px] text-colors-gray-500">
-                        Following
-                      </div>
-                      <div className="absolute top-[0px] left-[117px]">20</div>
-                      <div className="absolute top-[0px] left-[147px] text-colors-gray-500">
-                        Followers
-                      </div>
-                    </div>
-                  </div>
-                </div>
+          <div className="relative w-full h-[882px] text-left text-lg text-white font-inter">
+            <b className="absolute top-[97px] left-[26px] text-[20px]">
+              Discover Communities
+            </b>
+            <div className="absolute top-[173px] left-[180px] font-semibold">{`Web3 Community `}</div>
+            <div className="absolute top-[361px] left-[180px] font-semibold">{`Web3 Community `}</div>
+            <div className="absolute top-[550px] left-[180px] font-semibold">{`Web3 Community `}</div>
+            <div className="absolute top-[739px] left-[180px] font-semibold">{`Web3 Community `}</div>
+            <div className="absolute top-[195px] left-[180px] text-sm text-colours-gray-500">
+              140 Members
+            </div>
+            <div className="absolute top-[383px] left-[180px] text-sm text-colours-gray-500">
+              140 Members
+            </div>
+            <div className="absolute top-[572px] left-[180px] text-sm text-colours-gray-500">
+              140 Members
+            </div>
+            <div className="absolute top-[761px] left-[180px] text-sm text-colours-gray-500">
+              140 Members
+            </div>
+            <div className="absolute top-[0px] left-[65px] rounded-[67px] bg-colours-gray-900 w-[630px] h-[53px] overflow-hidden text-gray-400">
+              <div className="absolute top-[16px] left-[62px] font-medium">
+                Search
               </div>
               <img
-                className="absolute top-[388px] left-[0px] max-h-full w-[759px] object-cover"
+                className="absolute top-[15px] left-[29px] w-[23px] h-[23px] overflow-hidden object-cover"
                 alt=""
-                src="/line-11@2x.png"
+                src="/uilsearch@2x.png"
               />
             </div>
-            <div className="absolute top-[430px] left-[45px] flex flex-col items-start justify-start gap-[27px] text-5xs text-black">
-              <div className="relative w-[669px] h-[213px] shrink-0">
-                <div className="absolute top-[0px] left-[0px] w-[207px] h-[213px]">
-                  <img
-                    className="absolute top-[0px] left-[0px] rounded-3xs w-[207px] h-[213px] object-cover"
-                    alt=""
-                    src="https://cdn.discordapp.com/attachments/1177492390949441610/1184573213477449900/image.png?ex=658c76c6&is=657a01c6&hm=7ad60633d26fe513eb60f36c750ac51b8228b2cf2b2e4480c1d70bd65bc6aeae&"
-                  />
-                  <div className="absolute top-[9px] left-[161px] rounded-3xs bg-white w-[37px] h-[18px] overflow-hidden">
-                    <div className="absolute text-sm top-[2px] left-[4px]  font-normal">
-                      10
-                    </div>
-                    <img
-                      className="absolute top-[1px] left-[18px] w-4 h-[17px] object-cover"
-                      alt=""
-                      src=" https://cdn.discordapp.com/attachments/1177492390949441610/1184823446287433860/image.png?ex=658d5fd2&is=657aead2&hm=bf916ea068b2cd8f24d35cc70c22a220e39a9baece0dc56e600186abc3f776f6&"
-                    />
-                  </div>
-                </div>
-                <div className="absolute top-[0px] left-[231px] w-[207px] h-[213px]">
-                  <img
-                    className="absolute top-[0px] left-[0px] rounded-3xs w-[207px] h-[213px] object-cover"
-                    alt=""
-                    src="/image-32@2x.png"
-                  />
-                  <div className="absolute top-[9px] left-[161px] rounded-3xs bg-white w-[37px] h-[18px] overflow-hidden">
-                    <div className="absolute top-[4px] left-[6px] font-medium">
-                      10
-                    </div>
-                    <img
-                      className="absolute top-[1px] left-[18px] w-4 h-[17px] object-cover"
-                      alt=""
-                      src="https://cdn.discordapp.com/attachments/1177492390949441610/1184573213477449900/image.png?ex=658c76c6&is=657a01c6&hm=7ad60633d26fe513eb60f36c750ac51b8228b2cf2b2e4480c1d70bd65bc6aeae&"
-                    />
-                  </div>
-                </div>
-                <div className="absolute top-[0px] left-[462px] w-[207px] h-[213px]">
-                  <img
-                    className="absolute top-[0px] left-[0px] rounded-3xs w-[207px] h-[213px] object-cover"
-                    alt=""
-                    src="/image-32@2x.png"
-                  />
-                  <div className="absolute top-[9px] left-[161px] rounded-3xs bg-white w-[37px] h-[18px] overflow-hidden">
-                    <div className="absolute top-[4px] left-[6px] font-medium">
-                      10
-                    </div>
-                    <img
-                      className="absolute top-[1px] left-[18px] w-4 h-[17px] object-cover"
-                      alt=""
-                      src="/3-d-glassmorphism-crypto-initial-coin-offerings-announcement-instagram-post-2@2x.png"
-                    />
-                  </div>
-                </div>
-              </div>
-              <div className="relative w-[669px] h-[213px] shrink-0">
-                <div className="absolute top-[0px] left-[0px] w-[207px] h-[213px]">
-                  <img
-                    className="absolute top-[0px] left-[0px] rounded-3xs w-[207px] h-[213px] object-cover"
-                    alt=""
-                    src="/image-32@2x.png"
-                  />
-                  <div className="absolute top-[9px] left-[161px] rounded-3xs bg-white w-[37px] h-[18px] overflow-hidden">
-                    <div className="absolute top-[4px] left-[6px] font-medium">
-                      10
-                    </div>
-                    <img
-                      className="absolute top-[1px] left-[18px] w-4 h-[17px] object-cover"
-                      alt=""
-                      src="/3-d-glassmorphism-crypto-initial-coin-offerings-announcement-instagram-post-2@2x.png"
-                    />
-                  </div>
-                </div>
-                <div className="absolute top-[0px] left-[231px] w-[207px] h-[213px]">
-                  <img
-                    className="absolute top-[0px] left-[0px] rounded-3xs w-[207px] h-[213px] object-cover"
-                    alt=""
-                    src="/image-32@2x.png"
-                  />
-                  <div className="absolute top-[9px] left-[161px] rounded-3xs bg-white w-[37px] h-[18px] overflow-hidden">
-                    <div className="absolute top-[4px] left-[6px] font-medium">
-                      10
-                    </div>
-                    <img
-                      className="absolute top-[1px] left-[18px] w-4 h-[17px] object-cover"
-                      alt=""
-                      src="/3-d-glassmorphism-crypto-initial-coin-offerings-announcement-instagram-post-2@2x.png"
-                    />
-                  </div>
-                </div>
-                <div className="absolute top-[0px] left-[462px] w-[207px] h-[213px]">
-                  <img
-                    className="absolute top-[0px] left-[0px] rounded-3xs w-[207px] h-[213px] object-cover"
-                    alt=""
-                    src="/image-32@2x.png"
-                  />
-                  <div className="absolute top-[9px] left-[161px] rounded-3xs bg-white w-[37px] h-[18px] overflow-hidden">
-                    <div className="absolute top-[4px] left-[6px] font-medium">
-                      10
-                    </div>
-                    <img
-                      className="absolute top-[1px] left-[18px] w-4 h-[17px] object-cover"
-                      alt=""
-                      src="/3-d-glassmorphism-crypto-initial-coin-offerings-announcement-instagram-post-2@2x.png"
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
+            <img
+              className="absolute top-[83px] left-[0px] max-h-full w-[759px] object-cover"
+              alt=""
+              src="/line-11@2x.png"
+            />
+            <img
+              className="absolute top-[163px] left-[26px] rounded-mid w-[139px] h-[153px] object-cover"
+              alt=""
+              src="/image-38@2x.png"
+            />
+            <img
+              className="absolute top-[351px] left-[26px] rounded-mid w-[139px] h-[153px] object-cover"
+              alt=""
+              src="/image-39@2x.png"
+            />
+            <img
+              className="absolute top-[540px] left-[26px] rounded-mid w-[139px] h-[153px] object-cover"
+              alt=""
+              src="/image-40@2x.png"
+            />
+            <img
+              className="absolute top-[729px] left-[26px] rounded-mid w-[139px] h-[153px] object-cover"
+              alt=""
+              src="/image-41@2x.png"
+            />
+            <img
+              className="absolute top-[223px] left-[180px] rounded-11xl w-[34px] h-[34px] object-cover"
+              alt=""
+              src="/avatar@2x.png"
+            />
+            <img
+              className="absolute top-[411px] left-[180px] rounded-11xl w-[34px] h-[34px] object-cover"
+              alt=""
+              src="/avatar@2x.png"
+            />
+            <img
+              className="absolute top-[600px] left-[180px] rounded-11xl w-[34px] h-[34px] object-cover"
+              alt=""
+              src="/avatar@2x.png"
+            />
+            <img
+              className="absolute top-[789px] left-[180px] rounded-11xl w-[34px] h-[34px] object-cover"
+              alt=""
+              src="/avatar@2x.png"
+            />
+            <img
+              className="absolute top-[223px] left-[201px] rounded-11xl w-[34px] h-[34px] object-cover"
+              alt=""
+              src="/avatar@2x.png"
+            />
+            <img
+              className="absolute top-[411px] left-[201px] rounded-11xl w-[34px] h-[34px] object-cover"
+              alt=""
+              src="/avatar@2x.png"
+            />
+            <img
+              className="absolute top-[600px] left-[201px] rounded-11xl w-[34px] h-[34px] object-cover"
+              alt=""
+              src="/avatar@2x.png"
+            />
+            <img
+              className="absolute top-[789px] left-[201px] rounded-11xl w-[34px] h-[34px] object-cover"
+              alt=""
+              src="/avatar@2x.png"
+            />
+            <img
+              className="absolute top-[223px] left-[222px] rounded-11xl w-[34px] h-[34px] object-cover"
+              alt=""
+              src="/avatar@2x.png"
+            />
+            <img
+              className="absolute top-[411px] left-[222px] rounded-11xl w-[34px] h-[34px] object-cover"
+              alt=""
+              src="/avatar@2x.png"
+            />
+            <img
+              className="absolute top-[600px] left-[222px] rounded-11xl w-[34px] h-[34px] object-cover"
+              alt=""
+              src="/avatar@2x.png"
+            />
+            <img
+              className="absolute top-[789px] left-[222px] rounded-11xl w-[34px] h-[34px] object-cover"
+              alt=""
+              src="/avatar@2x.png"
+            />
+            <img
+              className="absolute top-[223px] left-[243px] rounded-11xl w-[34px] h-[34px] object-cover"
+              alt=""
+              src="/avatar@2x.png"
+            />
+            <img
+              className="absolute top-[411px] left-[243px] rounded-11xl w-[34px] h-[34px] object-cover"
+              alt=""
+              src="/avatar@2x.png"
+            />
+            <img
+              className="absolute top-[600px] left-[243px] rounded-11xl w-[34px] h-[34px] object-cover"
+              alt=""
+              src="/avatar@2x.png"
+            />
+            <img
+              className="absolute top-[789px] left-[243px] rounded-11xl w-[34px] h-[34px] object-cover"
+              alt=""
+              src="/avatar@2x.png"
+            />
+            <img
+              className="absolute top-[223px] left-[264px] rounded-11xl w-[34px] h-[34px] object-cover"
+              alt=""
+              src="/avatar@2x.png"
+            />
+            <img
+              className="absolute top-[411px] left-[264px] rounded-11xl w-[34px] h-[34px] object-cover"
+              alt=""
+              src="/avatar@2x.png"
+            />
+            <img
+              className="absolute top-[600px] left-[264px] rounded-11xl w-[34px] h-[34px] object-cover"
+              alt=""
+              src="/avatar@2x.png"
+            />
+            <img
+              className="absolute top-[789px] left-[264px] rounded-11xl w-[34px] h-[34px] object-cover"
+              alt=""
+              src="/avatar@2x.png"
+            />
+            <img
+              className="absolute top-[13px] left-[12px] w-7 h-7 overflow-hidden object-cover"
+              alt=""
+              src="/clarityarrowline@2x.png"
+            />
           </div>
 
           <div className="flex items-center justify-start left-5   relative w-full top-[2rem]"></div>
@@ -555,4 +535,4 @@ asssd
   );
 };
 
-export default Profile1;
+export default Communities;
