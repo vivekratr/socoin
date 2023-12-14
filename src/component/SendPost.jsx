@@ -1,15 +1,33 @@
-import React,{useState,useEffect} from 'react'
+import React,{useState,useEffect,useContext} from 'react'
 import axios from 'axios';
+import { Context } from "../context/ContextProvider";
+
 
 const SendPost = (props) => {
   const [activeDiv, setActiveDiv] = useState('1'); 
   const [desc,setDesc] = useState('');
   const [coin,setCoin] = useState(10);
   const [ hash,setHash] = useState('');
-  const [image, setImage] = useState(null);
-  const [file, setFile] = useState(null);
-  const [cid, setCid] = useState(null);
-  const [url, setUrl] = useState(null);
+  const [file, setFile] = useState('');
+  const [cid, setCid] = useState('');
+  const [url, setUrl] = useState('');
+  const [urls, setUrls] = useState('');
+
+
+  const {
+    checkIfWalletIsConnected,
+    ConnectWallet,
+    currentAccount,
+    isNewUser,
+    createUser,
+    createPost,
+    likePost,
+    getUserData,
+    userPost,
+  } = useContext(Context);
+
+  var generatedUrl='';
+
 
   const handleFileChange =  (event) => {
     setFile(event.target.files[0]);
@@ -37,7 +55,10 @@ const SendPost = (props) => {
         });
   
         setCid(response.data.value.cid);
-        
+         generatedUrl = `https://${response.data.value.cid}.ipfs.nftstorage.link/${file.name}`;
+        console.log("generated link",generatedUrl)
+        setUrl(generatedUrl);
+        setUrls(generatedUrl)
         console.log('NFT Storage response:', response.data.value.cid);
       } catch (error) {
   
@@ -71,7 +92,7 @@ const SendPost = (props) => {
     if (cid) {
       setUrl(`https://${cid}.ipfs.nftstorage.link/${file.name}`);
     }
-  }, [cid, file]);
+  }, [cid, file,url]);
   return (
    
 
@@ -139,9 +160,40 @@ const SendPost = (props) => {
           </div>
           <div className='flex-grow'></div> 
           <div className="relative flex justify-end rounded-[97px] bg-cornflowerblue box-border w-[81px] h-[2.06rem] overflow-hidden text-left text-[1.13rem] text-white font-inter border-t-[1px] border-solid border-lightskyblue border-r-[1px] border-l-[1px]">
-<div onClick={()=>{
-  console.log()
-  console.log(`description ${desc} hash ${convertHashToString(hash)} file ${image} coin ${coin} activeDiv ${activeDiv}`)
+<div onClick={async()=>{
+  setUrl(`https://${cid}.ipfs.nftstorage.link/${file.name}`);
+  props.spin(true);
+  await handleUpload();
+  
+  
+  console.log(`description ${desc} hash ${convertHashToString(hash)} file ${url} coin ${coin} activeDiv ${activeDiv} cid ${cid} again url ${generatedUrl}`)
+
+ 
+  if (activeDiv==1) {
+    const obj = {
+      description:desc,
+      hash: convertHashToString(hash),
+      file: generatedUrl,
+    }
+    console.log(obj,"obj")
+    await createPost(obj)
+  props.spin(false);
+
+  }
+  else{
+    const obj = {
+      description:desc,
+      file: generatedUrl,
+      coin: coin,
+    }
+  props.spin(false);
+  
+      // await createPrivatPost(obj)
+  }
+
+  props.close(false)
+
+ 
 }} className="absolute top-[0.38rem] left-[1.31rem] font-semibold">Post</div>
 </div>
 

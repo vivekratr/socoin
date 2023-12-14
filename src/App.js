@@ -10,6 +10,7 @@ import Post from "./component/Post";
 import PostComponent from "./component/PostComponent";
 import Profile from './component/Profile1'
 import SendPost from "./component/SendPost";
+import Profile1 from "./component/Profile1";
 function App() {
  
 
@@ -22,6 +23,7 @@ function App() {
             <Route path="/home" element={<Home /*state = {state}*/ />} />
             <Route path="/homi" element={<Homi /*state = {state}*/ />} />
             <Route path="/profile" element={<Profile /*state = {state}*/ />} />
+            <Route path="/profile1" element={<Profile1 /*state = {state}*/ />} />
 
             <Route path="/post" element={<Post /*state = {state}*/ />} />  
                     <Route path="/posts" element={<PostComponent /*state = {state}*/ />} />

@@ -122,13 +122,13 @@ const getEthereumContract = () => {
   }
 
 
-
-  async function  createPost(_img,_postId,_description,_hashtag){
+  // string memory _img,uint256 _postId,string memory _description,string memory _hashtag
+  async function  createPost(props){
     try {
       if (!ethereum) return alert("Please install Phantom wallet");
 
       const contracts = getEthereumContract();
-      const createdPost = await contracts.createPost(_img,_postId,_description,_hashtag);
+      const createdPost = await contracts.createPost(props.file,1,props.description,props.hash);
       console.log("createdPost",createdPost);
       // console.log("minContribution",minContributionNumber);
     } catch (error) {
