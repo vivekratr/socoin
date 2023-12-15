@@ -226,193 +226,84 @@ const Communities = () => {
             </div>
           </div> */}
 
-          <div className="relative w-full h-[882px] text-left text-lg text-white font-inter">
-            <b className="absolute top-[97px] left-[26px] text-[20px]">
-              Discover Communities
-            </b>
-            <div className="absolute top-[173px] left-[180px] font-semibold">{`Web3 Community `}</div>
-            <div className="absolute top-[361px] left-[180px] font-semibold">{`Web3 Community `}</div>
-            <div className="absolute top-[550px] left-[180px] font-semibold">{`Web3 Community `}</div>
-            <div className="absolute top-[739px] left-[180px] font-semibold">{`Web3 Community `}</div>
-            <div className="absolute top-[195px] left-[180px] text-sm text-colours-gray-500">
-              140 Members
-            </div>
-            <div className="absolute top-[383px] left-[180px] text-sm text-colours-gray-500">
-              140 Members
-            </div>
-            <div className="absolute top-[572px] left-[180px] text-sm text-colours-gray-500">
-              140 Members
-            </div>
-            <div className="absolute top-[761px] left-[180px] text-sm text-colours-gray-500">
-              140 Members
-            </div>
-            <div className="absolute top-[0px] left-[65px] rounded-[67px] bg-colours-gray-900 w-[630px] h-[53px] overflow-hidden text-gray-400">
-              <div className="absolute top-[16px] left-[62px] font-medium">
-                Search
-              </div>
-              <img
-                className="absolute top-[15px] left-[29px] w-[23px] h-[23px] overflow-hidden object-cover"
-                alt=""
-                src="  https://cdn.discordapp.com/attachments/1177492390949441610/1184837366729420981/image.png?ex=658d6cc9&is=657af7c9&hm=7c949446e5e0e24ebc197428b531fef4b220c547932ec321f5c09249ae6be1dc& "
-              />
-            </div>
-            <img
-              className="absolute top-[83px] left-[0px] max-h-full w-[759px] object-cover"
-              alt=""
-              src="/line-11@2x.png"
-            />
-            {/* <img
-              className="absolute top-[163px] left-[26px] rounded-mid w-[139px] h-[153px] object-cover"
-              alt=""
-              src="https://cdn.discordapp.com/attachments/1177493315898314792/1184829952324018236/3yCasXvZTNe_RusyS9V49A.png?ex=658d65e1&is=657af0e1&hm=5a5e2ac920238cfd04e2e869fceed25b0531a0de0a591191eb5499a45131f37f&"
-            /> */}
 
-<img
-  className="absolute top-[163px] left-[26px] rounded-md w-[139px] h-[153px] object-cover"
-  alt=""
-  src="https://cdn.discordapp.com/attachments/1177493315898314792/1184829952324018236/3yCasXvZTNe_RusyS9V49A.png?ex=658d65e1&is=657af0e1&hm=5a5e2ac920238cfd04e2e869fceed25b0531a0de0a591191eb5499a45131f37f&"
-  style={{
-    borderRadius: '17px',
-    background: 'url("path-to-image") lightgray -25.152px -18.608px / 132.381% 125.225% no-repeat',
-  }}
-/>
+    <div className="relative w-full h-[882px] text-left text-lg text-white font-inter">
+      <b className="absolute top-[97px] left-[26px] text-[20px]">
+        Discover Communities
+      </b>
+      <div className="absolute top-[173px] left-[180px] font-semibold">{`Web3 Community `}</div>
+      <div className="absolute top-[361px] left-[180px] font-semibold">{`Web3 Community `}</div>
+      <div className="absolute top-[550px] left-[180px] font-semibold">{`Web3 Community `}</div>
+      <div className="absolute top-[739px] left-[180px] font-semibold">{`Web3 Community `}</div>
+      <div className="absolute top-[195px] left-[180px] text-sm text-colours-gray-500">
+        140 Members
+      </div>
+      <div className="absolute top-[383px] left-[180px] text-sm text-colours-gray-500">
+        140 Members
+      </div>
+      <div className="absolute top-[572px] left-[180px] text-sm text-colours-gray-500">
+        140 Members
+      </div>
+      <div className="absolute top-[761px] left-[180px] text-sm text-colours-gray-500">
+        140 Members
+      </div>
+      <div className="absolute top-[0px] left-[65px] rounded-[67px] bg-colours-gray-900 w-[630px] h-[53px] overflow-hidden text-gray-400">
+        <div className="absolute top-[16px] left-[62px] font-medium">
+          Search
+        </div>
+        <img
+          className="absolute top-[15px] left-[29px] w-[23px] h-[23px] overflow-hidden object-cover"
+          alt=""
+          src="/uilsearch@2x.png"
+        />
+      </div>
+      <img
+        className="absolute top-[83px] left-[0px] max-h-full w-[759px] object-cover"
+        alt=""
+        src="/line-11@2x.png"
+      />
+      <img
+        className="absolute top-[163px] left-[26px] rounded-mid w-[139px] h-[153px] object-cover"
+        alt=""
+        src="https://cdn.discordapp.com/attachments/1177493315898314792/1184829952324018236/3yCasXvZTNe_RusyS9V49A.png?ex=658d65e1&is=657af0e1&hm=5a5e2ac920238cfd04e2e869fceed25b0531a0de0a591191eb5499a45131f37f&"
+      />
+      <img
+        className="absolute top-[351px] left-[26px] rounded-mid w-[139px] h-[153px] object-cover"
+        alt=""
+        src="/image-70@2x.png"
+      />
+      <img
+        className="absolute top-[540px] left-[26px] rounded-mid w-[139px] h-[153px] object-cover"
+        alt=""
+        src="/image-71@2x.png"
+      />
+      <img
+        className="absolute top-[729px] left-[26px] rounded-mid w-[139px] h-[153px] object-cover"
+        alt=""
+        src="/image-72@2x.png"
+      />
+      <img
+        className="absolute top-[413px] left-[180px] w-[102px] h-[29px] object-cover"
+        alt=""
+        src="https://cdn.discordapp.com/attachments/1177493315898314792/1184074920045584434/image.png?ex=658aa6b3&is=657831b3&hm=e36822fe75fff4ea6988b4d01780fa7e386aa419bffbecfdda29ec62c36a09c8&"
+      />
+      <img
+        className="absolute top-[219px] left-[180px] w-[102px] h-[29px] object-cover"
+        alt=""
+        src=" https://cdn.discordapp.com/attachments/1177493315898314792/1184074920045584434/image.png?ex=658aa6b3&is=657831b3&hm=e36822fe75fff4ea6988b4d01780fa7e386aa419bffbecfdda29ec62c36a09c8&"
+      />
+      <img
+        className="absolute top-[601px] left-[180px] w-[102px] h-[29px] object-cover"
+        alt=""
+        src="https://cdn.discordapp.com/attachments/1177493315898314792/1184074920045584434/image.png?ex=658aa6b3&is=657831b3&hm=e36822fe75fff4ea6988b4d01780fa7e386aa419bffbecfdda29ec62c36a09c8&"
+      />
+      <img
+        className="absolute top-[790px] left-[180px] w-[102px] h-[29px] object-cover"
+        alt=""
+        src="https://cdn.discordapp.com/attachments/1177493315898314792/1184074920045584434/image.png?ex=658aa6b3&is=657831b3&hm=e36822fe75fff4ea6988b4d01780fa7e386aa419bffbecfdda29ec62c36a09c8&"
+      />
+    </div>
 
-
-
-
-            <img
-              className="absolute top-[351px] left-[26px] rounded-mid w-[139px] h-[153px] object-cover"
-              alt=""
-              src=" https://cdn.discordapp.com/attachments/1177493315898314792/1184829971999502347/YGtmCTrPTGWHjX2lop1rPg.png?ex=658d65e6&is=657af0e6&hm=0866d6197b8d34783c32139fef37c44742794374fb5c6a9d317cd6557f037ac5&"
-              style={{
-                borderRadius: '17px',
-                background: 'url("path-to-image") lightgray -25.152px -18.608px / 132.381% 125.225% no-repeat',
-              }}
-            />
-            <img
-              className="absolute top-[540px] left-[26px] rounded-mid w-[139px] h-[153px] object-cover"
-              alt=""
-              src=" https://cdn.discordapp.com/attachments/1177493315898314792/1184830227243872307/evx3tiHQTL-DZCCxPs-9TQ.png?ex=658d6623&is=657af123&hm=1dee0a753f7f4d85962194d79fa1b9c26337f3627d57c565334ffb5f22ba830f&"
-              style={{
-                borderRadius: '17px',
-                background: 'url("path-to-image") lightgray -25.152px -18.608px / 132.381% 125.225% no-repeat',
-              }}
-            />
-            <img
-              className="absolute top-[729px] left-[26px] rounded-mid w-[139px] h-[153px] object-cover"
-              alt=""
-              src="   https://cdn.discordapp.com/attachments/1177493315898314792/1184830541531455548/VxG6rLFIQd6AX2AqvTEXDQ.png?ex=658d666e&is=657af16e&hm=052d937216c0016afb9c8fb2d496cef268b2ecf31ffe2c6841adfb9b56226db0&"
-              style={{
-                borderRadius: '17px',
-                background: 'url("path-to-image") lightgray -25.152px -18.608px / 132.381% 125.225% no-repeat',
-              }}
-            />
-            <img
-              className="absolute top-[223px] left-[180px] rounded-11xl w-[34px] h-[34px] object-cover"
-              alt=""
-              src="    https://cdn.discordapp.com/attachments/1177493315898314792/1184834164336377937/image.png?ex=658d69cd&is=657af4cd&hm=4e6452341bbbbd4598264cbca53b144ed7be7af2da805f001f8895c10f260968&"
-            />
-            <img
-              className="absolute top-[411px] left-[180px] bg-transparent rounded-11xl w-[34px] h-[34px] object-cover"
-              alt=""
-              src="    https://cdn.discordapp.com/attachments/1177493315898314792/1184834176738934804/image.png?ex=658d69d0&is=657af4d0&hm=938099bed1506f44f0a56947ab247f7a3bc4ac48e7d4e108390a4f57da44acea&"
-            />
-            <img
-              className="absolute top-[600px] left-[180px] rounded-11xl w-[34px] h-[34px] object-cover"
-              alt=""
-              src="   https://cdn.discordapp.com/attachments/1177493315898314792/1184834190542385222/image.png?ex=658d69d4&is=657af4d4&hm=86a6d3c219e1a8ac2a6c6abcbc0c564c9642b92353767ca73ff64b5091d11256&"
-            />
-            <img
-              className="absolute top-[789px] left-[180px] rounded-11xl w-[34px] h-[34px] object-cover"
-              alt=""
-              src="     https://cdn.discordapp.com/attachments/1177493315898314792/1184834205994193077/image.png?ex=658d69d7&is=657af4d7&hm=28e4ba9591a0b55fe4f31706bfe6bbfd482cc11bc8d8318fbe2121435146e77f&"
-            />
-            <img
-              className="absolute top-[223px] left-[201px] rounded-11xl w-[34px] h-[34px]"
-              alt=""
-              src="https://cdn.discordapp.com/attachments/1177493315898314792/1184834176738934804/image.png?ex=658d69d0&is=657af4d0&hm=938099bed1506f44f0a56947ab247f7a3bc4ac48e7d4e108390a4f57da44acea&"
-            />
-            <img
-              className="absolute top-[411px] left-[201px] rounded-11xl w-[34px] h-[34px] object-cover"
-              alt=""
-              src="/avatar@2x.png"
-            />
-            <img
-              className="absolute top-[600px] left-[201px] rounded-11xl w-[34px] h-[34px] object-cover"
-              alt=""
-              src="/avatar@2x.png"
-            />
-            <img
-              className="absolute top-[789px] left-[201px] rounded-11xl w-[34px] h-[34px] object-cover"
-              alt=""
-              src="/avatar@2x.png"
-            />
-            <img
-              className="absolute top-[223px] left-[222px] rounded-11xl w-[34px] h-[34px] object-cover"
-              alt=""
-              src="/avatar@2x.png"
-            />
-            <img
-              className="absolute top-[411px] left-[222px] rounded-11xl w-[34px] h-[34px] object-cover"
-              alt=""
-              src="/avatar@2x.png"
-            />
-            <img
-              className="absolute top-[600px] left-[222px] rounded-11xl w-[34px] h-[34px] object-cover"
-              alt=""
-              src="/avatar@2x.png"
-            />
-            <img
-              className="absolute top-[789px] left-[222px] rounded-11xl w-[34px] h-[34px] object-cover"
-              alt=""
-              src="/avatar@2x.png"
-            />
-            <img
-              className="absolute top-[223px] left-[243px] rounded-11xl w-[34px] h-[34px] object-cover"
-              alt=""
-              src="/avatar@2x.png"
-            />
-            <img
-              className="absolute top-[411px] left-[243px] rounded-11xl w-[34px] h-[34px] object-cover"
-              alt=""
-              src="/avatar@2x.png"
-            />
-            <img
-              className="absolute top-[600px] left-[243px] rounded-11xl w-[34px] h-[34px] object-cover"
-              alt=""
-              src="/avatar@2x.png"
-            />
-            <img
-              className="absolute top-[789px] left-[243px] rounded-11xl w-[34px] h-[34px] object-cover"
-              alt=""
-              src="/avatar@2x.png"
-            />
-            <img
-              className="absolute top-[223px] left-[264px] rounded-11xl w-[34px] h-[34px] object-cover"
-              alt=""
-              src="/avatar@2x.png"
-            />
-            <img
-              className="absolute top-[411px] left-[264px] rounded-11xl w-[34px] h-[34px] object-cover"
-              alt=""
-              src="/avatar@2x.png"
-            />
-            <img
-              className="absolute top-[600px] left-[264px] rounded-11xl w-[34px] h-[34px] object-cover"
-              alt=""
-              src="/avatar@2x.png"
-            />
-            <img
-              className="absolute top-[789px] left-[264px] rounded-11xl w-[34px] h-[34px] object-cover"
-              alt=""
-              src="/avatar@2x.png"
-            />
-            <img
-              className="absolute top-[13px] left-[12px] w-7 h-7 overflow-hidden object-cover"
-              alt=""
-              src=" https://cdn.discordapp.com/attachments/1177492390949441610/1184839798431678514/image.png?ex=658d6f0d&is=657afa0d&hm=dcc98454a28e222019bc3dc45b64d1672920b156aaa0525ab21b67062ab129ae&"
-            />
-          </div>
 
           <div className="flex items-center justify-start left-5   relative w-full top-[2rem]"></div>
         </div>

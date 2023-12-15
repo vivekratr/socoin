@@ -26,7 +26,7 @@ const PostCard = (props) => {
       setComments(c);
       
       setCommentKeys(Object.values(c))
-      console.log(typeof(Object.values(c)))
+      console.log(Object.values(c))
       setUserData(user); 
       console.log("from postcard userdata", user);
       setLikess(props.like)
@@ -86,18 +86,18 @@ const PostCard = (props) => {
       Comments
     </div>
     <div className="flex flex-col ">
-    {commentKeys.map(async (key)=>{
+    {/* {commentKeys.map(async (key)=>{
 
-const data = await getUserData(currentAccount); //update it later to comment[key][0];
-
+// const data = await getUserData(currentAccount); //update it later to comment[key][0];
+console.log("inside object map",key)
 
 return (
-  <div > 
-    <img src={data[2]} alt="" />
+  <div className="text-white" > 
+  {key}
   </div>
 )
 
-    })}
+    })} */}
 
 
       
