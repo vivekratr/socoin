@@ -15,6 +15,7 @@ import Communities from "./component/Communities";
 import Notifications from "./component/Notifications";
 import Messages from "./component/Messages";
 import Sendmessages from "./component/Sendmessages";
+import Splinejs from "./component/Spline";
 function App() {
  
 
@@ -36,6 +37,7 @@ function App() {
                     <Route path="/notifications" element={<Notifications /*state = {state}*/ />} />
                     <Route path="/messages" element={<Messages /*state = {state}*/ />} />
                     <Route path="/sendmessages" element={<Sendmessages /*state = {state}*/ />} />
+                    <Route path="/spline" element={<Splinejs /*state = {state}*/ />} />
 
 
             <Route

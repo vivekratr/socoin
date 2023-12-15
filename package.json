@@ -6,6 +6,8 @@
     "@ethersproject/providers": "^5.7.2",
     "@popperjs/core": "^2.11.8",
     "@solana/wallet-adapter-phantom": "^0.9.24",
+    "@splinetool/react-spline": "^2.2.6",
+    "@splinetool/runtime": "^0.9.523",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
