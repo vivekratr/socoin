@@ -86,7 +86,7 @@ const PostCard = (props) => {
       Comments
     </div>
     <div className="flex flex-col ">
-    {/* {commentKeys.map(async (key)=>{
+    {commentKeys.map(async (key)=>{
 
 // const data = await getUserData(currentAccount); //update it later to comment[key][0];
 console.log("inside object map",key)
@@ -97,7 +97,7 @@ return (
   </div>
 )
 
-    })} */}
+    })}
 
 
       
