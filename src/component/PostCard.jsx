@@ -10,7 +10,8 @@ const PostCard = (props) => {
   const [likess, setLikess] = useState(0);
   const [userData, setUserData] = useState([]); 
   const [commentModal,setCommentModal] = useState(true)
-  const [comments,setComments] = useState([]);
+  const [comments,setComments] = useState({});
+  const [commentKeys,setCommentKeys] = useState([])
 
   
 
@@ -21,8 +22,11 @@ const PostCard = (props) => {
       
       const user = await getUserData(props.keys);
       const c = await getUserComment(props.index);
-      console.log("inside postcard comment",c,"type",typeof(c));
+      console.log("inside postcard comment",c,"type",typeof(c),Object.keys(c),typeof(Object.keys(c)));
       setComments(c);
+      
+      setCommentKeys(Object.values(c))
+      console.log(typeof(Object.values(c)))
       setUserData(user); 
       console.log("from postcard userdata", user);
       setLikess(props.like)
@@ -82,38 +86,18 @@ const PostCard = (props) => {
       Comments
     </div>
     <div className="flex flex-col ">
-    {Object.entries(comments).map(async ([key, value], index) => {
-  // Inside an async function
-  try {
-    const getData = await getUserData(currentAccount);  //change the address to value[0] later
-    const imageUrl = getData[2];
-    console.log(imageUrl,'imageurl')
+    {commentKeys.map(async (key)=>{
 
-    // Ensure that the data is ready before rendering
-    if (imageUrl) {
-      return (
-        <div key={Number(index)} className="flex mb-3">
-          <div className="flex">
-            <div><img src={imageUrl} alt={value.username} /></div>
-          </div>
-        </div>
-      );
-    } else {
-      // Handle the case where the data is not available yet
-      return (
-        <div key={Number(index)} className="flex mb-3">
-          <div className="flex">
-            <div>Loading...</div>
-          </div>
-        </div>
-      );
-    }
-  } catch (error) {
-    // Handle errors if getUserData() or other asynchronous operations fail
-    console.error('Error fetching data:', error);
-    return <div>ok</div>; // Return null or handle error cases as needed
-  }
-})}
+const data = await getUserData(currentAccount); //update it later to comment[key][0];
+
+
+return (
+  <div > 
+    <img src={data[2]} alt="" />
+  </div>
+)
+
+    })}
 
 
       

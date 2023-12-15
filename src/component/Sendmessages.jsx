@@ -263,10 +263,17 @@ const Sendmessages = () => {
                 20 Followers
               </div>
             </div>
-            {/* <div className="absolute top-[650px] left-[19px] rounded-[42px] bg-[#202327] w-[700px] h-[46px] overflow-hidden text-base text-darkslategray">
-              <div className="absolute top-[15px] left-[132px] text-[#444444]">
-                Start a conversation
-              </div>
+            <div className="absolute top-[650px] left-[19px] rounded-[42px] bg-[#202327] w-[700px] h-[46px] overflow-hidden text-base text-darkslategray">
+              
+              <input
+        type="text"
+     
+        className="absolute bg-[#202327] top-[15px] left-[132px] font-medium text-white"  
+
+        placeholder="Start a conversation."
+      />
+                
+              
               <div className="absolute top-[12px] left-[14px] flex flex-row items-center justify-start gap-[7px]">
                 <img
                   className="relative w-[22px] h-[22px] overflow-hidden shrink-0 object-cover"
@@ -289,7 +296,7 @@ const Sendmessages = () => {
                 alt=""
                 src="  https://cdn.discordapp.com/attachments/1177493315898314792/1184829290035036240/image.png?ex=658d6543&is=657af043&hm=bf6ac1e313b199983605215f202a32a047f07dc8b0a7f2947a4522db3ee1ec5e&"
               />
-            </div> */}
+            </div>
           </div>
 
           <div className="flex items-center justify-start left-5   relative w-full top-[2rem]"></div>
@@ -333,9 +340,14 @@ const Sendmessages = () => {
 
           <div className="relative w-full h-[399px] text-left text-lg text-white font-inter">
             <div className="absolute top-[0px] left-[15px] rounded-[67px] bg-gray-200 w-[318px] h-11 overflow-hidden text-base text-gray-100">
-              <div className="absolute top-3 left-16 font-medium text-gray-700">
-                Search Direct Messages
-              </div>
+            <input
+        type="text"
+     
+        className="absolute  top-3 left-16 bg-[#202327] font-medium text-white"
+
+        placeholder="Search Direct Messages."
+      />
+        
               <img
                 className="absolute top-[12px] left-[34px] w-[19px] h-[19px] overflow-hidden object-cover"
                 alt=""
