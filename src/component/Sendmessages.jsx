@@ -6,7 +6,7 @@ import Popup from "./Popup";
 import "reactjs-popup/dist/index.css";
 import PostComponent from "./PostComponent";
 
-const Messages = () => {
+const Sendmessages = () => {
   const navigate = useNavigate();
   const [commentOpen, setCommentOpen] = useState(false);
   const [userBal, setUserBal] = useState(0);
@@ -221,36 +221,64 @@ const Messages = () => {
 
         {/* mid portion */}
         <div className="flex flex-col min-w-[48.138rem] bg-black border-r-[1px] border-solid border-gray-700 box-border">
-          {/* <div className="h-[5.75rem] w-full] flex items-center justify-center border-b-[1px] border-solid border-gray-700 box-border">
-            <div className="relative mx-auto my-auto rounded-[67px] bg-colours-gray-900 w-[39.375rem] h-[2.75rem] overflow-hidden text-left text-[1rem] text-gray font-inter ">
-             
+          <div className="relative w-full h-[612px] text-left text-[20px] text-white font-inter">
+            <img
+              className="absolute top-[0px] left-[0px] w-7 h-7 overflow-hidden object-cover"
+              alt=""
+              src="/clarityarrowline@2x.png"
+            />
+            <b className="absolute top-[3px] left-[43px]">Messages</b>
+            <div className="absolute top-[98px] left-[230px] w-[315px] h-[181px] text-sm">
+              <div className="absolute top-[65px] left-[116px] text-base font-medium">
+                Amit Sinha
+              </div>
+              <div className="absolute top-[90px] left-[98px] text-base text-colours-gray-500">
+                @amitsinha.dso
+              </div>
+              <div className="absolute top-[0px] left-[132px] rounded-[69px] bg-white w-[52px] h-[52px] overflow-hidden">
+                <img
+                  className="absolute top-[0px] left-[0px] rounded-[30px] w-[52px] h-[52px] object-cover"
+                  alt=""
+                  src="/avatar@2x.png"
+                />
+              </div>
+              <div className="absolute top-[115px] left-[0px] text-center">
+                UI/UX Designer | Developer | Building @fundeth
+              </div>
+              <div className="absolute top-[137px] left-[40px] text-center">
+                Designing dreams Shaping Realities
+              </div>
+              <div className="absolute top-[164px] left-[116px] text-colours-gray-500">
+                20 Followers
+              </div>
+            </div>
+            <div className="absolute top-[650px] left-[19px] rounded-[42px] bg-gray w-[706px] h-[46px] overflow-hidden text-base text-darkslategray">
+              <div className="absolute top-[15px] left-[132px]">
+                Start a conversation
+              </div>
+              <div className="absolute top-[12px] left-[14px] flex flex-row items-center justify-start gap-[7px]">
+                <img
+                  className="relative w-[22px] h-[22px] overflow-hidden shrink-0 object-cover"
+                  alt=""
+                  src="/ionimageoutline@2x.png"
+                />
+                <img
+                  className="relative w-4 h-4 object-cover"
+                  alt=""
+                  src="/vector@2x.png"
+                />
+              </div>
               <img
-                className="absolute top-[0.75rem] left-[2.13rem] w-[1.19rem] h-[1.19rem] overflow-hidden"
+                className="absolute top-[11px] left-[656px] w-6 h-6 overflow-hidden object-cover"
                 alt=""
-                src="https://cdn.discordapp.com/attachments/1177493315898314792/1184078012669501510/image.png?ex=658aa995&is=65783495&hm=9f770576644efc3f8eccaf92aae7308b731a06ed7ac8a6e87f06211be40c03c1&"
+                src="/misend@2x.png"
+              />
+              <img
+                className="absolute top-[10px] left-[67px] rounded-[37px] w-[25px] h-[25px] object-cover"
+                alt=""
+                src="/image-38@2x.png"
               />
             </div>
-          </div> */}
-
-          <div className="relative w-full h-[364px] text-center text-[20px] text-white font-inter">
-            <img
-            onClick={()=>{
-              navigate(-1)
-            }}
-              className="absolute hover:opacity-70 cursor-pointer top-[0px] left-[0px] w-7 h-7 overflow-hidden object-cover"
-              alt=""
-              src=" https://cdn.discordapp.com/attachments/1177492390949441610/1184839798431678514/image.png?ex=658d6f0d&is=657afa0d&hm=dcc98454a28e222019bc3dc45b64d1672920b156aaa0525ab21b67062ab129ae&"
-            />
-            <b className="absolute top-[3px] left-[43px] text-left">Messages</b>
-            <div className="absolute top-[345px] left-[177px] text-[16px] font-medium text-dimgray">{`Send private photos and messages to a friend or group `}</div>
-            <div className="absolute top-[313px] left-[322px] text-[18px] font-medium">
-              Your messages
-            </div>
-            <img
-              className="absolute h-[40.4%] w-[36%] top-[29.12%] right-[100.29%] bottom-[46.87%] left-[33%] max-w-full overflow-hidden max-h-full object-cover"
-              alt=""
-              src="  https://cdn.discordapp.com/attachments/1184864067295395960/1185105525319401574/image.png?ex=658e6687&is=657bf187&hm=89e10deb067d6de1cbea8d9155318bf11056a143c3c062d69fa426e7b18ed05b&"
-            />
           </div>
 
           <div className="flex items-center justify-start left-5   relative w-full top-[2rem]"></div>
@@ -365,10 +393,10 @@ const Messages = () => {
                   welcome to Dsocial
                 </div>
                 <img
-                className="absolute top-[1px] left-[0px] h-[42px] overflow-hidden"
-                alt=""
-                src="https://cdn.discordapp.com/attachments/1177493315898314792/1184834205994193077/image.png?ex=658d69d7&is=657af4d7&hm=28e4ba9591a0b55fe4f31706bfe6bbfd482cc11bc8d8318fbe2121435146e77f&"
-              />
+                  className="absolute top-[1px] left-[0px] h-[42px] overflow-hidden"
+                  alt=""
+                  src="https://cdn.discordapp.com/attachments/1177493315898314792/1184834205994193077/image.png?ex=658d69d7&is=657af4d7&hm=28e4ba9591a0b55fe4f31706bfe6bbfd482cc11bc8d8318fbe2121435146e77f&"
+                />
               </div>
               <div className="absolute top-[0px] left-[0px] rounded-tl-none rounded-tr-8xs rounded-br-8xs rounded-bl-none bg-dodgerblue w-[7px] h-[62px] overflow-hidden" />
             </div>
@@ -387,4 +415,4 @@ asssd
   );
 };
 
-export default Messages;
+export default Sendmessages;

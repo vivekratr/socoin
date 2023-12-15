@@ -421,7 +421,9 @@ const Home1 = () => {
                 />
                 <div className="relative font-medium">Notifications</div>
               </div>
-              <div className="flex flex-row hover:opacity-50 cursor-pointer items-center justify-start gap-[0.63rem]">
+              <div onClick={()=>{
+                navigate('/messages')
+              }} className="flex flex-row hover:opacity-50 cursor-pointer items-center justify-start gap-[0.63rem]">
                 <img
                   className="relative w-[1.06rem] h-[1rem]"
                   alt=""

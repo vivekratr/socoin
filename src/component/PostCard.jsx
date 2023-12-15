@@ -17,7 +17,7 @@ const PostCard = (props) => {
     const fetchData = async () => {
       const user = await getUserData(props.keys);
       const c = await getUserComment(props.index);
-      console.log("inside postcard comment",c);
+      console.log("inside postcard comment",c,"type",typeof(c));
       setComments(c);
       setUserData(user); 
       console.log("from postcard userdata", user);
@@ -72,7 +72,24 @@ const PostCard = (props) => {
 
 </div>
 {/* comment modal  */}
-<div className={`bg-gray-500 text-white  ${commentModal?'absolute flex animate-ping transition-all duration-700':'hidden'} left-[18rem] top-[11rem] z-50 h-[10rem] w-[10rem]`}>
+<div className={`bg-gray-500 p-5 text-white rounded-lg ${commentModal?'absolute flex translate-y-[-3rem] transition-all ease-in-out duration-700':'hidden'} left-[12rem] top-[11rem] z-50 h-[20rem] w-[20rem]`}>
+  <div className="flex flex-col overflow-y-scroll h-[70%] w-full">
+    <div className="mb-3">
+      Comments
+    </div>
+    <div>
+    {Object.entries(comments).map(([key, value], index) => (
+  <div key={Number(index)} className="flex flex-col mb-3">
+    {/* Render your component here using key and value */}
+    <p>{Number(key)}: {value[1]} }</p>
+    {/* If 'value' is an array or object, you can further map or render its contents */}
+  </div>
+))}
+
+      
+    </div>
+
+  </div>
 
 </div>
 {/* comment modal end */}
