@@ -11,7 +11,7 @@ const PostCard = (props) => {
   const [userData, setUserData] = useState([]); 
   const [commentModal,setCommentModal] = useState(false)
   const [comments,setComments] = useState({});
-  const [commentKeys,setCommentKeys] = useState(0)
+  const [commentKeys,setCommentKeys] = useState([])
 
   
 
@@ -24,6 +24,13 @@ const PostCard = (props) => {
       const c = await getUserComment(props.index);
       console.log("inside postcard comment",c,"type",typeof(c),Object.keys(c),typeof(Object.keys(c)),"length of an object",Object.keys(c).length);
       console.log("length of an object",Object.keys(c).length);
+      const arr = [];
+for (let index = 0; index < Object.keys(c).length; index++) {
+  arr.push(index);
+}
+console.log("Arr array",arr)
+setCommentKeys(arr);
+      console.log("commentKey index",commentKeys);
       setComments(c);
       
       setCommentKeys(Object.keys(c))
@@ -80,13 +87,14 @@ const PostCard = (props) => {
 
 </div>
 {/* comment modal  */}
+<div className="fixed left-[20rem] top-[5rem] ">
 <div className={`bg-gray-500 p-5 text-white rounded-lg ${commentModal?'absolute flex translate-y-[-3rem] transition-all ease-in-out duration-700':'hidden'} left-[12rem] top-[11rem] z-50 h-[20rem] w-[20rem]`}>
   <div className="flex flex-col overflow-y-scroll h-[70%] w-full">
     <div className="mb-3">
       Comments
     </div>
     <div className="flex flex-col ">
-    {commentKeys.map(async (key)=>{
+    {commentKeys.map( (key)=>{
 
 // const data = await getUserData(currentAccount); //update it later to comment[key][0];
 console.log("inside object map",key)
@@ -107,6 +115,8 @@ return (
   </div>
 
 </div>
+</div>
+
 {/* comment modal end */}
 
       </div>
