@@ -87,22 +87,34 @@ setCommentKeys(arr);
 
 </div>
 {/* comment modal  */}
-<div className="fixed left-[20rem] top-[5rem] w-full h-full z-10 backdrop-filter backdrop-blur-sm ">
+<div className={`fixed left-[20rem] top-[5rem] w-full h-full z-10 backdrop-filter backdrop-blur-sm ${commentModal?'absolute flex translate-y-[-3rem] transition-all ease-in-out duration-700':'hidden'}`}>
 <div className={`bg-gray-500 p-5 text-white rounded-lg ${commentModal?'absolute flex translate-y-[-3rem] transition-all ease-in-out duration-700':'hidden'} left-[12rem] top-[11rem] z-50 h-[20rem] w-[20rem]`}>
   <div className="flex flex-col overflow-y-scroll h-[70%] w-full">
     <div className="mb-3">
       Comments
     </div>
     <div className="flex flex-col ">
-    {commentKeys.map( (key)=>{
+    {commentKeys.map( async(key)=>{
 
-// const data = await getUserData(currentAccount); //update it later to comment[key][0];
-console.log("inside object map",key)
+      
+      // async function random () {
+
+      //  const datass = await getUserData(currentAccount); //update it later to comment[key][0];
+      //  return datass;
+      // }
+      const d = await getUserData(currentAccount);;
+
+console.log("inside object map",comments[key])
 
 return (
-  <div className="text-white" > 
+  <div className="text-white  mb-[1rem]" > 
 
-  kksks
+  <div className="flex  flex-col">
+    <div className="flex ">
+      <img className="h-[2rem] w-auto rounded-full" src="https://cdn.discordapp.com/attachments/1177493315898314792/1184072438695338046/image.png?ex=658aa464&is=65782f64&hm=633b38526fb6b6da794465b600fb96b51339200700063e89bf541465c40aec95&" alt="" />
+      <div> user</div>
+      </div>
+  </div>
   </div>
 )
 
