@@ -1,5 +1,6 @@
 import { Context } from "../context/ContextProvider";
 import React, { useState, useContext, useEffect } from "react";
+import CommentData from "./CommentData";
 
 
 
@@ -12,6 +13,7 @@ const PostCard = (props) => {
   const [commentModal,setCommentModal] = useState(false)
   const [comments,setComments] = useState({});
   const [commentKeys,setCommentKeys] = useState([])
+  const [commentArray,setCommentArray] = useState([])
 
   
 
@@ -25,11 +27,15 @@ const PostCard = (props) => {
       console.log("inside postcard comment",c,"type",typeof(c),Object.keys(c),typeof(Object.keys(c)),"length of an object",Object.keys(c).length);
       console.log("length of an object",Object.keys(c).length);
       const arr = [];
+      // const po =[]
 for (let index = 0; index < Object.keys(c).length; index++) {
   arr.push(index);
+  // po.push(comments[index]);
 }
 console.log("Arr array",arr)
 setCommentKeys(arr);
+// setCommentArray(po);
+// console.log('po',po)
       console.log("commentKey index",commentKeys);
       setComments(c);
       
@@ -94,33 +100,11 @@ setCommentKeys(arr);
       Comments
     </div>
     <div className="flex flex-col ">
-    {commentKeys.map( async(key)=>{
-
-      
-      // async function random () {
-
-      //  const datass = await getUserData(currentAccount); //update it later to comment[key][0];
-      //  return datass;
-      // }
-      const d = await getUserData(currentAccount);;
-
-console.log("inside object map",comments[key])
-
-return (
-  <div className="text-white  mb-[1rem]" > 
-
-  <div className="flex  flex-col">
-    <div className="flex ">
-      <img className="h-[2rem] w-auto rounded-full" src="https://cdn.discordapp.com/attachments/1177493315898314792/1184072438695338046/image.png?ex=658aa464&is=65782f64&hm=633b38526fb6b6da794465b600fb96b51339200700063e89bf541465c40aec95&" alt="" />
-      <div> user</div>
+    {commentKeys.map( (key) => {
+      return <div>
+      <CommentData comment={comments[key]} key={key} />
       </div>
-  </div>
-  </div>
-)
-
-    })}
-
-
+})}
       
     </div>
 
