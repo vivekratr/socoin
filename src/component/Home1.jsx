@@ -28,6 +28,7 @@ const Home1 = () => {
   const [isPost, setIsPost] = useState(false);
   const [transactionCount, setTransactionCount] = useState(0);
   const [allPost,setAllPost]= useState([]);
+  const [allSequencePost,setAllSequencePost]= useState([]);
   const [postIndex, setPostIndex] = useState(0);
   const [allPrivatePost,setAllPrivatePost]= useState([]);
   const [userPrivatePost,setUserPrivatePost] = useState([])
@@ -158,7 +159,7 @@ const Home1 = () => {
       const bal = await getUserData(currentAccount);
       const post = await getAllPost();
       const privatePost = await getAllPrivatePost();
-      const userPrivate = await getUserPrivatePost();
+      const userPrivate = await getUserPrivatePost(currentAccount);
 
 
       //  const login =async ()=>{num= await isNewUser()} ;
@@ -167,17 +168,22 @@ const Home1 = () => {
       setNum(Number(bal.user_id));
       setUserPrivatePost(userPrivate);
       console.log('userPrivate',userPrivate)
-      console.log('postData,',post[0]);
       const shuffleArray = (array) => {
-        const shuffled = [...array]; // Create a copy of the array
+        const shuffled = [...array]; 
         for (let i = shuffled.length - 1; i > 0; i--) {
           const j = Math.floor(Math.random() * (i + 1));
-          [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]]; // Swap elements
+          [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]]; 
         }
         return shuffled;
       };
       setAllPost( shuffleArray(post));
+      console.log('postData,',allPost);
       setAllPrivatePost(privatePost)
+
+      
+
+      setAllSequencePost(post);
+      console.log('sequence post',allSequencePost)
 
 
       
@@ -540,6 +546,17 @@ const Home1 = () => {
         post={allPost[postIndex][5]}
         like={Number(allPost[postIndex][3])}
         hash={allPost[postIndex][2]}
+        index={
+          (() => {
+            let foundIndex = null;
+            allSequencePost.forEach((m, i) => {
+              if (m[1] === allPost[postIndex][1]) {
+                foundIndex = i;
+              }
+            });
+            return foundIndex; // Return the found index
+          })() // Call the function here to get the index value
+        }
         />
       )}
             {/* <PostCard  /> */}

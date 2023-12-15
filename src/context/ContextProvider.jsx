@@ -168,6 +168,7 @@ const getEthereumContract = () => {
       const contracts = getEthereumContract();
       const likedPost = await contracts.like(_postId);
       console.log("likedPost",likedPost);
+      setRefresh((p)=>p+1)
       alert("liked");
       // console.log("minContribution",minContributionNumber);
     } catch (error) {
@@ -277,6 +278,27 @@ const getEthereumContract = () => {
     }
   }
 
+
+  async function getUserComment(num){
+    try {
+      if (!ethereum) return alert("Please install Phantom wallet");
+
+      const contracts = getEthereumContract();
+      let userDatas;
+      if(currentAccount){  
+         userDatas = await contracts.getComments(num);
+        
+        console.log("user's comment on post",num,"index",userDatas);
+      
+      return userDatas;
+      }
+    
+      // console.log("minContribution",minContributionNumber);
+    } catch (error) {
+      console.log(error,"error in comment");
+    }
+  }
+
   // useEffect(() => {
   //   const fetchData = async () => {
   //     try {
@@ -313,7 +335,8 @@ const getEthereumContract = () => {
         setRefresh,
         getUserPost,
         getAllPrivatePost,
-        getUserPrivatePost   ,
+        getUserPrivatePost,
+        getUserComment,
       }}
     >
       {children}

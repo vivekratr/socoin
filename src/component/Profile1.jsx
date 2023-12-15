@@ -43,7 +43,6 @@ const Profile1 = () => {
     checkIfWalletIsConnected,
     ConnectWallet,
     currentAccount,
-    isNewUser,
     createUser,
     createPost,
     likePost,

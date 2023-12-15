@@ -4,16 +4,22 @@ import React, { useState, useContext, useEffect } from "react";
 
 
 const PostCard = (props) => {
-  const {checkIfWalletIsConnected,ConnectWallet, currentAccount, isNewUser ,createUser,createPost,likePost,getUserData,userPost} =
+  const {checkIfWalletIsConnected,ConnectWallet, currentAccount, isNewUser ,createUser,createPost,likePost,getUserData,userPost,getUserComment} =
     useContext(Context);
   
   const [likess, setLikess] = useState(0);
-  const [userData, setUserData] = useState([]); // State to store user data
+  const [userData, setUserData] = useState([]); 
+  const [commentModal,setCommentModal] = useState(true)
+  const [comments,setComments] = useState([])
 
+  console.log('yoyo index',props)
   useEffect(() => {
     const fetchData = async () => {
       const user = await getUserData(props.keys);
-      setUserData(user); // Set the user data obtained from getUserData
+      const c = await getUserComment(props.index);
+      console.log("inside postcard comment",c);
+      setComments(c);
+      setUserData(user); 
       console.log("from postcard userdata", user);
       setLikess(props.like)
     };
@@ -51,18 +57,26 @@ const PostCard = (props) => {
 <img className="relative rounded-16xl w-[3.25rem] h-[3.25rem] overflow-hidden shrink-0" alt="" src="https://cdn.discordapp.com/attachments/1177493315898314792/1184073513712238652/image.png?ex=658aa564&is=65783064&hm=9a2d01e125d34e2b059be14b2801a8664f4f64f0186ebc4bffc04d60157d8eb0&" />
 <span className="text-white h-fit w-fit ">  {likess} </span> 
 <img  onClick={async()=>{
-              await likePost('postId');
+              await likePost(props.index);
 
               alert('2 Tokens deducted from your account');
               setLikess(likess+1);
 
 
             }} className="relative rounded-16xl w-[3.25rem] h-[3.25rem] overflow-hidden shrink-0" alt="" src="https://cdn.discordapp.com/attachments/1177493315898314792/1184073624966148096/image.png?ex=658aa57f&is=6578307f&hm=bd092fc2643aaf8cd2c5fc0a8455c9ff96626caec4fb4e831d00385529af1179&" />
-<img className="relative rounded-16xl w-[3.25rem] h-[3.25rem] overflow-hidden shrink-0" alt="" src="https://cdn.discordapp.com/attachments/1177493315898314792/1184073740812812328/image.png?ex=658aa59a&is=6578309a&hm=c6ccf3bf96f0c8d028967dcd26daecc00e88580766cab2cc298554b879b03a6f&" />
-<img className="relative rounded-16xl w-[3.25rem] h-[3.25rem] overflow-hidden shrink-0" alt="" src="https://cdn.discordapp.com/attachments/1177493315898314792/1184073770743365662/image.png?ex=658aa5a1&is=657830a1&hm=b100667b4a32067d07093eae4d24a1e79af8b7e66502693c5f9d84ebd7a8dff1&" />
-<img className="relative rounded-16xl w-[3.25rem] h-[3.25rem] overflow-hidden shrink-0" alt="" src="https://cdn.discordapp.com/attachments/1177493315898314792/1184073823969083442/image.png?ex=658aa5ae&is=657830ae&hm=f859cf2f5c0265673b3b096dfb579abba18bf5ec706a07e3a22003d565b8d637&" />
+<img onClick={()=>{
+  setCommentModal((prev)=>!prev);
+}} className="relative rounded-16xl w-[3.25rem] h-[3.25rem] overflow-hidden shrink-0" alt="comment" src="https://cdn.discordapp.com/attachments/1177493315898314792/1184073740812812328/image.png?ex=658aa59a&is=6578309a&hm=c6ccf3bf96f0c8d028967dcd26daecc00e88580766cab2cc298554b879b03a6f&" />
+<img className="relative rounded-16xl w-[3.25rem] h-[3.25rem] overflow-hidden shrink-0" alt="share" src="https://cdn.discordapp.com/attachments/1177493315898314792/1184073770743365662/image.png?ex=658aa5a1&is=657830a1&hm=b100667b4a32067d07093eae4d24a1e79af8b7e66502693c5f9d84ebd7a8dff1&" />
+<img className="relative rounded-16xl w-[3.25rem] h-[3.25rem] overflow-hidden shrink-0" alt="tip" src="https://cdn.discordapp.com/attachments/1177493315898314792/1184073823969083442/image.png?ex=658aa5ae&is=657830ae&hm=f859cf2f5c0265673b3b096dfb579abba18bf5ec706a07e3a22003d565b8d637&" />
 
 </div>
+{/* comment modal  */}
+<div className={`bg-gray-500 text-white  ${commentModal?'absolute flex animate-ping transition-all duration-700':'hidden'} left-[18rem] top-[11rem] z-50 h-[10rem] w-[10rem]`}>
+
+</div>
+{/* comment modal end */}
+
       </div>
     </div>
   );
