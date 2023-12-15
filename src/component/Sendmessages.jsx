@@ -6,6 +6,9 @@ import Popup from "./Popup";
 import "reactjs-popup/dist/index.css";
 import PostComponent from "./PostComponent";
 
+
+
+
 const Sendmessages = () => {
   const navigate = useNavigate();
   const [commentOpen, setCommentOpen] = useState(false);
@@ -20,6 +23,14 @@ const Sendmessages = () => {
     console.log("handleusername", e.target.value);
     setRegUsername(e.target.value);
   }
+
+
+
+
+
+
+
+      
 
   const imgLinks = [
     "https://cdn.discordapp.com/attachments/1148598201314725913/1164977604483371068/image.png?ex=65452cf1&is=6532b7f1&hm=89fd657197685f46d1a5b5f8e88e9a0ed71f85854024cba35069197b1a10e1a7&",
@@ -252,7 +263,7 @@ const Sendmessages = () => {
                 20 Followers
               </div>
             </div>
-            <div className="absolute top-[650px] left-[19px] rounded-[42px] bg-[#202327] w-[700px] h-[46px] overflow-hidden text-base text-darkslategray">
+            {/* <div className="absolute top-[650px] left-[19px] rounded-[42px] bg-[#202327] w-[700px] h-[46px] overflow-hidden text-base text-darkslategray">
               <div className="absolute top-[15px] left-[132px] text-[#444444]">
                 Start a conversation
               </div>
@@ -278,7 +289,7 @@ const Sendmessages = () => {
                 alt=""
                 src="  https://cdn.discordapp.com/attachments/1177493315898314792/1184829290035036240/image.png?ex=658d6543&is=657af043&hm=bf6ac1e313b199983605215f202a32a047f07dc8b0a7f2947a4522db3ee1ec5e&"
               />
-            </div>
+            </div> */}
           </div>
 
           <div className="flex items-center justify-start left-5   relative w-full top-[2rem]"></div>

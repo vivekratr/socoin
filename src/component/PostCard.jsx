@@ -85,19 +85,33 @@ const PostCard = (props) => {
     {Object.entries(comments).map(async ([key, value], index) => {
   // Inside an async function
   try {
-    const getData = await getUserData(); 
-    const imageUrl = getData[2]
-    return (
-      <div key={Number(index)} className="flex mb-3">
-        <div className="flex">
-          <div><img src={imageUrl} alt={value[1]} /></div>
+    const getData = await getUserData(currentAccount);  //change the address to value[0] later
+    const imageUrl = getData[2];
+    console.log(imageUrl,'imageurl')
+
+    // Ensure that the data is ready before rendering
+    if (imageUrl) {
+      return (
+        <div key={Number(index)} className="flex mb-3">
+          <div className="flex">
+            <div><img src={imageUrl} alt={value.username} /></div>
+          </div>
         </div>
-      </div>
-    );
+      );
+    } else {
+      // Handle the case where the data is not available yet
+      return (
+        <div key={Number(index)} className="flex mb-3">
+          <div className="flex">
+            <div>Loading...</div>
+          </div>
+        </div>
+      );
+    }
   } catch (error) {
     // Handle errors if getUserData() or other asynchronous operations fail
     console.error('Error fetching data:', error);
-    return null; // Return null or handle error cases as needed
+    return <div>ok</div>; // Return null or handle error cases as needed
   }
 })}
 
