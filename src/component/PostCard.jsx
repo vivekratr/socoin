@@ -87,7 +87,7 @@ setCommentKeys(arr);
 
 </div>
 {/* comment modal  */}
-<div className="fixed left-[20rem] top-[5rem] ">
+<div className="fixed left-[20rem] top-[5rem] w-full h-full z-10 backdrop-filter backdrop-blur-sm ">
 <div className={`bg-gray-500 p-5 text-white rounded-lg ${commentModal?'absolute flex translate-y-[-3rem] transition-all ease-in-out duration-700':'hidden'} left-[12rem] top-[11rem] z-50 h-[20rem] w-[20rem]`}>
   <div className="flex flex-col overflow-y-scroll h-[70%] w-full">
     <div className="mb-3">
