@@ -225,7 +225,7 @@ const Sendmessages = () => {
             <img
               className="absolute top-[0px] left-[0px] w-7 h-7 overflow-hidden object-cover"
               alt=""
-              src="/clarityarrowline@2x.png"
+              src="   https://cdn.discordapp.com/attachments/1177493315898314792/1184825516964982887/image.png?ex=658d61c0&is=657aecc0&hm=03d7d2eec4cc415f0b7ed3a05ed98e0ab55fee03bd1acfbd38122334b4cf65b4&"
             />
             <b className="absolute top-[3px] left-[43px]">Messages</b>
             <div className="absolute top-[98px] left-[230px] w-[315px] h-[181px] text-sm">
@@ -239,11 +239,11 @@ const Sendmessages = () => {
                 <img
                   className="absolute top-[0px] left-[0px] rounded-[30px] w-[52px] h-[52px] object-cover"
                   alt=""
-                  src="/avatar@2x.png"
+                  src="  https://cdn.discordapp.com/attachments/1177493315898314792/1184834190542385222/image.png?ex=658d69d4&is=657af4d4&hm=86a6d3c219e1a8ac2a6c6abcbc0c564c9642b92353767ca73ff64b5091d11256&"
                 />
               </div>
               <div className="absolute top-[115px] left-[0px] text-center">
-                UI/UX Designer | Developer | Building @fundeth
+                UI/UX Designer | Developer | Building dsocial
               </div>
               <div className="absolute top-[137px] left-[40px] text-center">
                 Designing dreams Shaping Realities
@@ -252,31 +252,31 @@ const Sendmessages = () => {
                 20 Followers
               </div>
             </div>
-            <div className="absolute top-[650px] left-[19px] rounded-[42px] bg-gray w-[706px] h-[46px] overflow-hidden text-base text-darkslategray">
-              <div className="absolute top-[15px] left-[132px]">
+            <div className="absolute top-[650px] left-[19px] rounded-[42px] bg-[#202327] w-[700px] h-[46px] overflow-hidden text-base text-darkslategray">
+              <div className="absolute top-[15px] left-[132px] text-[#444444]">
                 Start a conversation
               </div>
               <div className="absolute top-[12px] left-[14px] flex flex-row items-center justify-start gap-[7px]">
                 <img
                   className="relative w-[22px] h-[22px] overflow-hidden shrink-0 object-cover"
                   alt=""
-                  src="/ionimageoutline@2x.png"
+                  src=" https://cdn.discordapp.com/attachments/1184864067295395960/1185116886816542761/image.png?ex=658e711c&is=657bfc1c&hm=068cb00a9a22914b1e3282aa1a62e1a5f81cae2d86ccf18a86d5100cee6de2f6&"
                 />
                 <img
                   className="relative w-4 h-4 object-cover"
                   alt=""
-                  src="/vector@2x.png"
+                  src="  https://cdn.discordapp.com/attachments/1184864067295395960/1185116835977363507/image.png?ex=658e7110&is=657bfc10&hm=9e201e17c7c3fbb36b60e2373af719a071530f601dd645daa6adc0575b447456&"
                 />
               </div>
               <img
                 className="absolute top-[11px] left-[656px] w-6 h-6 overflow-hidden object-cover"
                 alt=""
-                src="/misend@2x.png"
+                src=" https://cdn.discordapp.com/attachments/1184864067295395960/1185117527773290557/image.png?ex=658e71b5&is=657bfcb5&hm=8703d45a152f13c3ae80bd8efd1135d1174ceaf20df014cd11c89052a20f1bba&"
               />
               <img
                 className="absolute top-[10px] left-[67px] rounded-[37px] w-[25px] h-[25px] object-cover"
                 alt=""
-                src="/image-38@2x.png"
+                src="  https://cdn.discordapp.com/attachments/1177493315898314792/1184829290035036240/image.png?ex=658d6543&is=657af043&hm=bf6ac1e313b199983605215f202a32a047f07dc8b0a7f2947a4522db3ee1ec5e&"
               />
             </div>
           </div>

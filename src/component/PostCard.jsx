@@ -10,11 +10,15 @@ const PostCard = (props) => {
   const [likess, setLikess] = useState(0);
   const [userData, setUserData] = useState([]); 
   const [commentModal,setCommentModal] = useState(true)
-  const [comments,setComments] = useState([])
+  const [comments,setComments] = useState([]);
+
+  
 
   console.log('yoyo index',props)
+  
   useEffect(() => {
     const fetchData = async () => {
+      
       const user = await getUserData(props.keys);
       const c = await getUserComment(props.index);
       console.log("inside postcard comment",c,"type",typeof(c));
@@ -77,14 +81,26 @@ const PostCard = (props) => {
     <div className="mb-3">
       Comments
     </div>
-    <div>
-    {Object.entries(comments).map(([key, value], index) => (
-  <div key={Number(index)} className="flex flex-col mb-3">
-    {/* Render your component here using key and value */}
-    <p>{Number(key)}: {value[1]} }</p>
-    {/* If 'value' is an array or object, you can further map or render its contents */}
-  </div>
-))}
+    <div className="flex flex-col ">
+    {Object.entries(comments).map(async ([key, value], index) => {
+  // Inside an async function
+  try {
+    const getData = await getUserData(); 
+    const imageUrl = getData[2]
+    return (
+      <div key={Number(index)} className="flex mb-3">
+        <div className="flex">
+          <div><img src={imageUrl} alt={value[1]} /></div>
+        </div>
+      </div>
+    );
+  } catch (error) {
+    // Handle errors if getUserData() or other asynchronous operations fail
+    console.error('Error fetching data:', error);
+    return null; // Return null or handle error cases as needed
+  }
+})}
+
 
       
     </div>
