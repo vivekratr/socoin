@@ -9,9 +9,9 @@ const PostCard = (props) => {
   
   const [likess, setLikess] = useState(0);
   const [userData, setUserData] = useState([]); 
-  const [commentModal,setCommentModal] = useState(true)
+  const [commentModal,setCommentModal] = useState(false)
   const [comments,setComments] = useState({});
-  const [commentKeys,setCommentKeys] = useState([])
+  const [commentKeys,setCommentKeys] = useState(0)
 
   
 
@@ -22,11 +22,11 @@ const PostCard = (props) => {
       
       const user = await getUserData(props.keys);
       const c = await getUserComment(props.index);
-      console.log("inside postcard comment",c,"type",typeof(c),Object.keys(c),typeof(Object.keys(c)));
+      console.log("inside postcard comment",c,"type",typeof(c),Object.keys(c),typeof(Object.keys(c)),"length of an object",Object.keys(c).length);
+      console.log("length of an object",Object.keys(c).length);
       setComments(c);
       
-      setCommentKeys(Object.values(c))
-      console.log(Object.values(c))
+      setCommentKeys(Object.keys(c))
       setUserData(user); 
       console.log("from postcard userdata", user);
       setLikess(props.like)
@@ -93,7 +93,8 @@ console.log("inside object map",key)
 
 return (
   <div className="text-white" > 
-  {key}
+
+  kksks
   </div>
 )
 
