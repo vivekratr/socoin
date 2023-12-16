@@ -12,9 +12,13 @@ const PostCard = (props) => {
   const [userData, setUserData] = useState([]); 
   const [commentModal,setCommentModal] = useState(false)
   const [commentArray,setCommentArray] = useState([])
+  const [inputComment,setInputComment] = useState('')
 
 
-  
+  function handleTextComment(e) {
+    setInputComment(e.target.value);
+    console.log(inputComment);
+  }
 
   console.log('yoyo index',props)
   
@@ -38,7 +42,7 @@ const PostCard = (props) => {
       setLikess(props.like);
     };
     fetchData();
-  }, []);
+  }, [props.key,props.keys,props.like,props.index]);
 
   return (
     <div className="flex items-center justify-center">
@@ -87,9 +91,13 @@ const PostCard = (props) => {
 </div>
 {/* comment modal  */}
 <div className={`  left-0 top-0 w-[97%] h-[110%] z-10 backdrop-filter backdrop-blur-sm ${commentModal?'absolute flex ':'hidden'}`}>
-<div className={`bg-gray-500 p-5 text-white rounded-lg ${commentModal?'absolute flex translate-y-[-3rem] transition-all ease-in-out duration-700':'hidden'} left-[12rem] top-[11rem] z-50 h-[20rem] w-[20rem]`}>
+<div className={`bg-gray-500 p-5 text-white rounded-lg ${commentModal?'absolute flex flex-col translate-y-[-3rem] transition-all ease-in-out duration-700':'hidden'} left-[12rem] top-[11rem] z-50 h-[20rem] w-[20rem]`}>
+    <div className="p-1 hover:scale-105 hover:opacity-90 h-fit w-fit" onClick={()=>{
+      setCommentModal((prev)=>!prev);
+    }}><img className="h-[1rem] cursor-pointer
+     w-fit" src="https://cdn.discordapp.com/attachments/1177493315898314792/1184480958360076439/image.png?ex=658c20db&is=6579abdb&hm=c246e426d10817641944ad7b6a197d1f2f68d8b0c82aced7a97222e7e40e0f5e&" alt="" />
+    </div>
   <div className="flex flex-col overflow-y-scroll h-[70%] w-full">
-    <div><img className="h-[1rem] " src="https://cdn.discordapp.com/attachments/1177493315898314792/1184480958360076439/image.png?ex=658c20db&is=6579abdb&hm=c246e426d10817641944ad7b6a197d1f2f68d8b0c82aced7a97222e7e40e0f5e&" alt="" /></div>
     <div className="mb-3">
       Comments
     </div>
@@ -101,8 +109,20 @@ const PostCard = (props) => {
       
     </div>
 
+
   </div>
 
+    <div className="flex relative left-[0rem] mt-4 top-[0rem]">
+      <div className=" rounded-full w-[90%] h-[3rem] text-black font-inter">
+       <input className="rounded-full"  onChange={handleTextComment} type="text" title="Comment" name="" id="" />
+      </div>
+      <div onClick={()=>{
+        console.log("inputted text",inputComment);
+      }} className="h-3 ml-0  w-auto">
+        <img className="cursor-pointer hover:scale-95" src="https://cdn.discordapp.com/attachments/1184864067295395960/1185117527773290557/image.png?ex=658e71b5&is=657bfcb5&hm=8703d45a152f13c3ae80bd8efd1135d1174ceaf20df014cd11c89052a20f1bba&" alt="" />
+      </div>
+
+    </div>
 </div>
 </div>
 

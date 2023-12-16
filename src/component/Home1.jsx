@@ -209,6 +209,9 @@ const Home1 = () => {
     }
   };
   useEffect(() => {
+    if(currentAccount===''){
+      ConnectWallet();
+    }
     console.log("running the useeffect")
     getBal();
   }, [currentAccount,refresh, num]);
