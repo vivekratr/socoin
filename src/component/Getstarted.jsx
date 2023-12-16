@@ -10,8 +10,8 @@ import { FunctionComponent } from "react";
 
 const Getstarted = () => {
   return (
-    <div className="relative bg-black box-border w-full h-[800px] overflow-hidden text-left text-[16px] text-white font-inter border-[1px]  ">
-      <div className="absolute top-[600px] left-[780px] rounded-[44px] [background:linear-gradient(180.13deg,_#202020,_#181818)] box-border w-[132px] h-11 overflow-hidden border-t-[2px] border-solid border-gray border-r-[1px] border-l-[1px]">
+    <div className="relative bg-black box-border w-full h-[800px] overflow-hidden text-left text-[16px] text-white font-inter ">
+      <div className="absolute top-[600px] left-[780px] rounded-[44px] [background:linear-gradient(180.13deg,_#202020,_#181818)] box-border w-[132px] h-11 overflow-hidden border-t-[2px] border-solid border-[#282828] border-r-[1px] border-l-[1px]">
         <div className="absolute top-[13px] left-[21px] font-medium">
           Get Started
         </div>
@@ -21,11 +21,25 @@ const Getstarted = () => {
         alt=""
         src="https://cdn.discordapp.com/attachments/1184864067295395960/1185499752985526352/image.png?ex=658fd5ae&is=657d60ae&hm=80fb47295c2221ca3040c87eaa89a559fcb9ea3d802e3022f6d9b22f00c1a9d2&"
       />
-      <b className="absolute top-[450px] left-[700px] text-[23px] ">
+
+      <b className="absolute top-[520px] left-[700px] text-[23px] font-inter text-transparent !bg-clip-text [background:linear-gradient(180deg,_#fff,_rgba(255,_255,_255,_0))] [-webkit-background-clip:text] [-webkit-text-fill-color:transparent] text-left [text-shadow:1px_0_0_#000,_0_1px_0_#000,_-1px_0_0_#000,_0_-1px_0_#000 ">
         Decentralized Connectivity
       </b>
 
-      {/* <div className="relative top-[600px] left-[780px] w-full h-11 text-left text-[16px] text-white font-inter">
+      <div className="flex top-[50px] items-center justify-center h-screen">
+        <img
+          className="w-1000 h-200 object-cover"
+          src="https://cdn.discordapp.com/attachments/1184864067295395960/1185254143577817190/infinity.gif?ex=658ef0f0&is=657c7bf0&hm=0a8294c112bfb226885b79c75fa5fc9a5b964223db6c10a9fa35f2581dfd2dd8&" // Replace with the actual path or URL of your GIF
+          alt="GIF Alt Text"
+        />
+      </div>
+
+      <div className="absolute w-full h-5 text-left text-[16px] z-50  text-white font-inter">
+        <div className="absolute top-[10px] left-[20px] font-medium whitespace-pre-wrap">{`Made With ❤️ in Mumbai Hacks `}</div>
+
+      </div>
+
+      <div className="relative top-[600px] left-[780px] w-full h-11 text-left text-[16px] text-white font-inter">
         <img
           className="absolute top-0 border-transparent left-0 w-132 h-11 object-cover border"
           alt=""
@@ -34,14 +48,6 @@ const Getstarted = () => {
         <div className="absolute top-[13px] left-[21px] font-medium">
           Get Started
         </div>
-      </div> */}
-      <div className="relative top-[700px] left-[7200px] w-full h-5 text-left text-[16px] text-white font-inter">
-        <div className="absolute top-[1px] left-[0px] font-medium whitespace-pre-wrap">{`Made With        in Mumbai Hacks `}</div>
-        <img
-          className="absolute top-[0px] left-[89px] w-5 h-5 overflow-hidden object-cover"
-          alt=""
-          src="https://cdn.discordapp.com/attachments/1184864067295395960/1185520972795752458/image.png?ex=658fe971&is=657d7471&hm=ac3e881787d58f4ba9886faaf1f59ea9ccc606e33e3b861bfefbb1e5a9ca8da3&"
-        />
       </div>
     </div>
   );

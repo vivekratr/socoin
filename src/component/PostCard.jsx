@@ -23,29 +23,26 @@ const PostCard = (props) => {
   
   useEffect(() => {
     const fetchData = async () => {
-      
       const user = await getUserData(props.keys);
       const c = await getUserComment(props.index);
-      console.log("inside postcard comment",c,"type",typeof(c),Object.keys(c),typeof(Object.keys(c)),"length of an object",Object.keys(c).length);
-      console.log("length of an object",Object.keys(c).length);
-      const arr = [];
-      // const po =[]
-for (let index = 0; index < Object.keys(c).length; index++) {
-  arr.push(index);
-  tt.push(index);
-  // po.push(comments[index]);
-}
-console.log("Arr array",arr,'tt',tt)
-setCommentKeys(arr);
-// setCommentArray(po);
-// console.log('po',po)
-      console.log("commentKey index",commentKeys);
-      setComments(c);
       
-      setCommentKeys(Object.keys(c))
-      setUserData(user); 
-      console.log("from postcard userdata", user);
-      setLikess(props.like)
+      const arr = [];
+      const commentArr = [];
+      
+      // Loop through the comments received and prepare data for display
+      for (const key in c) {
+        if (Object.hasOwnProperty.call(c, key)) {
+          arr.push(key);
+          commentArr.push(c[key]); // Assuming comments are in the form of an array or object
+        }
+      }
+      console.log('commentArr',commentArr)
+
+      setCommentKeys(arr);
+      setCommentArray(commentArr);
+      setComments(c);
+      setUserData(user);
+      setLikess(props.like);
     };
     fetchData();
   }, [props.keys]);
@@ -103,11 +100,10 @@ setCommentKeys(arr);
       Comments
     </div>
     <div className="flex flex-col ">
-    {tt.map( (key) => {
-      return <>
-      <CommentData comment={comments[key]} key={key} />
-      </>
-})}
+    {commentArray.map((comment, index) => (
+                <CommentData comment={comment} key={commentKeys[index]} />
+                // Assuming CommentData component takes 'comment' as prop and 'commentKeys[index]' as key
+              ))}
       
     </div>
 
