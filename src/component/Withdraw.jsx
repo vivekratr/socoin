@@ -40,7 +40,13 @@ const Withdraw = () => {
     transition: "color 0.3s ease",
   };
   return (
-    <div className="relative w-full h-[539px] text-left text-base text-black font-inter">
+
+//     <div className="relative w-full h-[539px]">
+//     <div className="absolute top-[0px] left-[0px] rounded-[10px] bg-white w-[339px] h-[539px] overflow-hidden" />
+//   </div>
+
+
+    <div className="relative w-full h-[539px] bg-white text-left text-base text-black font-inter">
       <div className="absolute top-[0px] left-[0px] w-[339px] h-[539px]">
         <div className="absolute top-[0px] left-[0px] rounded-3xs bg-white w-[339px] h-[539px] overflow-hidden">
           <div className="absolute top-[0px] left-[0px] rounded-3xs [background:linear-gradient(179.93deg,_#ffb600,_rgba(255,_211,_102,_0))] w-[339px] h-[539px] overflow-hidden">
@@ -124,25 +130,25 @@ const Withdraw = () => {
               </div>
             </div> */}
 
-            <div
+            {/* <div
               style={containerStyles}
               className="box-border shrink-0"
               onClick={handleClick}
             >
               <div style={textStyles}>10</div>
-            </div>
+            </div> */}
 
             <div className="absolute top-[248px] left-[101px] rounded-6xs bg-darkgray-300 box-border w-[138px] h-[47px] overflow-hidden text-lg border-[1px] border-solid border-lightgray">
               <img
                 className="absolute top-[13px] left-[98px] w-[21px] h-[21px] overflow-hidden object-cover"
                 alt=""
-                src="/majesticonsplusline@2x.png"
+                src="   https://cdn.discordapp.com/attachments/1184864067295395960/1185665579403722913/image.png?ex=6590701e&is=657dfb1e&hm=4c4158d21de95cf93b6f5306ffa78cd3f14ae6c8957ecd2e74352a18a1d871a1&"
                 onClick={handleIncrement}
               />
               <img
                 className="absolute top-[13px] left-[18px] w-[21px] h-5 overflow-hidden object-cover"
                 alt=""
-                src="/majesticonsplusline@2x.png"
+                src="  https://cdn.discordapp.com/attachments/1184864067295395960/1185665644499316776/image.png?ex=6590702e&is=657dfb2e&hm=07eb5eaecd3358a6d2048f39ccde20042ebbe7f160f153a5ef84c79cf8f72e1e&"
                 onClick={handleDecrement}
               />
               <img
