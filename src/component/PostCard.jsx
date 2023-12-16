@@ -15,6 +15,8 @@ const PostCard = (props) => {
   const [commentKeys,setCommentKeys] = useState([])
   const [commentArray,setCommentArray] = useState([])
 
+  const tt =[]
+
   
 
   console.log('yoyo index',props)
@@ -30,9 +32,10 @@ const PostCard = (props) => {
       // const po =[]
 for (let index = 0; index < Object.keys(c).length; index++) {
   arr.push(index);
+  tt.push(index);
   // po.push(comments[index]);
 }
-console.log("Arr array",arr)
+console.log("Arr array",arr,'tt',tt)
 setCommentKeys(arr);
 // setCommentArray(po);
 // console.log('po',po)
@@ -100,10 +103,10 @@ setCommentKeys(arr);
       Comments
     </div>
     <div className="flex flex-col ">
-    {commentKeys.map( (key) => {
-      return <div>
+    {tt.map( (key) => {
+      return <>
       <CommentData comment={comments[key]} key={key} />
-      </div>
+      </>
 })}
       
     </div>

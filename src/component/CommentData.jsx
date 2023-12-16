@@ -1,13 +1,23 @@
 import { Context } from "../context/ContextProvider";
 import React, { useState, useContext, useEffect } from "react";
 
-const CommentData = async (props) => {
+const CommentData =  (props) => {
     const {checkIfWalletIsConnected,ConnectWallet, currentAccount, isNewUser ,createUser,createPost,likePost,getUserData,userPost,getUserComment} =
     useContext(Context);
-        const ll = await getUserData(currentAccount); // assuming currentAccount is accessible here
     
-        console.log('ll', ll);
-        console.log('inside object map', props.comment[props.key]);
+    const [userData, setUserData] = useState(null);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const ll = await getUserData(currentAccount);
+            setUserData(ll);
+            console.log('ll', ll);
+        };
+
+        fetchData();
+    }, [getUserData, currentAccount]);
+    
+        console.log('inside object map', props.comment);
     
     return (
       <div className="text-white  mb-[1rem]" > 
@@ -21,11 +31,7 @@ const CommentData = async (props) => {
       </div>
     )
     
-  return (
-    <div>
-      
-    </div>
-  )
+ 
 }
 
-export default CommentData
+export default CommentData;
