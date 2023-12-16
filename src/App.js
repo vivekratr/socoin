@@ -32,7 +32,7 @@ function App() {
             <Route path="/profile" element={<Profile /*state = {state}*/ />} />
             <Route
               path="/commingsoon"
-              element={Commingsoon /*state = {state}*/ }/>
+              element={<Commingsoon /*state = {state}*/ />}/>
             <Route
               path="/profile1"
               element={<Profile1 /*state = {state}*/ />}
