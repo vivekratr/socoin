@@ -14,11 +14,15 @@ const PostCard = (props) => {
   const [tipModal,setTipModal] = useState(false)
   const [commentArray,setCommentArray] = useState([])
   const [inputComment,setInputComment] = useState('')
+  const [tipCoin,setTipCoin] = useState(1)
 
 
   function handleTextComment(e) {
     setInputComment(e.target.value);
     console.log(inputComment);
+  }
+  function handleTipCoin(e){
+    setTipCoin(e.target.value);
   }
 
   console.log('yoyo index',props)
@@ -147,11 +151,11 @@ const PostCard = (props) => {
       </div>
     <div className="flex flex-col  ">
       <label htmlFor="">Enter Number of Coins:</label>
-      <input className="p-3 my-4 rounded-full text-black" type="number" placeholder="1" name="" id="" />
+      <input onChange={handleTipCoin} className="p-3 text-center my-4 rounded-full text-black" min="1" step="1" max='15' type="number" placeholder="1" name="" id="" />
 
       <div className="relative mx-auto hover:scale-105 hover:opacity-90 mt-7 rounded-[97px] bg-cornflowerblue box-border w-[6rem] h-[2.46rem] overflow-hidden text-left text-[1.13rem] text-white font-inter border-t-[1px] border-solid border-lightskyblue border-r-[1px] border-l-[1px]">
 <div  onClick={async()=>{
-  await tipUser();
+  await tipUser(props.keys,tipCoin);
 }} className="absolute top-[0.38rem] left-[1.99rem] font-semibold">Tip</div>
 </div>
 
