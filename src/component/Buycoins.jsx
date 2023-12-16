@@ -1,11 +1,8 @@
 import React from "react";
-import { useState } from 'react';
-
-
-
+import { useState } from "react";
 
 const Buycoins = () => {
-    const [count, setCount] = useState(100);
+  const [count, setCount] = useState(0);
 
   const handleIncrement = () => {
     setCount((prevCount) => prevCount + 1);
@@ -34,30 +31,27 @@ const Buycoins = () => {
             Buy Coins
           </div>
         </div>
-        
 
-<div className="absolute top-[174px] left-[24px] rounded-md bg-white box-border w-[103px] h-[41px] overflow-hidden border-t-[1px] border-solid border-gainsboro border-r-[1px] border-l-[1px]">
-      <div className="absolute top-[12px] left-[37px] font-semibold">
-        {count}
-      </div>
-      <img
-        className="absolute top-[11px] left-[70px] w-[19px] h-[19px] overflow-hidden object-cover"
-        alt=""
-        src="     https://cdn.discordapp.com/attachments/1184864067295395960/1185645863620579388/image.png?ex=65905dc2&is=657de8c2&hm=1a7bb3548d029c6448ddc1acc93872fd4414f13a225919fa8a57f280d4526dfc&"
-        onClick={handleIncrement}
-      />
-      <img
-        className="absolute top-[12px] left-[10px] w-[19px] h-[18px] overflow-hidden object-cover"
-        alt=""
-        src="   "
-        onClick={handleDecrement}
-      />
-    </div>
+        <div className="absolute top-[174px] left-[24px] rounded-md bg-white box-border w-[103px] h-[41px] overflow-hidden border-t-[1px] border-solid border-gainsboro border-r-[1px] border-l-[1px]">
+          <div className="absolute top-[12px] left-[45px] font-semibold">
+            {count}
+          </div>
+          <img
+            className="absolute top-[11px] left-[70px] w-[19px] h-[19px] overflow-hidden object-cover"
+            alt=""
+            src="     https://cdn.discordapp.com/attachments/1184864067295395960/1185645863620579388/image.png?ex=65905dc2&is=657de8c2&hm=1a7bb3548d029c6448ddc1acc93872fd4414f13a225919fa8a57f280d4526dfc&"
+            onClick={handleIncrement}
+          />
+          <img
+            className="absolute top-[12px] left-[10px] w-[19px] h-[18px] overflow-hidden object-cover"
+            alt=""
+            src="   https://cdn.discordapp.com/attachments/1184864067295395960/1185645933438971944/image.png?ex=65905dd2&is=657de8d2&hm=d19e79ee3cb4775a71d1934bddd314bf468c9fecc807534b9f4ceb23e3f66790&"
+            onClick={handleDecrement}
+          />
+        </div>
       </div>
     </div>
   );
 };
-
-
 
 export default Buycoins;

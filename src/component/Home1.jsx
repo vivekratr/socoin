@@ -714,7 +714,7 @@ const Home1 = () => {
                 rewardLikes >= 1 ? "bg-green-500" : "bg-[#2a2a2a]"
               } box-border w-[15rem] h-[2.19rem] overflow-hidden border-t-[1px] border-solid border-dimgray`}
             >
-              <div className="absolute top-[0.5rem] left-[0.5rem] font-medium">
+              <div className="absolute top-[0.5rem] left-[0.rem] font-medium">
                 Complete {rewardLikes}/1 Like
               </div>
               <img
