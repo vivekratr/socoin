@@ -287,7 +287,7 @@ const getEthereumContract = () => {
       if(currentAccount){  
          userDatas = await contracts.getRewardSuccess(utils.getAddress(addr));
         
-        console.log("user's private post",userDatas);
+        console.log("Reward score",userDatas);
       
       return userDatas;
       }
@@ -381,6 +381,7 @@ const getEthereumContract = () => {
         getAllPrivatePost,
         getUserPrivatePost,
         getUserComment,
+        getRewardStatus,
       }}
     >
       {children}

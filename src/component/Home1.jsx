@@ -32,7 +32,9 @@ const Home1 = () => {
   const [postIndex, setPostIndex] = useState(0);
   const [allPrivatePost,setAllPrivatePost]= useState([]);
   const [userPrivatePost,setUserPrivatePost] = useState([])
-  const [isLogout,setIsLogout] = useState(0)
+  const [isLogout,setIsLogout] = useState(0);
+  const [rewardLikes,setRewardLikes] =useState(0)
+  const [rewardComments,setRewardComments] =useState(0)
 
 
 
@@ -147,6 +149,7 @@ const Home1 = () => {
     getUserPost,
     getAllPrivatePost,
     getUserPrivatePost,
+    getRewardStatus,
 
 
   } = useContext(Context);
@@ -161,7 +164,9 @@ const Home1 = () => {
       const post = await getAllPost();
       const privatePost = await getAllPrivatePost();
       const userPrivate = await getUserPrivatePost(currentAccount);
+      const _reward = await getRewardStatus(currentAccount);
 
+      const _tempLike = _reward/10000
 
       //  const login =async ()=>{num= await isNewUser()} ;
       //  login();
@@ -691,9 +696,9 @@ const Home1 = () => {
               {" "}
               Bounty
             </b>
-            <div className="absolute top-[3.94rem] left-[1rem] rounded-6xs bg-[#2a2a2a] box-border w-[15rem] h-[2.19rem] overflow-hidden border-t-[1px] border-solid border-dimgray">
+            <div className={`absolute top-[3.94rem] left-[1rem] rounded-6xs ${rewardLikes>=1?'bg-green-500':'bg-[#2a2a2a]'} box-border w-[15rem] h-[2.19rem] overflow-hidden border-t-[1px] border-solid border-dimgray`}>
               <div className="absolute top-[0.5rem] left-[0.81rem] font-medium">
-                Complete 1 Like
+                Complete {rewardLikes}/1 Like
               </div>
               <img
                 className="absolute top-[0.44rem] left-[12.75rem] w-[1.38rem] h-[1.38rem] overflow-hidden"
@@ -701,9 +706,9 @@ const Home1 = () => {
                 src="https://cdn.discordapp.com/attachments/1177493315898314792/1184074424589234247/image.png?ex=658aa63d&is=6578313d&hm=2b6b6c395d7c9522dca53ed54c6b3bd6c9ec744cfa4550da8112ffd872e6a66d&"
               />
             </div>
-            <div className="absolute top-[7.25rem] left-[1rem] rounded-6xs bg-[#2a2a2a] box-border w-[15rem] h-[2.19rem] overflow-hidden border-t-[1px] border-solid border-dimgray">
+            <div className={`absolute top-[7.25rem] left-[1rem] rounded-6xs ${rewardComments>=10?'bg-green-500':'bg-[#2a2a2a]'}  box-border w-[15rem] h-[2.19rem] overflow-hidden border-t-[1px] border-solid border-dimgray`}>
               <div className="absolute top-[0.5rem] left-[0.81rem] font-medium">
-                Complete 10 Comments
+                Complete {rewardComments}/10 Comments
               </div>
               <img
                 className="absolute top-[0.44rem] left-[12.75rem] w-[1.38rem] h-[1.38rem] overflow-hidden"
