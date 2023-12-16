@@ -16,6 +16,7 @@ import Notifications from "./component/Notifications";
 import Messages from "./component/Messages";
 import Sendmessages from "./component/Sendmessages";
 import Splinejs from "./component/Spline";
+import Bruno from "./component/Bruno";
 function App() {
  
 
@@ -38,6 +39,7 @@ function App() {
                     <Route path="/messages" element={<Messages /*state = {state}*/ />} />
                     <Route path="/sendmessages" element={<Sendmessages /*state = {state}*/ />} />
                     <Route path="/spline" element={<Splinejs /*state = {state}*/ />} />
+                    <Route path="/bruno" element={<Bruno /*state = {state}*/ />} />
 
 
             <Route
