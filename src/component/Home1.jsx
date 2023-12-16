@@ -165,8 +165,13 @@ const Home1 = () => {
       const privatePost = await getAllPrivatePost();
       const userPrivate = await getUserPrivatePost(currentAccount);
       const _reward = await getRewardStatus(currentAccount);
+      console.log('reward score',_reward);
 
-      const _tempLike = _reward/10000
+      const _tempLike = Math.ceil(_reward/1000);
+      const _tempComment = _reward%1000;
+
+      console.log('reward score ceil',_tempLike," comment",_tempComment);
+
 
       //  const login =async ()=>{num= await isNewUser()} ;
       //  login();
