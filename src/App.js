@@ -20,6 +20,7 @@ import Bruno from "./component/Bruno";
 import Getstarted from "./component/Getstarted";
 import NSFW from "./component/NSFW";
 import Commingsoon from "./component/Commingsoon";
+import Buycoins from "./component/Buycoins";
 function App() {
   return ( 
     <BrowserRouter>
@@ -30,6 +31,8 @@ function App() {
             <Route path="/home" element={<Home /*state = {state}*/ />} />
             <Route path="/homi" element={<Homi /*state = {state}*/ />} />
             <Route path="/profile" element={<Profile /*state = {state}*/ />} />
+
+            <Route path="/buycoins" element={<Buycoins /*state = {state}*/ />} />
             <Route
               path="/commingsoon"
               element={<Commingsoon /*state = {state}*/ />}/>

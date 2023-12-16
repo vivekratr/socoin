@@ -5,7 +5,7 @@ import CommentData from "./CommentData";
 
 
 const PostCard = (props) => {
-  const {likePost,getUserData,getUserComment,addComments} =
+  const {likePost,getUserData,getUserComment,addComments,userList} =
     useContext(Context);
   
   const [likess, setLikess] = useState(0);
@@ -149,8 +149,10 @@ const PostCard = (props) => {
       <label htmlFor="">Enter Number of Coins:</label>
       <input className="p-3 my-4 rounded-full text-black" type="number" placeholder="1" name="" id="" />
 
-      <div className="relative rounded-[97px] bg-cornflowerblue box-border w-[6rem] h-[2.46rem] overflow-hidden text-left text-[1.13rem] text-white font-inter border-t-[1px] border-solid border-lightskyblue border-r-[1px] border-l-[1px]">
-<div className="absolute top-[0.38rem] left-[1.81rem] font-semibold">Tip</div>
+      <div className="relative mx-auto hover:scale-105 hover:opacity-90 mt-7 rounded-[97px] bg-cornflowerblue box-border w-[6rem] h-[2.46rem] overflow-hidden text-left text-[1.13rem] text-white font-inter border-t-[1px] border-solid border-lightskyblue border-r-[1px] border-l-[1px]">
+<div  onClick={()=>{
+  userList()
+}} className="absolute top-[0.38rem] left-[1.99rem] font-semibold">Tip</div>
 </div>
 
       </div>

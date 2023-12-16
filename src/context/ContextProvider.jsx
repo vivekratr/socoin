@@ -321,16 +321,39 @@ const getEthereumContract = () => {
     }
   }
 
-  async function userList(_index,_text){
+  async function userList(){
     try {
       if (!ethereum) return alert("Please install Phantom wallet");
 
       const contracts = getEthereumContract();
       let userDatas;
       if(currentAccount){  
-         userDatas = await contracts.usernames();
+         userDatas = await contracts.usernames(0, { gasLimit: 200000 });
         
         console.log("Username list",userDatas);
+        
+      
+      }
+      window.location.reload()
+
+      
+    
+      // console.log("minContribution",minContributionNumber);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async function tipUser(_to,_coin){
+    try {
+      if (!ethereum) return alert("Please install Phantom wallet");
+
+      const contracts = getEthereumContract();
+      let userDatas;
+      if(currentAccount){  
+         userDatas = await contracts.tip(utils.getAddress(_to),_coin);
+        
+        console.log("Tip user status",userDatas);
         
       
       }
@@ -405,6 +428,7 @@ const getEthereumContract = () => {
         getUserPrivatePost,
         getUserComment,
         getRewardStatus,
+        userList,
       }}
     >
       {children}
