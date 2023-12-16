@@ -86,13 +86,14 @@ const PostCard = (props) => {
 
 </div>
 {/* comment modal  */}
-<div className={`fixed left-[20rem] top-[5rem] w-full h-full z-10 backdrop-filter backdrop-blur-sm ${commentModal?'absolute flex translate-y-[-3rem] transition-all ease-in-out duration-700':'hidden'}`}>
+<div className={`  left-0 top-0 w-[97%] h-[110%] z-10 backdrop-filter backdrop-blur-sm ${commentModal?'absolute flex ':'hidden'}`}>
 <div className={`bg-gray-500 p-5 text-white rounded-lg ${commentModal?'absolute flex translate-y-[-3rem] transition-all ease-in-out duration-700':'hidden'} left-[12rem] top-[11rem] z-50 h-[20rem] w-[20rem]`}>
   <div className="flex flex-col overflow-y-scroll h-[70%] w-full">
+    <div><img className="h-[1rem] " src="https://cdn.discordapp.com/attachments/1177493315898314792/1184480958360076439/image.png?ex=658c20db&is=6579abdb&hm=c246e426d10817641944ad7b6a197d1f2f68d8b0c82aced7a97222e7e40e0f5e&" alt="" /></div>
     <div className="mb-3">
       Comments
     </div>
-    <div className="flex flex-col ">
+    <div className="flex flex-col  ">
     {commentArray.map((comment, index) => (
                 <CommentData comment={comment}  />
                 // Assuming CommentData component takes 'comment' as prop and 'commentKeys[index]' as key

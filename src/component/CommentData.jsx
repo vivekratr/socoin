@@ -20,14 +20,15 @@ const CommentData =  (props) => {
         console.log('inside object map', props.comment);
     
     return (
-      <div className="text-white  mb-[1rem]" > 
+      <div className="text-white  mb-[1rem] bg-slate-500 p-4" > 
     
       <div className="flex  flex-col">
-        <div className="flex ">
+        <div className="flex gap-4">
           <img className="h-[2rem] w-auto rounded-full" src={props.comment[1]} alt="" />
           <div> {props.comment[0]}</div>
           </div>
-          <div>{props.comment[2]}</div>
+          <div
+          className="p-4 my-auto">{props.comment[2]}</div>
       </div>
       </div>
     )
