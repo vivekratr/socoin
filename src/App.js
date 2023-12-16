@@ -18,6 +18,7 @@ import Sendmessages from "./component/Sendmessages";
 import Splinejs from "./component/Spline";
 import Bruno from "./component/Bruno";
 import Getstarted from "./component/Getstarted";
+import NSFW from "./component/NSFW";
 function App() {
   return (
     <BrowserRouter>
@@ -39,6 +40,7 @@ function App() {
               element={<PostComponent /*state = {state}*/ />}
             />
             <Route path="/send" element={<SendPost /*state = {state}*/ />} />
+            <Route path="/nsfw" element={<NSFW /*state = {state}*/ />} />
             <Route
               path="/communities"
               element={<Communities /*state = {state}*/ />}
