@@ -8,7 +8,7 @@ import Register from "./component/Register";
 import MyComponent from "./component/Interest";
 import Post from "./component/Post";
 import PostComponent from "./component/PostComponent";
-import Profile from './component/Profile1'
+import Profile from "./component/Profile1";
 import SendPost from "./component/SendPost";
 import Profile1 from "./component/Profile1";
 import Communities from "./component/Communities";
@@ -17,9 +17,8 @@ import Messages from "./component/Messages";
 import Sendmessages from "./component/Sendmessages";
 import Splinejs from "./component/Spline";
 import Bruno from "./component/Bruno";
+import Getstarted from "./component/Getstarted";
 function App() {
- 
-
   return (
     <BrowserRouter>
       <div>
@@ -29,18 +28,39 @@ function App() {
             <Route path="/home" element={<Home /*state = {state}*/ />} />
             <Route path="/homi" element={<Homi /*state = {state}*/ />} />
             <Route path="/profile" element={<Profile /*state = {state}*/ />} />
-            <Route path="/profile1" element={<Profile1 /*state = {state}*/ />} />
+            <Route
+              path="/profile1"
+              element={<Profile1 /*state = {state}*/ />}
+            />
 
-            <Route path="/post" element={<Post /*state = {state}*/ />} />  
-                    <Route path="/posts" element={<PostComponent /*state = {state}*/ />} />
-                    <Route path="/send" element={<SendPost /*state = {state}*/ />} />
-                    <Route path="/communities" element={<Communities /*state = {state}*/ />} />
-                    <Route path="/notifications" element={<Notifications /*state = {state}*/ />} />
-                    <Route path="/messages" element={<Messages /*state = {state}*/ />} />
-                    <Route path="/sendmessages" element={<Sendmessages /*state = {state}*/ />} />
-                    <Route path="/spline" element={<Splinejs /*state = {state}*/ />} />
-                    <Route path="/bruno" element={<Bruno /*state = {state}*/ />} />
-
+            <Route path="/post" element={<Post /*state = {state}*/ />} />
+            <Route
+              path="/posts"
+              element={<PostComponent /*state = {state}*/ />}
+            />
+            <Route path="/send" element={<SendPost /*state = {state}*/ />} />
+            <Route
+              path="/communities"
+              element={<Communities /*state = {state}*/ />}
+            />
+            <Route
+              path="/notifications"
+              element={<Notifications /*state = {state}*/ />}
+            />
+            <Route
+              path="/messages"
+              element={<Messages /*state = {state}*/ />}
+            />
+            <Route
+              path="/sendmessages"
+              element={<Sendmessages /*state = {state}*/ />}
+            />
+            <Route path="/spline" element={<Splinejs /*state = {state}*/ />} />
+            <Route path="/bruno" element={<Bruno /*state = {state}*/ />} />
+            <Route
+              path="/getstarted"
+              element={<Getstarted /*state = {state}*/ />}
+            />
 
             <Route
               path="/register"
