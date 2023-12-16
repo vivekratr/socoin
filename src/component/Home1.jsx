@@ -378,7 +378,7 @@ const Home1 = () => {
                     </button>
                   ))}
                 </div>
-                <button className="border border-[color:var(--gray-600,#4B5563)] bg-white w-[127px] self-center px-5 py-2.5 rounded-3xl">
+                <button className="border mt-[20px] border-[color:var(--gray-600,#4B5563)] bg-white w-[127px] self-center px-5 py-2.5 rounded-3xl">
                   <div
                     onClick={async () => {
                       // console.log(regUsername);

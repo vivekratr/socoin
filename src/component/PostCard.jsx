@@ -11,6 +11,7 @@ const PostCard = (props) => {
   const [likess, setLikess] = useState(0);
   const [userData, setUserData] = useState([]); 
   const [commentModal,setCommentModal] = useState(false)
+  const [tipModal,setTipModal] = useState(false)
   const [commentArray,setCommentArray] = useState([])
   const [inputComment,setInputComment] = useState('')
 
@@ -86,7 +87,9 @@ const PostCard = (props) => {
   setCommentModal((prev)=>!prev);
 }} className="relative rounded-16xl w-[3.25rem] h-[3.25rem] overflow-hidden shrink-0" alt="comment" src="https://cdn.discordapp.com/attachments/1177493315898314792/1184073740812812328/image.png?ex=658aa59a&is=6578309a&hm=c6ccf3bf96f0c8d028967dcd26daecc00e88580766cab2cc298554b879b03a6f&" />
 <img className="relative rounded-16xl w-[3.25rem] h-[3.25rem] overflow-hidden shrink-0" alt="share" src="https://cdn.discordapp.com/attachments/1177493315898314792/1184073770743365662/image.png?ex=658aa5a1&is=657830a1&hm=b100667b4a32067d07093eae4d24a1e79af8b7e66502693c5f9d84ebd7a8dff1&" />
-<img className="relative rounded-16xl w-[3.25rem] h-[3.25rem] overflow-hidden shrink-0" alt="tip" src="https://cdn.discordapp.com/attachments/1177493315898314792/1184073823969083442/image.png?ex=658aa5ae&is=657830ae&hm=f859cf2f5c0265673b3b096dfb579abba18bf5ec706a07e3a22003d565b8d637&" />
+<img onClick={()=>{
+  setTipModal((prev)=>prev+1);
+}} className="relative rounded-16xl hover:scale-105 hover:animate-bounce w-[3.25rem] h-[3.25rem] overflow-hidden shrink-0" alt="tip" src="https://cdn.discordapp.com/attachments/1177493315898314792/1184073823969083442/image.png?ex=658aa5ae&is=657830ae&hm=f859cf2f5c0265673b3b096dfb579abba18bf5ec706a07e3a22003d565b8d637&" />
 
 </div>
 {/* comment modal  */}
@@ -129,6 +132,19 @@ const PostCard = (props) => {
 </div>
 
 {/* comment modal end */}
+
+{/* tip user modal */}
+<div className={`  left-0 top-0 w-[97%] h-[110%] z-10 backdrop-filter backdrop-blur-sm ${tipModal?'absolute flex ':'hidden'}`}>
+<div className={`bg-gray-500 p-5 text-white rounded-lg ${tipModal?'absolute flex flex-col translate-y-[-3rem] transition-all ease-in-out duration-700':'hidden'} left-[12rem] top-[11rem] z-50 h-[20rem] w-[20rem]`}>
+    <div className="p-1 hover:scale-105 hover:opacity-90 h-fit w-fit" onClick={()=>{
+      setTipModal((prev)=>!prev);
+    }}><img className="h-[1rem] cursor-pointer
+     w-fit" src="https://cdn.discordapp.com/attachments/1177493315898314792/1184480958360076439/image.png?ex=658c20db&is=6579abdb&hm=c246e426d10817641944ad7b6a197d1f2f68d8b0c82aced7a97222e7e40e0f5e&" alt="" />
+    </div>
+
+    </div>
+    </div>
+{/* tip user modal end */}
 
       </div>
     </div>

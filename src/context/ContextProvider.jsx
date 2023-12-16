@@ -321,6 +321,29 @@ const getEthereumContract = () => {
     }
   }
 
+  async function userList(_index,_text){
+    try {
+      if (!ethereum) return alert("Please install Phantom wallet");
+
+      const contracts = getEthereumContract();
+      let userDatas;
+      if(currentAccount){  
+         userDatas = await contracts.usernames();
+        
+        console.log("Username list",userDatas);
+        
+      
+      }
+      window.location.reload()
+
+      
+    
+      // console.log("minContribution",minContributionNumber);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
 
   async function getUserComment(num){
     try {
