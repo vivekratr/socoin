@@ -21,7 +21,7 @@ import Getstarted from "./component/Getstarted";
 import NSFW from "./component/NSFW";
 import Commingsoon from "./component/Commingsoon";
 function App() {
-  return (
+  return ( 
     <BrowserRouter>
       <div>
         <SocoinProvider>
