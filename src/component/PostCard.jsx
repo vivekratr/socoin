@@ -99,8 +99,8 @@ const PostCard = (props) => {
           </div>
           <div className="relative text-[0.88rem] font-inter text-white text-left bottom-6 left-[1.7rem] mt-9">
             {props.desc}
-            {props.hash? props.name.split(",").map((item) => `#${item.trim()}`)
-              : ""}
+            {/* {props.hash? props.name.split(",").map((item) => `#${item.trim()}`)
+              : ""} */}
           </div>
           <div className="h-[25.2rem] w-[28.388rem] relative left-6 bottom-3 ">
             <img

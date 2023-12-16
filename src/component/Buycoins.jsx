@@ -2,15 +2,15 @@ import React from "react";
 import { useState } from "react";
 
 const Buycoins = () => {
-  const [count, setCount] = useState(0);
+  const [countBuyCoin, setCountBuyCoin] = useState(0);
 
   const handleIncrement = () => {
-    setCount((prevCount) => prevCount + 1);
+    setCountBuyCoin((prevCount) => prevCount + 1);
   };
 
   const handleDecrement = () => {
-    if (count > 0) {
-      setCount((prevCount) => prevCount - 1);
+    if (countBuyCoin > 0) {
+      setCountBuyCoin((prevCount) => prevCount - 1);
     }
   };
   return (
@@ -34,7 +34,7 @@ const Buycoins = () => {
 
         <div className="absolute top-[174px] left-[24px] rounded-md bg-white box-border w-[103px] h-[41px] overflow-hidden border-t-[1px] border-solid border-gainsboro border-r-[1px] border-l-[1px]">
           <div className="absolute top-[12px] left-[45px] font-semibold">
-            {count}
+            {countBuyCoin}
           </div>
           <img
             className="absolute top-[11px] left-[70px] w-[19px] h-[19px] overflow-hidden object-cover"
