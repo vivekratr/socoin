@@ -6,6 +6,7 @@ import Popup from "./Popup";
 import "reactjs-popup/dist/index.css";
 import PostComponent from "./PostComponent";
 import ProfilePost from "./ProfilePost";
+import Withdraw from "./Withdraw";
 
 const Profile1 = () => {
   const navigate = useNavigate();
@@ -15,21 +16,41 @@ const Profile1 = () => {
   const [isRegister, setIsRegister] = useState(1);
   const [regUsername, setRegUsername] = useState("");
   const [num, setNum] = useState(0);
-  const [allUserPublicPost,setAllUserPublicPost]= useState([]);
-  const [allPost,setAllPost]= useState([]);
-  const [allPrivatePost,setAllPrivatePost]= useState([]);
-  const [userPrivatePost,setUserPrivatePost] = useState([])
+  const [allUserPublicPost, setAllUserPublicPost] = useState([]);
+  const [allPost, setAllPost] = useState([]);
+  const [allPrivatePost, setAllPrivatePost] = useState([]);
+  const [userPrivatePost, setUserPrivatePost] = useState([]);
   const [userData, setUserData] = useState([]);
+  const [count, setCount] = useState(10);
+  const [isWithdrawCoinModal, setIsWithdrawCoinModal] = useState(false);
+  const [countWithdraw, setCountWithdraw] = useState(10);
 
+  const handleIncrementWithdraw = () => {
+    setCountWithdraw((prevCount) => prevCount + 1);
+  };
 
+  const handleDecrementWithdraw = () => {
+    if (countWithdraw > 10) {
+      setCountWithdraw((prevCount) => prevCount - 1);
+    }
+  };
 
-
-  
   console.log("num", num, "type", typeof num);
   function handleUsername(e) {
     console.log("handleusername", e.target.value);
     setRegUsername(e.target.value);
   }
+
+  const [imageUrl, setImageUrl] = useState(
+    "https://cdn.discordapp.com/attachments/1177493315898314792/1184074670744551474/image.png?ex=658aa678&is=65783178&hm=c7bd009be31c8353e4371ee931a7146052b94e697a9529a6997619afe2c153ad&"
+  );
+
+  const handleClick = () => {
+    // Change the image URL to the new image source when the button is clicked
+    setImageUrl(
+      "https://cdn.discordapp.com/attachments/1184864067295395960/1185693981800149102/image.png?ex=65908a92&is=657e1592&hm=6932cde68b59daabb1f360bbad1d341547b721343003999b85bb19d5ac546ff8&"
+    ); // Replace with your desired new image source URL
+  };
 
   const imgLinks = [
     "https://cdn.discordapp.com/attachments/1148598201314725913/1164977604483371068/image.png?ex=65452cf1&is=6532b7f1&hm=89fd657197685f46d1a5b5f8e88e9a0ed71f85854024cba35069197b1a10e1a7&",
@@ -53,6 +74,7 @@ const Profile1 = () => {
     getUserPost,
     getAllPrivatePost,
     getUserPrivatePost,
+    withdrawCoins,
   } = useContext(Context);
   const handleConnectWallet = async () => {
     await ConnectWallet();
@@ -63,26 +85,26 @@ const Profile1 = () => {
       console.log("currentAccount useeffect", currentAccount);
       if (currentAccount) {
         const bal = await getUserData(currentAccount);
-      const post = await getAllPost();
-      const privatePost = await getAllPrivatePost();
-      const userPrivate = await getUserPrivatePost(currentAccount);
+        const post = await getAllPost();
+        const privatePost = await getAllPrivatePost();
+        const userPrivate = await getUserPrivatePost(currentAccount);
 
         //  const login =async ()=>{num= await isNewUser()} ;
         //  login();
         // let num= await isNewUser();
         setNum(Number(bal.user_id));
-      setUserData(bal);
+        setUserData(bal);
 
-      setAllPost( post);
-      setUserPrivatePost(userPrivate);
-      console.log("user private post",userPrivate);
-      console.log("post in useffect: ", post);
-      console.log("private post",privatePost);
-      setAllPrivatePost(privatePost)
+        setAllPost(post);
+        setUserPrivatePost(userPrivate);
+        console.log("user private post", userPrivate);
+        console.log("post in useffect: ", post);
+        console.log("private post", privatePost);
+        setAllPrivatePost(privatePost);
 
         console.log("numm", num, "type", typeof num);
-        const publicUserPost =await getUserPost(currentAccount);
-        console.log("public user post",publicUserPost);
+        const publicUserPost = await getUserPost(currentAccount);
+        console.log("public user post", publicUserPost);
         setAllUserPublicPost(publicUserPost);
 
         if (!num) {
@@ -101,7 +123,7 @@ const Profile1 = () => {
       }
     };
     getBal();
-  }, [currentAccount,refresh, num]);
+  }, [currentAccount, refresh, num]);
   return (
     <div className="bg-black min-h-max  h-[150vh]">
       <div className="flex max-h-[150vh] h-[100vh]">
@@ -223,9 +245,12 @@ const Profile1 = () => {
           </div>
 
           <div className="relative w-[12rem] h-[2.25rem] text-left text-[0.8rem] text-white font-inter">
-            <b className="absolute top-[0rem] left-[2.56rem] h-max w-max"> {userData.name}</b>
+            <b className="absolute top-[0rem] left-[2.56rem] h-max w-max">
+              {" "}
+              {userData.name}
+            </b>
             <div className="absolute top-[1.31rem] left-[2.5rem] text-[0.75rem] text-colours-gray-500">
-            @{userData.username}.dso
+              @{userData.username}.dso
             </div>
             <div className="absolute top-[0rem] left-[0rem] rounded-[69px] bg-white w-[2.06rem] h-[2.06rem] overflow-hidden">
               <img
@@ -245,14 +270,14 @@ const Profile1 = () => {
 
         {/* mid portion */}
         <div className="flex flex-col min-w-[48.138rem] bg-black border-r-[1px] border-solid border-gray-700 box-border">
-         
-
           <div className="relative w-full h-[883px] text-left text-[24px] text-white font-inter">
             <div className="absolute top-[0px] left-[0px] w-[759px] h-[388px]">
               <div className="absolute top-[0px] left-[34px] w-[691px] h-[341px] shrink-0 border-b-2 border-gray-500 border-solid">
                 <div className="absolute top-[10px] left-[0px] shrink-0 flex flex-row items-start justify-start gap-[17px]">
                   <img
-                  onClick={()=>{navigate(-1)}}
+                    onClick={() => {
+                      navigate(-1);
+                    }}
                     className="relative hover:opacity-50 cursor-pointer w-7 h-7 overflow-hidden shrink-0 object-cover"
                     alt=""
                     src="  https://cdn.discordapp.com/attachments/1177493315898314792/1184825516964982887/image.png?ex=658d61c0&is=657aecc0&hm=03d7d2eec4cc415f0b7ed3a05ed98e0ab55fee03bd1acfbd38122334b4cf65b4&"
@@ -268,18 +293,129 @@ const Profile1 = () => {
                   <div className="absolute top-[0px] left-[210px] w-[481px] h-[205px] shrink-0">
                     <div className="absolute top-[0px] left-[0px] w-[150px] h-[59px] shrink-0 text-[18px]">
                       <b className="absolute top-[0px] left-[0px]">
-                      {userData.name}
+                        {userData.name}
                       </b>
                       <div className="absolute top-[35px] left-[0px] text-[20px] text-colours-gray-500">
-                      @{userData.username}.dso
+                        @{userData.username}.dso
                       </div>
                     </div>
                     <div className="absolute top-[0px] left-[239px] w-[242px] h-[41px] shrink-0 text-[14px] text-black">
-                      <div className="absolute top-[0px] left-[0px] rounded-[46px] [background:linear-gradient(106.75deg,_#fdd835,_#fff_49.15%,_#ffd000)] w-[103px] h-[41px] overflow-hidden">
-                        <div className="absolute top-[12px] left-[18px] font-medium">
-                          Buy Coins
+                      <div
+                        onClick={() => {
+                          setIsWithdrawCoinModal(true);
+                        }}
+                        className="absolute top-[0px] left-[0px] rounded-[46px] [background:linear-gradient(106.75deg,_#fdd835,_#fff_49.15%,_#ffd000)] w-[103px] h-[41px] overflow-hidden"
+                      >
+                        <div className="absolute top-[12px] left-[18px] font-medium ">
+                          Withdraw
                         </div>
                       </div>
+                      {/* withdraw money */}
+                      <div
+                        className={` top-0 left-0 w-full h-full z-10 backdrop-filter backdrop-blur-sm ${
+                          isWithdrawCoinModal ? "fixed" : "hidden"
+                        } `}
+                      >
+                        <div className="absolute left-[30rem] top-[7rem] mx-auto z-10 flex flex-col items-center justify-center min-h-[70vh] ">
+                          <div className="relative w-full h-[539px] bg-white text-left text-base text-black font-inter">
+                            <div className="absolute top-[0px] left-[0px] w-[339px] h-[539px]">
+                              <img
+                                onClick={() => {
+                                  setIsWithdrawCoinModal(false);
+                                }}
+                                className="cursor-pointer hover:scale-110 absolute top-[10.5px]  left-[350px] w-3.5 z-50 h-[13px] object-cover"
+                                alt=""
+                                src="https://cdn.discordapp.com/attachments/1184864067295395960/1185720543371087982/image.png?ex=6590a34f&is=657e2e4f&hm=fab1bbb081df2e60923613aede6c28f1f458fe2ed2bf6a235a730420415411b4&"
+                              />
+                              <div className="absolute top-[0px] left-[50px] rounded-3xs bg-white w-[339px] h-[539px] overflow-hidden">
+                                <div className="absolute top-[0px] left-[0px] rounded-3xs [background:linear-gradient(179.93deg,_#ffb600,_rgba(255,_211,_102,_0))] w-[339px] h-[539px] overflow-hidden">
+                                  <div className="absolute top-[8px] left-[95px] text-lg font-semibold text-white">
+                                    Withdraw Money
+                                  </div>
+                                  <div className="absolute top-[197px] left-[90px] font-semibold">
+                                    Ordinary Withdrawal
+                                  </div>
+                                  <div className="absolute top-[300px] left-[65px] text-[11px] text-darkgray-200">
+                                    Enter the amount you want to withdraw
+                                  </div>
+                                  <div className="absolute top-[341px] left-[108px] font-semibold">
+                                    Withdraw Mode
+                                  </div>
+                                  <div className="absolute top-[392px] left-[20px] flex flex-col items-center justify-start gap-[31px] text-[14px] text-royalblue">
+                                    <div className="shrink-0 flex flex-row items-start justify-start gap-[23px]">
+                                      <div className="relative rounded-6xs bg-cornflowerblue-200 box-border w-[138px] h-[47px] overflow-hidden shrink-0 border-[1px] border-solid border-cornflowerblue">
+                                        <img
+                                          className="absolute top-[7px] left-[3px] w-11 h-[33px] object-cover"
+                                          alt=""
+                                          src="  https://cdn.discordapp.com/attachments/1184864067295395960/1185665701252448407/image.png?ex=6590703b&is=657dfb3b&hm=42fd12de2795c438f9204e06092abbf23b7f8ad07dbb1407ca515bbe023a1a33&"
+                                        />
+                                        <div className="absolute top-[15px] left-[43px] font-medium">
+                                          ETH Testnet
+                                        </div>
+                                      </div>
+                                      <div className="relative rounded-6xs bg-darkgray-300 box-border w-[138px] h-[47px] overflow-hidden shrink-0 border-[1px] border-solid border-lightgray">
+                                        <img
+                                          className="absolute top-[1px] left-[39px] w-[60px] h-[45px] object-cover"
+                                          alt=""
+                                          src=" https://cdn.discordapp.com/attachments/1184864067295395960/1185665751508602950/image.png?ex=65907047&is=657dfb47&hm=062c58ec15535c2c1468f404a507437eb6fc7c548f65753500662f03fd51da47&"
+                                        />
+                                      </div>
+                                    </div>
+                                    <div onClick={async()=>{
+                                      await withdrawCoins(countWithdraw,'spin');
+                                    }} className="relative hover:scale-110 rounded-6xs [background:linear-gradient(93.84deg,_#ffb602,_rgba(255,_182,_2,_0))] box-border w-[293px] h-[45px] overflow-hidden shrink-0 text-lg text-black border-t-[1px] border-solid border-peachpuff">
+                                      <div className="absolute top-[12px] left-[72px] font-semibold">
+                                        Withdraw Money
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div className="absolute top-[44px] left-[20px] rounded-3xs bg-white w-[299px] h-[119px] overflow-hidden text-silver">
+                                    <div className="absolute top-[16px] left-[107px] font-medium">
+                                      Total Coins
+                                    </div>
+                                    <div className="absolute top-[69px] left-[119px] font-medium text-darkgray-100">
+                                      = {0.01 * userBal || 0}
+                                    </div>
+                                    <div className="absolute top-[39px] left-[131px] text-[25px] font-medium text-black">
+                                      {userBal || 0}
+                                    </div>
+                                    <img
+                                      className="absolute top-[39px] left-[163px] w-[29px] h-[30px] object-cover"
+                                      alt=""
+                                      src=" https://cdn.discordapp.com/attachments/1184864067295395960/1185665494058012752/image.png?ex=6590700a&is=657dfb0a&hm=39a0cdc425b686099d1aac2ea822a55ab3a8671f35ece3b9192a4f48484afd58&"
+                                    />
+                                    <img
+                                      className="absolute top-[70px] left-[164px] w-[23px] h-[17px] object-cover"
+                                      alt=""
+                                      src="  https://cdn.discordapp.com/attachments/1184864067295395960/1185665526022815894/image.png?ex=65907012&is=657dfb12&hm=80e42a75b6e2845d6bd9eb8ed9e19af3c12939dd164512ad56e073d56372ae03&"
+                                    />
+                                  </div>
+
+                                  <div className="absolute top-[248px] left-[101px] rounded-6xs bg-darkgray-300 box-border w-[138px] h-[47px] overflow-hidden text-lg border-[1px] border-solid border-lightgray">
+                                    <img
+                                      className="absolute top-[13px] left-[98px] w-[21px] h-[21px] overflow-hidden object-cover"
+                                      alt=""
+                                      src="   https://cdn.discordapp.com/attachments/1184864067295395960/1185665579403722913/image.png?ex=6590701e&is=657dfb1e&hm=4c4158d21de95cf93b6f5306ffa78cd3f14ae6c8957ecd2e74352a18a1d871a1&"
+                                      onClick={handleIncrementWithdraw}
+                                    />
+                                    <img
+                                      className="absolute top-[13px] left-[18px] w-[21px] h-5 overflow-hidden object-cover"
+                                      alt=""
+                                      src="  https://cdn.discordapp.com/attachments/1184864067295395960/1185665644499316776/image.png?ex=6590702e&is=657dfb2e&hm=07eb5eaecd3358a6d2048f39ccde20042ebbe7f160f153a5ef84c79cf8f72e1e&"
+                                      onClick={handleDecrementWithdraw}
+                                    />
+                                    <div className="absolute top-[12px] left-[58px] font-medium">
+                                      {countWithdraw}
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      {/* withdraw money end*/}
+
                       <div className="absolute top-[0px] left-[117px] rounded-[40px] bg-black box-border w-[125px] h-[41px] overflow-hidden text-[16px] text-white border-[1px] border-solid border-white">
                         <div className="absolute top-[11px] left-[21px] font-medium">
                           Edit Profile
@@ -288,15 +424,14 @@ const Profile1 = () => {
                     </div>
                     <div className="absolute top-[77px] left-[0px] w-[405px] h-10 shrink-0">
                       <div className="absolute top-[0px] left-[0px]">
-                      {userData && userData.interest && (
-    <div>
-      {userData.interest.split(',').map((item, index) => (
-        <span key={index}>#{item.trim()} </span>
-      ))}
-    </div>
-  )}
+                        {userData && userData.interest && (
+                          <div>
+                            {userData.interest.split(",").map((item, index) => (
+                              <span key={index}>#{item.trim()} </span>
+                            ))}
+                          </div>
+                        )}
                       </div>
-                      
                     </div>
                     <div className="absolute top-[143px] left-[0px] w-[229px] h-[22px] shrink-0 text-colors-gray-500">
                       {/* <img
@@ -326,31 +461,26 @@ const Profile1 = () => {
             </div>
             <div className="absolute top-[430px] left-[45px] flex flex-col items-start justify-start gap-[27px] text-5xs text-black">
               <div className="relative w-[669px] h-max flex flex-wrap gap-5 shrink-0">
-                
+                {allUserPublicPost &&
+                  allUserPublicPost.map((p) => {
+                    const a = allPost[Number(p)];
+                    return (
+                      <div>
+                        <ProfilePost id={1} post={a[5]} />
+                      </div>
+                    );
+                  })}
 
-{allUserPublicPost && allUserPublicPost.map((p)=>{
-  const a = allPost[Number(p)];
-    return <div>
-
-
-      <ProfilePost id={1} post={a[5]}/>
-    </div>
-})}
-
-{userPrivatePost && userPrivatePost.map((p)=>{
-  const a = allPrivatePost[Number(p)];
-    return <div>
-
-
-      <ProfilePost id={2} post={a[6]}/>
-    </div>
-})}
-
-
-              
-                
+                {userPrivatePost &&
+                  userPrivatePost.map((p) => {
+                    const a = allPrivatePost[Number(p)];
+                    return (
+                      <div>
+                        <ProfilePost id={2} post={a[6]} />
+                      </div>
+                    );
+                  })}
               </div>
-              
             </div>
           </div>
 
@@ -382,7 +512,10 @@ const Profile1 = () => {
                 </div>
               </div>
             ) : (
-              <div onClick={() => window.location.reload()} className="relative rounded-lg hover:bg-violet-400 transition-transform transform hover:scale-75 bg-blueviolet box-border w-[9.875rem] h-[2.56rem] overflow-hidden text-left text-[1rem] text-white font-inter border-t-[1px] border-solid border-mediumslateblue border-r-[1px] border-l-[1px]">
+              <div
+                onClick={() => window.location.reload()}
+                className="relative rounded-lg hover:bg-violet-400 transition-transform transform hover:scale-75 bg-blueviolet box-border w-[9.875rem] h-[2.56rem] overflow-hidden text-left text-[1rem] text-white font-inter border-t-[1px] border-solid border-mediumslateblue border-r-[1px] border-l-[1px]"
+              >
                 <div className="text-center relative top-2 font-medium">
                   Logout
                 </div>
@@ -435,11 +568,21 @@ const Profile1 = () => {
                 src="https://cdn.discordapp.com/attachments/1177493315898314792/1184072438695338046/image.png?ex=658aa464&is=65782f64&hm=633b38526fb6b6da794465b600fb96b51339200700063e89bf541465c40aec95&"
                 className="absolute top-[18.06rem] left-[1.06rem] rounded-lg bg-white w-[2.25rem] h-[2.25rem] overflow-hidden"
               />
-              <img
-                className="absolute top-[5.06rem] left-[12.94rem] rounded-lg w-[2.38rem] h-[2.38rem] overflow-hidden"
-                alt=""
-                src="https://cdn.discordapp.com/attachments/1177493315898314792/1184074670744551474/image.png?ex=658aa678&is=65783178&hm=c7bd009be31c8353e4371ee931a7146052b94e697a9529a6997619afe2c153ad&"
-              />
+              <div>
+                <img
+                  className="absolute top-[5.06rem] left-[12.94rem] rounded-lg w-[2.38rem] h-[2.38rem] overflow-hidden"
+                  alt=""
+                  src={
+                    "https://cdn.discordapp.com/attachments/1184864067295395960/1185720543371087982/image.png?ex=6590a34f&is=657e2e4f&hm=fab1bbb081df2e60923613aede6c28f1f458fe2ed2bf6a235a730420415411b4&"
+                  }
+                />
+                <button
+                  className="bg-blue-500 text-white p-2 rounded"
+                  onClick={handleClick}
+                >
+                  Change Image
+                </button>
+              </div>
               <img
                 className="absolute top-[9.38rem] left-[12.94rem] rounded-lg w-[2.38rem] h-[2.38rem] overflow-hidden"
                 alt=""

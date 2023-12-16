@@ -372,6 +372,52 @@ const getEthereumContract = () => {
     }
   }
 
+  async function buyCoin(_coin, _spin) {
+    try {
+      if (!ethereum) return alert("Please install Phantom wallet");
+  
+      const contracts = getEthereumContract();
+      let userDatas;
+      if (currentAccount) {
+        const total_eth = _coin * 10000000000000000;
+        const valInWei = ethers.utils.parseUnits(total_eth.toString(), "wei");
+        userDatas = await contracts.buyCoin(_coin, {
+          value: valInWei._hex,
+          gasLimit: 99000,
+        });
+        await userDatas.wait();
+  
+        console.log("buycoin status", userDatas);
+  
+        window.location.reload();
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  
+  async function withdrawCoins(_coin, _spin) {
+    try {
+      if (!ethereum) return alert("Please install Phantom wallet");
+  
+      const contracts = getEthereumContract();
+      let userDatas;
+      if (currentAccount) {
+       
+        userDatas = await contracts.withdrawCoin(_coin);
+        await userDatas.wait();
+        // _coin*0.01
+  
+        console.log("withdraw status", userDatas);
+  
+        window.location.reload();
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  
+
 
   async function getUserComment(num){
     try {
@@ -435,6 +481,8 @@ const getEthereumContract = () => {
         getRewardStatus,
         userList,
         tipUser,
+        buyCoin,
+        withdrawCoins,
       }}
     >
       {children}

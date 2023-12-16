@@ -2,43 +2,21 @@ import React from "react";
 import { useState } from "react";
 
 const Withdraw = () => {
-  const [count, setCount] = useState(10);
+  const [countWithdraw, setCountWithdraw] = useState(10);
 
-  const handleIncrement = () => {
-    setCount((prevCount) => prevCount + 1);
+  const handleIncrementWithdraw = () => {
+    setCountWithdraw((prevCount) => prevCount + 1);
   };
 
-  const handleDecrement = () => {
-    if (count > 10) {
-      setCount((prevCount) => prevCount - 1);
+  const handleDecrementWithdraw = () => {
+    if (countWithdraw > 10) {
+      setCountWithdraw((prevCount) => prevCount - 1);
     }
   };
 
-  const [isClicked, setIsClicked] = useState(false);
 
-  const handleClick = () => {
-    setIsClicked(!isClicked);
-  };
 
-  const containerStyles = {
-    position: "relative",
-    borderRadius: "6px",
-    backgroundColor: isClicked ? "cornflowerblue" : "cornflowerblue-200",
-    border: "1px solid cornflowerblue-100",
-    width: "138px",
-    height: "47px",
-    overflow: "hidden",
-    transition: "background-color 0.3s ease",
-  };
-
-  const textStyles = {
-    position: "absolute",
-    top: "12px",
-    left: "58px",
-    color: isClicked ? "white" : "black", // Change text color on click
-    fontWeight: "bold",
-    transition: "color 0.3s ease",
-  };
+  
   return (
 
 //     <div className="relative w-full h-[539px]">
@@ -64,7 +42,7 @@ const Withdraw = () => {
             </div>
             <div className="absolute top-[392px] left-[20px] flex flex-col items-center justify-start gap-[31px] text-[14px] text-royalblue">
               <div className="shrink-0 flex flex-row items-start justify-start gap-[23px]">
-                <div className="relative rounded-6xs bg-cornflowerblue-200 box-border w-[138px] h-[47px] overflow-hidden shrink-0 border-[1px] border-solid border-cornflowerblue-100">
+                <div className="relative rounded-6xs bg-cornflowerblue-200 box-border w-[138px] h-[47px] overflow-hidden shrink-0 border-[1px] border-solid border-cornflowerblue">
                   <img
                     className="absolute top-[7px] left-[3px] w-11 h-[33px] object-cover"
                     alt=""
@@ -109,47 +87,19 @@ const Withdraw = () => {
                 src="  https://cdn.discordapp.com/attachments/1184864067295395960/1185665526022815894/image.png?ex=65907012&is=657dfb12&hm=80e42a75b6e2845d6bd9eb8ed9e19af3c12939dd164512ad56e073d56372ae03&"
               />
             </div>
-            {/* <div className="absolute top-[248px] left-[101px] rounded-6xs bg-darkgray-300 box-border w-[138px] h-[47px] overflow-hidden text-lg border-[1px] border-solid border-lightgray">
-              <img
-                className="absolute top-[13px] left-[98px] w-[21px] h-[21px] overflow-hidden object-cover"
-                alt=""
-                src="/majesticonsplusline@2x.png"
-              />
-              <img
-                className="absolute top-[13px] left-[18px] w-[21px] h-5 overflow-hidden object-cover"
-                alt=""
-                src="/majesticonsplusline@2x.png"
-              />
-              <img
-                className="absolute top-[58.5px] left-[81px] w-3.5 h-[13px] object-cover"
-                alt=""
-                src="/ellipse-17@2x.png"
-              />
-              <div className="absolute top-[12px] left-[58px] font-medium">
-                10
-              </div>
-            </div> */}
-
-            {/* <div
-              style={containerStyles}
-              className="box-border shrink-0"
-              onClick={handleClick}
-            >
-              <div style={textStyles}>10</div>
-            </div> */}
-
+          
             <div className="absolute top-[248px] left-[101px] rounded-6xs bg-darkgray-300 box-border w-[138px] h-[47px] overflow-hidden text-lg border-[1px] border-solid border-lightgray">
               <img
                 className="absolute top-[13px] left-[98px] w-[21px] h-[21px] overflow-hidden object-cover"
                 alt=""
                 src="   https://cdn.discordapp.com/attachments/1184864067295395960/1185665579403722913/image.png?ex=6590701e&is=657dfb1e&hm=4c4158d21de95cf93b6f5306ffa78cd3f14ae6c8957ecd2e74352a18a1d871a1&"
-                onClick={handleIncrement}
+                onClick={handleIncrementWithdraw}
               />
               <img
                 className="absolute top-[13px] left-[18px] w-[21px] h-5 overflow-hidden object-cover"
                 alt=""
                 src="  https://cdn.discordapp.com/attachments/1184864067295395960/1185665644499316776/image.png?ex=6590702e&is=657dfb2e&hm=07eb5eaecd3358a6d2048f39ccde20042ebbe7f160f153a5ef84c79cf8f72e1e&"
-                onClick={handleDecrement}
+                onClick={handleDecrementWithdraw}
               />
               <img
                 className="absolute top-[58.5px] left-[81px] w-3.5 h-[13px] object-cover"
@@ -157,7 +107,7 @@ const Withdraw = () => {
                 src="/ellipse-17@2x.png"
               />
               <div className="absolute top-[12px] left-[58px] font-medium">
-                {count}
+                {countWithdraw}
               </div>
             </div>
           </div>

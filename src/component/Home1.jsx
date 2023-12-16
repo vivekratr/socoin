@@ -36,7 +36,7 @@ const Home1 = () => {
   const [rewardLikes, setRewardLikes] = useState(0);
   const [rewardComments, setRewardComments] = useState(0);
   const [countBuyCoin, setCountBuyCoin] = useState(1);
-  const [isBuyCoinModal,setIsBuyCoinModal] =useState(true)
+  const [isBuyCoinModal,setIsBuyCoinModal] =useState(false)
 
   const handleIncrement = () => {
     setCountBuyCoin((prevCount) => prevCount + 1);
@@ -160,6 +160,7 @@ const Home1 = () => {
     getAllPrivatePost,
     getUserPrivatePost,
     getRewardStatus,
+    buyCoin,
   } = useContext(Context);
   const handleConnectWallet = async () => {
     await ConnectWallet();
@@ -268,13 +269,13 @@ const Home1 = () => {
           } `}
         >
           <div className="absolute left-[30rem] top-[7rem] mx-auto z-10 flex flex-col items-center justify-center min-h-[70vh] ">
-          <div className="relative w-full h-[229px] text-left text-sm text-black font-inter">
+          <div className="relative w-full h-[259px] text-left text-sm text-black font-inter">
             <div onClick={()=>{
             setIsBuyCoinModal(false);
             }} className="relative top-11 cursor-pointer hover:animate-bounce left-[10rem] z-10">
               <img className="h-4" src="https://cdn.discordapp.com/attachments/1184864067295395960/1185694131050266624/image.png?ex=65908ab5&is=657e15b5&hm=dd19c0374df3b041ce7e6c32b2dc440560f7d6011fd005de55719fe5c59412f9&" alt="" />
             </div>
-      <div className="absolute top-[30px] left-[140px] rounded-2xl [background:linear-gradient(180.13deg,_#202020,_#181818)] box-border w-[271px] h-[229px] overflow-hidden border-t-[2px] border-solid border-[#282828] border-r-[1px] border-l-[1px]">
+      <div className="absolute top-[30px] h-[17rem] left-[140px] rounded-2xl [background:linear-gradient(180.13deg,_#202020,_#181818)] box-border w-[271px]  overflow-hidden border-t-[2px] border-solid border-[#282828] border-r-[1px] border-l-[1px]">
         <img
           className="absolute top-[13px] left-[50px] w-[128.45px] h-[135.89px] object-cover"
           alt=""
@@ -284,8 +285,10 @@ const Home1 = () => {
           className="absolute top-[10px] left-[60px] w-[174.96px] h-[178.22px] object-cover"
           alt=""
           src="https://cdn.discordapp.com/attachments/1184864067295395960/1185641928847527936/image.png?ex=65905a17&is=657de517&hm=652d84dd8d1a39a6d6ea2850e469a17fb054c4a708f566aab57bc6428afdcb0e&"
-        />
-        <div className="absolute cursor-pointer top-[174px] left-[147px] rounded-md [background:linear-gradient(106.75deg,_#fdd835,_#fff_49.15%,_#ffd000)] box-border w-[103px] h-[41px] overflow-hidden border-t-[1px] border-solid border-cornsilk border-r-[1px] border-l-[1px]">
+          />
+        <div onClick={async()=>{
+          await buyCoin(countBuyCoin,'spinner')
+        }} className="absolute cursor-pointer top-[174px] left-[147px] rounded-md [background:linear-gradient(106.75deg,_#fdd835,_#fff_49.15%,_#ffd000)] box-border w-[103px] h-[41px] overflow-hidden border-t-[1px] border-solid border-cornsilk border-r-[1px] border-l-[1px]">
           <div className="absolute top-[12px] left-[18px] font-medium">
             Buy Coins
           </div>
@@ -300,14 +303,15 @@ const Home1 = () => {
             alt=""
             src="     https://cdn.discordapp.com/attachments/1184864067295395960/1185645863620579388/image.png?ex=65905dc2&is=657de8c2&hm=1a7bb3548d029c6448ddc1acc93872fd4414f13a225919fa8a57f280d4526dfc&"
             onClick={handleIncrement}
-          />
+            />
           <img
             className="absolute top-[12px] cursor-pointer left-[10px] w-[19px] h-[18px] overflow-hidden object-cover"
             alt=""
             src="   https://cdn.discordapp.com/attachments/1184864067295395960/1185645933438971944/image.png?ex=65905dd2&is=657de8d2&hm=d19e79ee3cb4775a71d1934bddd314bf468c9fecc807534b9f4ceb23e3f66790&"
             onClick={handleDecrement}
-          />
+            />
         </div>
+            <p className="text-white text-[0.7rem] absolute left-5 top-[15rem]"> <span className="underline">{0.01*countBuyCoin} ETH</span>   will be Deducted form your account</p>
       </div>
     </div>
             </div></div>
