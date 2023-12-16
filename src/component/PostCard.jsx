@@ -5,7 +5,7 @@ import CommentData from "./CommentData";
 
 
 const PostCard = (props) => {
-  const {checkIfWalletIsConnected,ConnectWallet, currentAccount, isNewUser ,createUser,createPost,likePost,getUserData,userPost,getUserComment} =
+  const {likePost,getUserData,getUserComment} =
     useContext(Context);
   
   const [likess, setLikess] = useState(0);
@@ -15,7 +15,6 @@ const PostCard = (props) => {
   const [commentKeys,setCommentKeys] = useState([])
   const [commentArray,setCommentArray] = useState([])
 
-  const tt =[]
 
   
 
@@ -45,7 +44,7 @@ const PostCard = (props) => {
       setLikess(props.like);
     };
     fetchData();
-  }, [props.keys]);
+  }, [props.keys,getUserComment]);
 
   return (
     <div className="flex items-center justify-center">
