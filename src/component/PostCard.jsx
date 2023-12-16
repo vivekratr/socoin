@@ -11,8 +11,6 @@ const PostCard = (props) => {
   const [likess, setLikess] = useState(0);
   const [userData, setUserData] = useState([]); 
   const [commentModal,setCommentModal] = useState(false)
-  const [comments,setComments] = useState({});
-  const [commentKeys,setCommentKeys] = useState([])
   const [commentArray,setCommentArray] = useState([])
 
 
@@ -25,26 +23,22 @@ const PostCard = (props) => {
       const user = await getUserData(props.keys);
       const c = await getUserComment(props.index);
       
-      const arr = [];
       const commentArr = [];
       
       // Loop through the comments received and prepare data for display
       for (const key in c) {
         if (Object.hasOwnProperty.call(c, key)) {
-          arr.push(key);
           commentArr.push(c[key]); // Assuming comments are in the form of an array or object
         }
       }
       console.log('commentArr',commentArr)
 
-      setCommentKeys(arr);
       setCommentArray(commentArr);
-      setComments(c);
       setUserData(user);
       setLikess(props.like);
     };
     fetchData();
-  }, [props.keys,getUserComment]);
+  }, []);
 
   return (
     <div className="flex items-center justify-center">
@@ -100,7 +94,7 @@ const PostCard = (props) => {
     </div>
     <div className="flex flex-col ">
     {commentArray.map((comment, index) => (
-                <CommentData comment={comment} key={commentKeys[index]} />
+                <CommentData comment={comment}  />
                 // Assuming CommentData component takes 'comment' as prop and 'commentKeys[index]' as key
               ))}
       
