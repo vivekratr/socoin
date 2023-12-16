@@ -437,8 +437,8 @@ const Communities = () => {
                 src="https://cdn.discordapp.com/attachments/1177493315898314792/1184074424589234247/image.png?ex=658aa63d&is=6578313d&hm=2b6b6c395d7c9522dca53ed54c6b3bd6c9ec744cfa4550da8112ffd872e6a66d&"
               />
             </div>
-            <div className="absolute top-[7.25rem] left-[1rem] rounded-6xs bg-gray-100 box-border w-[15rem] h-[2.19rem] overflow-hidden border-t-[1px] border-solid border-dimgray">
-              <div className="absolute top-[0.5rem] left-[0.7rem] font-medium">
+            <div className="absolute top-[7.25rem] left-[0.2rem] rounded-6xs bg-gray-100 box-border w-[15rem] h-[2.19rem] overflow-hidden border-t-[1px] border-solid border-dimgray">
+              <div className="absolute top-[0.5rem] left-[0.81rem] font-medium">
                 Complete 10 Comments
               </div>
               <img

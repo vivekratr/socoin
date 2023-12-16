@@ -141,6 +141,20 @@ const PostCard = (props) => {
     }}><img className="h-[1rem] cursor-pointer
      w-fit" src="https://cdn.discordapp.com/attachments/1177493315898314792/1184480958360076439/image.png?ex=658c20db&is=6579abdb&hm=c246e426d10817641944ad7b6a197d1f2f68d8b0c82aced7a97222e7e40e0f5e&" alt="" />
     </div>
+  <div className="flex flex-col  h-[70%] w-full">
+    <div className="my-3 font-inter ">
+      Tip User
+      </div>
+    <div className="flex flex-col  ">
+      <label htmlFor="">Enter Number of Coins:</label>
+      <input className="p-3 my-4 rounded-full text-black" type="number" placeholder="1" name="" id="" />
+
+      <div className="relative rounded-[97px] bg-cornflowerblue box-border w-[6rem] h-[2.46rem] overflow-hidden text-left text-[1.13rem] text-white font-inter border-t-[1px] border-solid border-lightskyblue border-r-[1px] border-l-[1px]">
+<div className="absolute top-[0.38rem] left-[1.81rem] font-semibold">Tip</div>
+</div>
+
+      </div>
+      </div>
 
     </div>
     </div>

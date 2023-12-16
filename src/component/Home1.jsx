@@ -27,16 +27,14 @@ const Home1 = () => {
   const [userData, setUserData] = useState([]);
   const [isPost, setIsPost] = useState(false);
   const [transactionCount, setTransactionCount] = useState(0);
-  const [allPost,setAllPost]= useState([]);
-  const [allSequencePost,setAllSequencePost]= useState([]);
+  const [allPost, setAllPost] = useState([]);
+  const [allSequencePost, setAllSequencePost] = useState([]);
   const [postIndex, setPostIndex] = useState(0);
-  const [allPrivatePost,setAllPrivatePost]= useState([]);
-  const [userPrivatePost,setUserPrivatePost] = useState([])
-  const [isLogout,setIsLogout] = useState(0);
-  const [rewardLikes,setRewardLikes] =useState(0)
-  const [rewardComments,setRewardComments] =useState(0)
-
-
+  const [allPrivatePost, setAllPrivatePost] = useState([]);
+  const [userPrivatePost, setUserPrivatePost] = useState([]);
+  const [isLogout, setIsLogout] = useState(0);
+  const [rewardLikes, setRewardLikes] = useState(0);
+  const [rewardComments, setRewardComments] = useState(0);
 
   // Function to handle file change
   const handleFileChange = (event) => {
@@ -150,8 +148,6 @@ const Home1 = () => {
     getAllPrivatePost,
     getUserPrivatePost,
     getRewardStatus,
-
-
   } = useContext(Context);
   const handleConnectWallet = async () => {
     await ConnectWallet();
@@ -165,45 +161,40 @@ const Home1 = () => {
       const privatePost = await getAllPrivatePost();
       const userPrivate = await getUserPrivatePost(currentAccount);
       const _reward = await getRewardStatus(currentAccount);
-      console.log('reward score',Number(_reward));
+      console.log("reward score", Number(_reward));
 
-      const _tempLike = Math.floor(_reward/1000);
-      const _tempComment = _reward%1000;
+      const _tempLike = Math.floor(_reward / 1000);
+      const _tempComment = _reward % 1000;
 
-      console.log('reward score ceil',_tempLike," comment",_tempComment);
+      console.log("reward score ceil", _tempLike, " comment", _tempComment);
       setRewardComments(_tempComment);
       setRewardLikes(_tempLike);
-
 
       //  const login =async ()=>{num= await isNewUser()} ;
       //  login();
       // let num= await isNewUser();
       setNum(Number(bal.user_id));
       setUserPrivatePost(userPrivate);
-      console.log('userPrivate',userPrivate)
+      console.log("userPrivate", userPrivate);
       const shuffleArray = (array) => {
-        const shuffled = [...array]; 
+        const shuffled = [...array];
         for (let i = shuffled.length - 1; i > 0; i--) {
           const j = Math.floor(Math.random() * (i + 1));
-          [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]]; 
+          [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
         }
         return shuffled;
       };
-      setAllPost( shuffleArray(post));
-      console.log('postData,',allPost);
-      setAllPrivatePost(privatePost)
-
-      
+      setAllPost(shuffleArray(post));
+      console.log("postData,", allPost);
+      setAllPrivatePost(privatePost);
 
       setAllSequencePost(post);
-      console.log('sequence post',allSequencePost)
+      console.log("sequence post", allSequencePost);
 
-
-      
       // setAllPost(post)
       console.log("numm", num, "type", typeof num);
 
-      console.log('refresh',refresh)
+      console.log("refresh", refresh);
       if (!num) {
         //  const create = async()=>{
         //    await createUser('tt',1);
@@ -222,12 +213,12 @@ const Home1 = () => {
     }
   };
   useEffect(() => {
-    if(currentAccount==='' && isLogout==0){
+    if (currentAccount === "" && isLogout == 0) {
       ConnectWallet();
     }
-    console.log("running the useeffect")
+    console.log("running the useeffect");
     getBal();
-  }, [currentAccount,refresh, num]);
+  }, [currentAccount, refresh, num]);
   return (
     <div className="bg-black h-full">
       <div className="flex h-[100vh]">
@@ -265,7 +256,11 @@ const Home1 = () => {
           } `}
         >
           <div className="absolute left-[30rem] top-[7rem] mx-auto z-10 flex flex-col items-center justify-center min-h-[70vh] ">
-            <SendPost close={setIsPost} spin={setSpin} count={setTransactionCount} />
+            <SendPost
+              close={setIsPost}
+              spin={setSpin}
+              count={setTransactionCount}
+            />
           </div>
         </div>
 
@@ -437,9 +432,12 @@ const Home1 = () => {
                 />
                 <div className="relative font-medium">Notifications</div>
               </div>
-              <div onClick={()=>{
-                navigate('/messages')
-              }} className="flex flex-row hover:opacity-50 cursor-pointer items-center justify-start gap-[0.63rem]">
+              <div
+                onClick={() => {
+                  navigate("/messages");
+                }}
+                className="flex flex-row hover:opacity-50 cursor-pointer items-center justify-start gap-[0.63rem]"
+              >
                 <img
                   className="relative w-[1.06rem] h-[1rem]"
                   alt=""
@@ -447,11 +445,14 @@ const Home1 = () => {
                 />
                 <div className="relative font-medium">Messages</div>
               </div>
-              <div onClick={()=>{
-                if(num===1){
-                  navigate('/communities');
-                }
-              }} className="flex flex-row hover:opacity-50 cursor-pointer items-start justify-start gap-[0.63rem]">
+              <div
+                onClick={() => {
+                  if (num === 1) {
+                    navigate("/communities");
+                  }
+                }}
+                className="flex flex-row hover:opacity-50 cursor-pointer items-start justify-start gap-[0.63rem]"
+              >
                 <img
                   className="relative w-[1.25rem] h-[1.19rem]"
                   alt=""
@@ -499,12 +500,12 @@ const Home1 = () => {
                 src={userData.profile}
               />
             </div>
-            <img 
-            onClick={()=>{
-              if(num===1){
-                navigate('/profile')
-              }
-            }}
+            <img
+              onClick={() => {
+                if (num === 1) {
+                  navigate("/profile");
+                }
+              }}
               className=" hover:opacity-50  absolute cursor-pointer top-[0rem] left-[11.75rem] w-[1.5rem] h-[1.5rem] overflow-hidden"
               alt=""
               src="https://cdn.discordapp.com/attachments/1177493315898314792/1184074199577415741/image.png?ex=658aa608&is=65783108&hm=49441e880ec9e668ecd4fb83e21c896b03b202d851882189adb757ce47dd3e6f&"
@@ -529,15 +530,16 @@ const Home1 = () => {
               />
             </div>
           </div>
-          <div className="flex items-center justify-start left-5  space-x-4 transition-all duration-500 ease-in-out  relative w-full top-[2rem]" >
-            <img id="arrow1" 
-            onClick={handlePrev}
+          <div className="flex items-center justify-start left-5  space-x-4 transition-all duration-500 ease-in-out  relative w-full top-[2rem]">
+            <img
+              id="arrow1"
+              onClick={handlePrev}
               className="relative mr-5  w-[3.625rem] hover: h-[3.63rem] overflow-hidden"
               alt=""
               src="https://cdn.discordapp.com/attachments/1177493315898314792/1184104350436560906/image.png?ex=658ac21c&is=65784d1c&hm=3285308a6c83a4d8205ea999e393be2c3fd9d017d80e021cf1a96e6bd8e96d7d&"
             />
 
-{/* {
+            {/* {
   allPost.map( (p,i) => {
     // const d = await getUserData(p[4]);
 
@@ -556,31 +558,31 @@ const Home1 = () => {
     );
   }
 )} */}
-{allPost.length > 0 && (
-        <PostCard
-        keys={allPost[postIndex][4]}
-          key={allPost[postIndex].id}
-          desc={allPost[postIndex][1]}
-        post={allPost[postIndex][5]}
-        like={Number(allPost[postIndex][3])}
-        hash={allPost[postIndex][2]}
-        index={
-          (() => {
-            let foundIndex = null;
-            allSequencePost.forEach((m, i) => {
-              if (m[1] === allPost[postIndex][1]) {
-                foundIndex = i;
-              }
-            });
-            return foundIndex; // Return the found index
-          })() // Call the function here to get the index value
-        }
-        />
-      )}
+            {allPost.length > 0 && (
+              <PostCard
+                keys={allPost[postIndex][4]}
+                key={allPost[postIndex].id}
+                desc={allPost[postIndex][1]}
+                post={allPost[postIndex][5]}
+                like={Number(allPost[postIndex][3])}
+                hash={allPost[postIndex][2]}
+                index={
+                  (() => {
+                    let foundIndex = null;
+                    allSequencePost.forEach((m, i) => {
+                      if (m[1] === allPost[postIndex][1]) {
+                        foundIndex = i;
+                      }
+                    });
+                    return foundIndex; // Return the found index
+                  })() // Call the function here to get the index value
+                }
+              />
+            )}
             {/* <PostCard  /> */}
             <img
-            id="arrow2"
-            onClick={handleNext}
+              id="arrow2"
+              onClick={handleNext}
               className="relative ml-5  w-[3.625rem] hover: h-[3.63rem] overflow-hidden rotate-180"
               alt=""
               src="https://cdn.discordapp.com/attachments/1177493315898314792/1184104350436560906/image.png?ex=658ac21c&is=65784d1c&hm=3285308a6c83a4d8205ea999e393be2c3fd9d017d80e021cf1a96e6bd8e96d7d&"
@@ -613,9 +615,13 @@ const Home1 = () => {
                 </div>
               </div>
             ) : (
-              <div onClick={() => {
-                setIsLogout(1);
-              window.location.reload();}} className="relative rounded-lg hover:bg-violet-400 transition-transform transform hover:scale-75 bg-blueviolet box-border w-[9.875rem] h-[2.56rem] overflow-hidden text-left text-[1rem] text-white font-inter border-t-[1px] border-solid border-mediumslateblue border-r-[1px] border-l-[1px]">
+              <div
+                onClick={() => {
+                  setIsLogout(1);
+                  window.location.reload();
+                }}
+                className="relative rounded-lg hover:bg-violet-400 transition-transform transform hover:scale-75 bg-blueviolet box-border w-[9.875rem] h-[2.56rem] overflow-hidden text-left text-[1rem] text-white font-inter border-t-[1px] border-solid border-mediumslateblue border-r-[1px] border-l-[1px]"
+              >
                 <div className="text-center relative top-2 font-medium">
                   Logout
                 </div>
@@ -703,22 +709,30 @@ const Home1 = () => {
               {" "}
               Bounty
             </b>
-            <div className={`absolute top-[3.94rem] left-[1rem] rounded-6xs ${rewardLikes>=1?'bg-green-500':'bg-[#2a2a2a]'} box-border w-[15rem] h-[2.19rem] overflow-hidden border-t-[1px] border-solid border-dimgray`}>
-              <div className="absolute top-[0.5rem] left-[0.81rem] font-medium">
+            <div
+              className={`absolute top-[3.94rem] left-[1rem] rounded-6xs ${
+                rewardLikes >= 1 ? "bg-green-500" : "bg-[#2a2a2a]"
+              } box-border w-[15rem] h-[2.19rem] overflow-hidden border-t-[1px] border-solid border-dimgray`}
+            >
+              <div className="absolute top-[0.5rem] left-[0.5rem] font-medium">
                 Complete {rewardLikes}/1 Like
               </div>
               <img
-                className="absolute top-[0.44rem] left-[12.75rem] w-[1.38rem] h-[1.38rem] overflow-hidden"
+                className="absolute top-[0.44rem] left-[13rem] w-[1.38rem] h-[1.38rem] overflow-hidden"
                 alt=""
                 src="https://cdn.discordapp.com/attachments/1177493315898314792/1184074424589234247/image.png?ex=658aa63d&is=6578313d&hm=2b6b6c395d7c9522dca53ed54c6b3bd6c9ec744cfa4550da8112ffd872e6a66d&"
               />
             </div>
-            <div className={`absolute top-[7.25rem] left-[1rem] rounded-6xs ${rewardComments>=10?'bg-green-500':'bg-[#2a2a2a]'}  box-border w-[15rem] h-[2.19rem] overflow-hidden border-t-[1px] border-solid border-dimgray`}>
-              <div className="absolute top-[0.5rem] left-[0.81rem] font-medium">
+            <div
+              className={`absolute top-[7.25rem] left-[1rem] rounded-6xs ${
+                rewardComments >= 10 ? "bg-green-500" : "bg-[#2a2a2a]"
+              }  box-border w-[15rem] h-[2.19rem] overflow-hidden border-t-[1px] border-solid border-dimgray`}
+            >
+              <div className="absolute top-[0.5rem] left-[0.5rem] font-medium">
                 Complete {rewardComments}/10 Comments
               </div>
               <img
-                className="absolute top-[0.44rem] left-[12.75rem] w-[1.38rem] h-[1.38rem] overflow-hidden"
+                className="absolute top-[0.44rem] left-[13rem] w-[1.38rem] h-[1.38rem] overflow-hidden"
                 alt=""
                 src="https://cdn.discordapp.com/attachments/1177493315898314792/1184074424589234247/image.png?ex=658aa63d&is=6578313d&hm=2b6b6c395d7c9522dca53ed54c6b3bd6c9ec744cfa4550da8112ffd872e6a66d&"
               />
