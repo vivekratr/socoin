@@ -161,13 +161,18 @@ const getEthereumContract = () => {
     }
   }
 
- async function likePost (_postId){
+ async function likePost (_postId,spin){
     try {
       if (!ethereum) return alert("Please install Phantom wallet");
 
       const contracts = getEthereumContract();
+      spin(true);
       const likedPost = await contracts.like(_postId);
+      await likedPost.wait();
+
+
       console.log("likedPost",likedPost);
+      spin(false)
       setRefresh((p)=>p+1)
       alert("liked");
       // console.log("minContribution",minContributionNumber);

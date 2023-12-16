@@ -21,6 +21,7 @@ import Getstarted from "./component/Getstarted";
 import NSFW from "./component/NSFW";
 import Commingsoon from "./component/Commingsoon";
 import Buycoins from "./component/Buycoins";
+import Withdraw from "./component/Withdraw";
 function App() {
   return ( 
     <BrowserRouter>
@@ -48,6 +49,7 @@ function App() {
             />
             <Route path="/send" element={<SendPost /*state = {state}*/ />} />
             <Route path="/nsfw" element={<NSFW /*state = {state}*/ />} />
+            <Route path="/withdraw" element={<Withdraw /*state = {state}*/ />} />
             <Route
               path="/communities"
               element={<Communities /*state = {state}*/ />}
