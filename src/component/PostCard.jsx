@@ -118,7 +118,8 @@ const PostCard = (props) => {
       </div>
       <div onClick={async()=>{
         console.log("inputted text",inputComment);
-        
+        await addComments(props.index,inputComment);
+        window.location.reload();
       }} className="h-3 ml-0  w-auto">
         <img className="cursor-pointer hover:scale-95" src="https://cdn.discordapp.com/attachments/1184864067295395960/1185117527773290557/image.png?ex=658e71b5&is=657bfcb5&hm=8703d45a152f13c3ae80bd8efd1135d1174ceaf20df014cd11c89052a20f1bba&" alt="" />
       </div>
