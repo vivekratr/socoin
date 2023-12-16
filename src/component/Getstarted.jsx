@@ -8,19 +8,9 @@ import PostComponent from "./PostComponent";
 
 import { FunctionComponent } from "react";
 
-const Getstarted: FunctionComponent = () => {
+const Getstarted = () => {
   return (
-
-
-    <div className="relative w-full h-5 text-left text-[16px] text-white font-inter">
-      <div className="absolute top-[1px] left-[0px] font-medium whitespace-pre-wrap">{`Made With        in Mumbai Hacks `}</div>
-      <img
-        className="absolute top-[0px] left-[89px] w-5 h-5 overflow-hidden object-cover"
-        alt=""
-        src="/mdiheart@2x.png"
-      />
-    </div>
-    <div className="relative bg-black box-border w-full h-[800px] overflow-hidden text-left text-[16px] text-white font-inter border-[1px] border-solid border-white">
+    <div className="relative bg-black box-border w-full h-[800px] overflow-hidden text-left text-[16px] text-white font-inter border-[1px]  ">
       <div className="absolute top-[600px] left-[780px] rounded-[44px] [background:linear-gradient(180.13deg,_#202020,_#181818)] box-border w-[132px] h-11 overflow-hidden border-t-[2px] border-solid border-gray border-r-[1px] border-l-[1px]">
         <div className="absolute top-[13px] left-[21px] font-medium">
           Get Started
@@ -35,7 +25,7 @@ const Getstarted: FunctionComponent = () => {
         Decentralized Connectivity
       </b>
 
-      <div className="relative top-[600px] left-[780px] w-full h-11 text-left text-[16px] text-white font-inter">
+      {/* <div className="relative top-[600px] left-[780px] w-full h-11 text-left text-[16px] text-white font-inter">
         <img
           className="absolute top-0 border-transparent left-0 w-132 h-11 object-cover border"
           alt=""
@@ -44,6 +34,14 @@ const Getstarted: FunctionComponent = () => {
         <div className="absolute top-[13px] left-[21px] font-medium">
           Get Started
         </div>
+      </div> */}
+      <div className="relative top-[700px] left-[7200px] w-full h-5 text-left text-[16px] text-white font-inter">
+        <div className="absolute top-[1px] left-[0px] font-medium whitespace-pre-wrap">{`Made With        in Mumbai Hacks `}</div>
+        <img
+          className="absolute top-[0px] left-[89px] w-5 h-5 overflow-hidden object-cover"
+          alt=""
+          src="https://cdn.discordapp.com/attachments/1184864067295395960/1185520972795752458/image.png?ex=658fe971&is=657d7471&hm=ac3e881787d58f4ba9886faaf1f59ea9ccc606e33e3b861bfefbb1e5a9ca8da3&"
+        />
       </div>
     </div>
   );

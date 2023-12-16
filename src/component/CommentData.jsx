@@ -15,7 +15,7 @@ const CommentData =  (props) => {
         };
 
         fetchData();
-    }, [getUserData, currentAccount]);
+    }, []);
     
         console.log('inside object map', props.comment);
     
