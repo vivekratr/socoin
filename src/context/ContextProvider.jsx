@@ -429,6 +429,7 @@ const getEthereumContract = () => {
         getUserComment,
         getRewardStatus,
         userList,
+        tipUser,
       }}
     >
       {children}

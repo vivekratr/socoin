@@ -1,15 +1,28 @@
 import React from "react";
+import { useState } from 'react';
+
 
 
 
 const Buycoins = () => {
+    const [count, setCount] = useState(100);
+
+  const handleIncrement = () => {
+    setCount((prevCount) => prevCount + 1);
+  };
+
+  const handleDecrement = () => {
+    if (count > 0) {
+      setCount((prevCount) => prevCount - 1);
+    }
+  };
   return (
     <div className="relative w-full h-[229px] text-left text-sm text-black font-inter">
       <div className="absolute top-[0px] left-[0px] rounded-2xl [background:linear-gradient(180.13deg,_#202020,_#181818)] box-border w-[271px] h-[229px] overflow-hidden border-t-[2px] border-solid border-gray border-r-[1px] border-l-[1px]">
         <img
           className="absolute top-[13px] left-[50px] w-[128.45px] h-[135.89px] object-cover"
           alt=""
-          src="   "
+          src="   https://cdn.discordapp.com/attachments/1184864067295395960/1185642599332192307/image.png?ex=65905ab7&is=657de5b7&hm=71c7d9bab26434a937493f7b7ebc1d5622601814306a96ae565828467e900eb7&"
         />
         <img
           className="absolute top-[10px] left-[60px] w-[174.96px] h-[178.22px] object-cover"
@@ -21,21 +34,25 @@ const Buycoins = () => {
             Buy Coins
           </div>
         </div>
-        <div className="absolute top-[174px] left-[24px] rounded-md bg-white box-border w-[103px] h-[41px] overflow-hidden border-t-[1px] border-solid border-gainsboro border-r-[1px] border-l-[1px]">
-          <div className="absolute top-[12px] left-[37px] font-semibold">
-            100
-          </div>
-          <img
-            className="absolute top-[11px] left-[70px] w-[19px] h-[19px] overflow-hidden object-cover"
-            alt=""
-            src="/majesticonsplusline@2x.png"
-          />
-          <img
-            className="absolute top-[12px] left-[10px] w-[19px] h-[18px] overflow-hidden object-cover"
-            alt=""
-            src="/majesticonsplusline@2x.png"
-          />
-        </div>
+        
+
+<div className="absolute top-[174px] left-[24px] rounded-md bg-white box-border w-[103px] h-[41px] overflow-hidden border-t-[1px] border-solid border-gainsboro border-r-[1px] border-l-[1px]">
+      <div className="absolute top-[12px] left-[37px] font-semibold">
+        {count}
+      </div>
+      <img
+        className="absolute top-[11px] left-[70px] w-[19px] h-[19px] overflow-hidden object-cover"
+        alt=""
+        src="     https://cdn.discordapp.com/attachments/1184864067295395960/1185645863620579388/image.png?ex=65905dc2&is=657de8c2&hm=1a7bb3548d029c6448ddc1acc93872fd4414f13a225919fa8a57f280d4526dfc&"
+        onClick={handleIncrement}
+      />
+      <img
+        className="absolute top-[12px] left-[10px] w-[19px] h-[18px] overflow-hidden object-cover"
+        alt=""
+        src="   "
+        onClick={handleDecrement}
+      />
+    </div>
       </div>
     </div>
   );
