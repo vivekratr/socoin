@@ -32,6 +32,7 @@ const Home1 = () => {
   const [postIndex, setPostIndex] = useState(0);
   const [allPrivatePost,setAllPrivatePost]= useState([]);
   const [userPrivatePost,setUserPrivatePost] = useState([])
+  const [isLogout,setIsLogout] = useState(0)
 
 
 
@@ -209,7 +210,7 @@ const Home1 = () => {
     }
   };
   useEffect(() => {
-    if(currentAccount===''){
+    if(currentAccount==='' && isLogout==0){
       ConnectWallet();
     }
     console.log("running the useeffect")
@@ -600,7 +601,9 @@ const Home1 = () => {
                 </div>
               </div>
             ) : (
-              <div onClick={() => window.location.reload()} className="relative rounded-lg hover:bg-violet-400 transition-transform transform hover:scale-75 bg-blueviolet box-border w-[9.875rem] h-[2.56rem] overflow-hidden text-left text-[1rem] text-white font-inter border-t-[1px] border-solid border-mediumslateblue border-r-[1px] border-l-[1px]">
+              <div onClick={() => {
+                setIsLogout(1);
+              window.location.reload();}} className="relative rounded-lg hover:bg-violet-400 transition-transform transform hover:scale-75 bg-blueviolet box-border w-[9.875rem] h-[2.56rem] overflow-hidden text-left text-[1rem] text-white font-inter border-t-[1px] border-solid border-mediumslateblue border-r-[1px] border-l-[1px]">
                 <div className="text-center relative top-2 font-medium">
                   Logout
                 </div>

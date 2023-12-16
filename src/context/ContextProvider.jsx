@@ -278,6 +278,26 @@ const getEthereumContract = () => {
     }
   }
 
+  async function addComments(_index,_text){
+    try {
+      if (!ethereum) return alert("Please install Phantom wallet");
+
+      const contracts = getEthereumContract();
+      let userDatas;
+      if(currentAccount){  
+         userDatas = await contracts.addComment(_index,_text);
+        
+        console.log("add comment",userDatas);
+        window.location.reload()
+      return userDatas;
+      }
+    
+      // console.log("minContribution",minContributionNumber);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
 
   async function getUserComment(num){
     try {
@@ -330,6 +350,7 @@ const getEthereumContract = () => {
         createPrivatePost,
         getEthereumContract,
         userDatar,
+        addComments,
         getAllPost,
         refresh,
         setRefresh,
