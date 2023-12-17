@@ -38,6 +38,16 @@ const PostCard = (props) => {
     setTipCoin(e.target.value);
   }
 
+  const showSuccessPopup = (successMessage) => {
+    console.log('ShowSuccess',successMessage);
+    setSuccessAlertContent(successMessage);
+    setIsAlertSuccess(true);
+    setTimeout(() => {
+    setIsAlertSuccess(false);
+
+    }, 5000); 
+  };
+
   console.log("yoyo index", props);
 
   useEffect(() => {
@@ -66,12 +76,12 @@ const PostCard = (props) => {
     <div className="flex items-center justify-center">
       <div className=" flex mt-4 h-[33.635rem] w-[36.188rem] hover:bg-[#3B3939]  rounded-lg transition-all duration-700 ease-in-out ">
           {/* alert success */}
-          <div  className={`absolute z-20 ml-[34rem] mt-10 ${isAlertSuccess?'flex':'hidden'}`}>
+          <div  className={`absolute z-20 ml-[8rem] mb-12 ${isAlertSuccess?'flex':'hidden'}`}>
         <Alert severity="success">{successAlertContent}</Alert>
         </div>
         {/* alert success end */}
         {/* alert info */}
-        <div className={`absolute z-20 ml-[34rem] mt-10 ${isAlertInfo?'flex':'hidden'}`}>
+        <div className={`absolute z-20 ml-[8rem] mb-12 ${isAlertInfo?'flex':'hidden'}`}>
 
         <Alert severity="info">Waiting for Metamask...</Alert>
         </div>
@@ -147,17 +157,20 @@ const PostCard = (props) => {
             alt=""
             src={image1.main}
           />
-          <span className="text-white h-fit w-fit "> {likess} </span>
-          <img
-            onClick={async () => {
-              await likePost(props.index, setSpin);
+          <div  onClick={async () => {
+              await likePost(props.index, setSpin,showSuccessPopup,setIsAlertInfo);
 
               setLikess(likess + 1);
-            }}
-            className="relative rounded-16xl w-[3.25rem] h-[3.25rem] overflow-hidden shrink-0"
+            }} className="relative bottom-2 h-[6rem]">
+
+          <span className="text-white h-fit w-fit  p-5 rounded-full relative left-0 top-[4.6rem] z-10 "> {likess} </span>
+          <img
+           
+            className="relative rounded-16xl w-[52px] h-[94px] overflow-hidden shrink-0"
             alt=""
-            src="https://cdn.discordapp.com/attachments/1177493315898314792/1184073624966148096/image.png?ex=658aa57f&is=6578307f&hm=bd092fc2643aaf8cd2c5fc0a8455c9ff96626caec4fb4e831d00385529af1179&"
+            src="https://cdn.discordapp.com/attachments/1184864067295395960/1185766981467656302/image.png?ex=6590ce8e&is=657e598e&hm=02d2c0a07638801b7bcdc0889b954a1036cb607020a8531ac63e40fe1bc8d09b&"
           />
+          </div>
           <img
             onClick={() => {
               setCommentModal((prev) => !prev);
@@ -200,7 +213,7 @@ const PostCard = (props) => {
               }}
             >
               <img
-                className="h-[1rem] cursor-pointer
+                className="h-[1rem] cursor-pointer ml-[16rem] mb-1
      w-fit"
                 src="https://cdn.discordapp.com/attachments/1177493315898314792/1184480958360076439/image.png?ex=658c20db&is=6579abdb&hm=c246e426d10817641944ad7b6a197d1f2f68d8b0c82aced7a97222e7e40e0f5e&"
                 alt=""
@@ -230,8 +243,7 @@ const PostCard = (props) => {
               <div
                 onClick={async () => {
                   console.log("inputted text", inputComment);
-                  await addComments(props.index, inputComment);
-                  window.location.reload();
+                  await addComments(props.index, inputComment, setSpin,showSuccessPopup,setIsAlertInfo);
                 }}
                 className="h-3 ml-0  w-auto"
               >
@@ -267,7 +279,7 @@ const PostCard = (props) => {
               }}
             >
               <img
-                className="h-[1rem] cursor-pointer
+                className="h-[1rem] cursor-pointer ml-[16rem] mb-1
      w-fit"
                 src="https://cdn.discordapp.com/attachments/1177493315898314792/1184480958360076439/image.png?ex=658c20db&is=6579abdb&hm=c246e426d10817641944ad7b6a197d1f2f68d8b0c82aced7a97222e7e40e0f5e&"
                 alt=""
@@ -292,7 +304,7 @@ const PostCard = (props) => {
                 <div className="relative mx-auto hover:scale-105 hover:opacity-90 mt-7 rounded-[97px] bg-cornflowerblue box-border w-[6rem] h-[2.46rem] overflow-hidden text-left text-[1.13rem] text-white font-inter border-t-[1px] border-solid border-lightskyblue border-r-[1px] border-l-[1px]">
                   <div
                     onClick={async () => {
-                      await tipUser(props.keys, tipCoin);
+                      await tipUser(props.keys, tipCoin, setSpin,showSuccessPopup,setIsAlertInfo);
                     }}
                     className="absolute top-[0.38rem] left-[1.99rem] font-semibold"
                   >

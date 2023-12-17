@@ -7,6 +7,8 @@ import "reactjs-popup/dist/index.css";
 import PostComponent from "./PostComponent";
 import ProfilePost from "./ProfilePost";
 import Withdraw from "./Withdraw";
+import Alert from '@mui/material/Alert';
+
 
 const Profile1 = () => {
   const navigate = useNavigate();
@@ -24,6 +26,13 @@ const Profile1 = () => {
   const [count, setCount] = useState(10);
   const [isWithdrawCoinModal, setIsWithdrawCoinModal] = useState(false);
   const [countWithdraw, setCountWithdraw] = useState(10);
+  const [isAlertSuccess,setIsAlertSuccess] = useState(false)
+  const [successAlertContent,setSuccessAlertContent]= useState('');
+  const [isAlertInfo,setIsAlertInfo] = useState(false);
+  const [spin, setSpin] = useState(false);
+  const [rewardLikes, setRewardLikes] = useState(0);
+  const [rewardComments, setRewardComments] = useState(0);
+
   const [image1,setImage1] =useState({
     main: 'https://cdn.discordapp.com/attachments/1177493315898314792/1184074670744551474/image.png?ex=658aa678&is=65783178&hm=c7bd009be31c8353e4371ee931a7146052b94e697a9529a6997619afe2c153ad&',
     alternate: 'https://cdn.discordapp.com/attachments/1184864067295395960/1185693981800149102/image.png?ex=65908a92&is=657e1592&hm=6932cde68b59daabb1f360bbad1d341547b721343003999b85bb19d5ac546ff8&',
@@ -43,6 +52,15 @@ const Profile1 = () => {
 
   const handleIncrementWithdraw = () => {
     setCountWithdraw((prevCount) => prevCount + 1);
+  };
+  const showSuccessPopup = (successMessage) => {
+    console.log('ShowSuccess',successMessage);
+    setSuccessAlertContent(successMessage);
+    setIsAlertSuccess(true);
+    setTimeout(() => {
+    setIsAlertSuccess(false);
+
+    }, 5000); 
   };
 
   const handleDecrementWithdraw = () => {
@@ -91,6 +109,8 @@ const Profile1 = () => {
     getAllPrivatePost,
     getUserPrivatePost,
     withdrawCoins,
+    getRewardStatus,
+
   } = useContext(Context);
   const handleConnectWallet = async () => {
     await ConnectWallet();
@@ -104,6 +124,15 @@ const Profile1 = () => {
         const post = await getAllPost();
         const privatePost = await getAllPrivatePost();
         const userPrivate = await getUserPrivatePost(currentAccount);
+        const _reward = await getRewardStatus(currentAccount);
+      console.log("reward score", Number(_reward));
+
+      const _tempLike = Math.floor(_reward / 1000);
+      const _tempComment = _reward % 1000;
+
+      console.log("reward score ceil", _tempLike, " comment", _tempComment);
+      setRewardComments(_tempComment);
+      setRewardLikes(_tempLike);
 
         //  const login =async ()=>{num= await isNewUser()} ;
         //  login();
@@ -143,6 +172,44 @@ const Profile1 = () => {
   return (
     <div className="bg-black min-h-max  h-[150vh]">
       <div className="flex max-h-[150vh] h-[100vh]">
+         {/* alert success */}
+         <div  className={`absolute z-20 ml-[34rem] mt-10 ${isAlertSuccess?'flex':'hidden'}`}>
+        <Alert severity="success">{successAlertContent}</Alert>
+        </div>
+        {/* alert success end */}
+        {/* alert info */}
+        <div className={`absolute z-20 ml-[34rem] mt-10 ${isAlertInfo?'flex':'hidden'}`}>
+
+        <Alert severity="info">Waiting for Metamask...</Alert>
+        </div>
+        {/* alert info end */}
+        {/* spinner */}
+        <div
+          className={` absolute   items-center justify-center h-full w-full  z-50  ${
+            spin ? "flex" : "hidden"
+          }`}
+        >
+          <div role="status">
+            <svg
+              aria-hidden="true"
+              class="w-8 h-8 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600"
+              viewBox="0 0 100 101"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z"
+                fill="currentColor"
+              />
+              <path
+                d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z"
+                fill="currentFill"
+              />
+            </svg>
+            <span class="sr-only">Loading...</span>
+          </div>
+        </div>
+        {/* spinner end */}
         {/* register modal */}
         <div
           // style={containerStyle}
@@ -378,7 +445,7 @@ const Profile1 = () => {
                                       </div>
                                     </div>
                                     <div onClick={async()=>{
-                                      await withdrawCoins(countWithdraw,'spin');
+                                      await withdrawCoins(countWithdraw,setSpin,showSuccessPopup,setIsAlertInfo);
                                     }} className="relative hover:scale-110 rounded-6xs [background:linear-gradient(93.84deg,_#ffb602,_rgba(255,_182,_2,_0))] box-border w-[293px] h-[45px] overflow-hidden shrink-0 text-lg text-black border-t-[1px] border-solid border-peachpuff">
                                       <div className="absolute top-[12px] left-[72px] font-semibold">
                                         Withdraw Money
@@ -657,27 +724,35 @@ const Profile1 = () => {
             </div>
           </div>
 
-          <div className="relative rounded-2xl [background:linear-gradient(180.13deg,_#202020,_#181818)] ml-10 mt-4 box-border w-[16.938rem] h-[11.13rem] overflow-hidden text-left text-[1rem] text-gray-50 font-inter border-t-[2px] border-solid border-gray-200 border-r-[1px] border-l-[1px]">
+          <div className="relative rounded-2xl [background:linear-gradient(180.13deg,_#202020,_#181818)] ml-10 mt-4 box-border w-[16.938rem] h-[11.13rem] overflow-hidden text-left text-[1rem] text-gray-50 font-inter ">
             <b className="absolute top-[0.94rem] left-[1.31rem] text-[1.13rem] text-white">
               {" "}
               Bounty
             </b>
-            <div className="absolute top-[3.94rem] left-[1rem] rounded-6xs bg-gray-100 box-border w-[15rem] h-[2.19rem] overflow-hidden border-t-[1px] border-solid border-dimgray">
-              <div className="absolute top-[0.5rem] left-[0.81rem] font-medium">
-                Complete 1 Like
+            <div
+              className={`absolute top-[3.94rem] left-[1rem] rounded-6xs ${
+                rewardLikes >= 1 ? "bg-green-500" : "bg-[#2a2a2a]"
+              } box-border w-[15rem] h-[2.19rem] overflow-hidden border-t-[1px] border-solid border-dimgray`}
+            >
+              <div className="absolute top-[0.5rem] left-[0.rem] font-medium">
+                Complete {rewardLikes}/1 Like
               </div>
               <img
-                className="absolute top-[0.44rem] left-[12.75rem] w-[1.38rem] h-[1.38rem] overflow-hidden"
+                className="absolute top-[0.44rem] left-[13rem] w-[1.38rem] h-[1.38rem] overflow-hidden"
                 alt=""
                 src="https://cdn.discordapp.com/attachments/1177493315898314792/1184074424589234247/image.png?ex=658aa63d&is=6578313d&hm=2b6b6c395d7c9522dca53ed54c6b3bd6c9ec744cfa4550da8112ffd872e6a66d&"
               />
             </div>
-            <div className="absolute top-[7.25rem] left-[1rem] rounded-6xs bg-gray-100 box-border w-[15rem] h-[2.19rem] overflow-hidden border-t-[1px] border-solid border-dimgray">
-              <div className="absolute top-[0.5rem] left-[0.81rem] font-medium">
-                Complete 10 Comments
+            <div
+              className={`absolute top-[7.25rem] left-[1rem] rounded-6xs ${
+                rewardComments >= 10 ? "bg-green-500" : "bg-[#2a2a2a]"
+              }  box-border w-[15rem] h-[2.19rem] overflow-hidden border-t-[1px] border-solid border-dimgray`}
+            >
+              <div className="absolute top-[0.5rem] left-[0.5rem] font-medium">
+                Complete {rewardComments}/10 Comments
               </div>
               <img
-                className="absolute top-[0.44rem] left-[12.75rem] w-[1.38rem] h-[1.38rem] overflow-hidden"
+                className="absolute top-[0.44rem] left-[13rem] w-[1.38rem] h-[1.38rem] overflow-hidden"
                 alt=""
                 src="https://cdn.discordapp.com/attachments/1177493315898314792/1184074424589234247/image.png?ex=658aa63d&is=6578313d&hm=2b6b6c395d7c9522dca53ed54c6b3bd6c9ec744cfa4550da8112ffd872e6a66d&"
               />

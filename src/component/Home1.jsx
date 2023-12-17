@@ -7,7 +7,7 @@ import "reactjs-popup/dist/index.css";
 import PostComponent from "./PostComponent";
 import axios from "axios";
 import SendPost from "./SendPost";
-import Alert from '@mui/material/Alert';
+import Alert from "@mui/material/Alert";
 
 const Home1 = () => {
   const navigate = useNavigate();
@@ -37,10 +37,10 @@ const Home1 = () => {
   const [rewardLikes, setRewardLikes] = useState(0);
   const [rewardComments, setRewardComments] = useState(0);
   const [countBuyCoin, setCountBuyCoin] = useState(1);
-  const [isBuyCoinModal,setIsBuyCoinModal] =useState(false)
-  const [isAlertSuccess,setIsAlertSuccess] = useState(false)
-  const [successAlertContent,setSuccessAlertContent]= useState('');
-  const [isAlertInfo,setIsAlertInfo] = useState(false)
+  const [isBuyCoinModal, setIsBuyCoinModal] = useState(false);
+  const [isAlertSuccess, setIsAlertSuccess] = useState(false);
+  const [successAlertContent, setSuccessAlertContent] = useState("");
+  const [isAlertInfo, setIsAlertInfo] = useState(false);
 
   const handleIncrement = () => {
     setCountBuyCoin((prevCount) => prevCount + 1);
@@ -58,16 +58,13 @@ const Home1 = () => {
   };
 
   const showSuccessPopup = (successMessage) => {
-    console.log('ShowSuccess',successMessage);
+    console.log("ShowSuccess", successMessage);
     setSuccessAlertContent(successMessage);
     setIsAlertSuccess(true);
     setTimeout(() => {
-    setIsAlertSuccess(true);
-
-    }, 5000); 
+      setIsAlertSuccess(false);
+    }, 5000);
   };
-
-
 
   const interests = [
     "Sports",
@@ -252,14 +249,21 @@ const Home1 = () => {
     <div className="bg-black h-full">
       <div className="flex h-[100vh]">
         {/* alert success */}
-        <div  className={`absolute z-20 ml-[34rem] mt-10 ${isAlertSuccess?'flex':'hidden'}`}>
-        <Alert severity="success">{successAlertContent}</Alert>
+        <div
+          className={`absolute z-20 ml-[34rem] mt-10 ${
+            isAlertSuccess ? "flex" : "hidden"
+          }`}
+        >
+          <Alert severity="success">{successAlertContent}</Alert>
         </div>
         {/* alert success end */}
         {/* alert info */}
-        <div className={`absolute z-20 ml-[34rem] mt-10 ${isAlertInfo?'flex':'hidden'}`}>
-
-        <Alert severity="info">Waiting for Metamask...</Alert>
+        <div
+          className={`absolute z-20 ml-[34rem] mt-10 ${
+            isAlertInfo ? "flex" : "hidden"
+          }`}
+        >
+          <Alert severity="info">Waiting for Metamask...</Alert>
         </div>
         {/* alert info end */}
         {/* spinner */}
@@ -296,56 +300,78 @@ const Home1 = () => {
           } `}
         >
           <div className="absolute left-[30rem] top-[7rem] mx-auto z-10 flex flex-col items-center justify-center min-h-[70vh] ">
-          <div className="relative w-full h-[259px] text-left text-sm text-black font-inter">
-            <div onClick={()=>{
-            setIsBuyCoinModal(false);
-            }} className="relative top-11 cursor-pointer hover:animate-bounce left-[10rem] z-10">
-              <img className="h-4" src="https://cdn.discordapp.com/attachments/1184864067295395960/1185694131050266624/image.png?ex=65908ab5&is=657e15b5&hm=dd19c0374df3b041ce7e6c32b2dc440560f7d6011fd005de55719fe5c59412f9&" alt="" />
-            </div>
-      <div className="absolute top-[30px] h-[17rem] left-[140px] rounded-2xl [background:linear-gradient(180.13deg,_#202020,_#181818)] box-border w-[271px]  overflow-hidden border-t-[2px] border-solid border-[#282828] border-r-[1px] border-l-[1px]">
-        <img
-          className="absolute top-[13px] left-[50px] w-[128.45px] h-[135.89px] object-cover"
-          alt=""
-          src="   https://cdn.discordapp.com/attachments/1184864067295395960/1185642599332192307/image.png?ex=65905ab7&is=657de5b7&hm=71c7d9bab26434a937493f7b7ebc1d5622601814306a96ae565828467e900eb7&"
-        />
-        <img
-          className="absolute top-[10px] left-[60px] w-[174.96px] h-[178.22px] object-cover"
-          alt=""
-          src="https://cdn.discordapp.com/attachments/1184864067295395960/1185641928847527936/image.png?ex=65905a17&is=657de517&hm=652d84dd8d1a39a6d6ea2850e469a17fb054c4a708f566aab57bc6428afdcb0e&"
-          />
-        <div onClick={async()=>{
-          await buyCoin(countBuyCoin,setSpin,showSuccessPopup,setIsAlertInfo)
-        }} className="absolute cursor-pointer top-[174px] left-[147px] rounded-md [background:linear-gradient(106.75deg,_#fdd835,_#fff_49.15%,_#ffd000)] box-border w-[103px] h-[41px] overflow-hidden border-t-[1px] border-solid border-cornsilk border-r-[1px] border-l-[1px]">
-          <div className="absolute top-[12px] left-[18px] font-medium">
-            Buy Coins
-          </div>
-        </div>
+            <div className="relative w-full h-[259px] text-left text-sm text-black font-inter">
+              <div
+                onClick={() => {
+                  setIsBuyCoinModal(false);
+                }}
+                className="relative top-11 cursor-pointer hover:animate-bounce left-[10rem] z-10"
+              >
+                <img
+                  className="h-4 ml-[13rem]"
+                  src="https://cdn.discordapp.com/attachments/1184864067295395960/1185694131050266624/image.png?ex=65908ab5&is=657e15b5&hm=dd19c0374df3b041ce7e6c32b2dc440560f7d6011fd005de55719fe5c59412f9&"
+                  alt=""
+                />
+              </div>
+              <div className="absolute top-[30px] h-[17rem] left-[140px] rounded-2xl [background:linear-gradient(180.13deg,_#202020,_#181818)] box-border w-[271px]  overflow-hidden border-t-[2px] border-solid border-[#282828] border-r-[1px] border-l-[1px]">
+                <img
+                  className="absolute top-[13px] left-[50px] w-[128.45px] h-[135.89px] object-cover"
+                  alt=""
+                  src="   https://cdn.discordapp.com/attachments/1184864067295395960/1185642599332192307/image.png?ex=65905ab7&is=657de5b7&hm=71c7d9bab26434a937493f7b7ebc1d5622601814306a96ae565828467e900eb7&"
+                />
+                <img
+                  className="absolute top-[10px] left-[60px] w-[174.96px] h-[178.22px] object-cover"
+                  alt=""
+                  src="https://cdn.discordapp.com/attachments/1184864067295395960/1185641928847527936/image.png?ex=65905a17&is=657de517&hm=652d84dd8d1a39a6d6ea2850e469a17fb054c4a708f566aab57bc6428afdcb0e&"
+                />
+                <div
+                  onClick={async () => {
+                    await buyCoin(
+                      countBuyCoin,
+                      setSpin,
+                      showSuccessPopup,
+                      setIsAlertInfo
+                    );
+                  }}
+                  className="absolute cursor-pointer top-[174px] left-[147px] rounded-md [background:linear-gradient(106.75deg,_#fdd835,_#fff_49.15%,_#ffd000)] box-border w-[103px] h-[41px] overflow-hidden border-t-[1px] border-solid border-cornsilk border-r-[1px] border-l-[1px]"
+                >
+                  <div className="absolute top-[12px] left-[18px] font-medium">
+                    Buy Coins
+                  </div>
+                </div>
 
-        <div className="absolute top-[174px] left-[24px] rounded-md bg-white box-border w-[103px] h-[41px] overflow-hidden border-t-[1px] border-solid border-gainsboro border-r-[1px] border-l-[1px]">
-          <div className="absolute top-[12px] left-[45px] font-semibold">
-            {countBuyCoin}
+                <div className="absolute top-[174px] left-[24px] rounded-md bg-white box-border w-[103px] h-[41px] overflow-hidden border-t-[1px] border-solid border-gainsboro border-r-[1px] border-l-[1px]">
+                  <div className="absolute top-[12px] left-[45px] font-semibold">
+                    {countBuyCoin}
+                  </div>
+                  <img
+                    className="absolute cursor-pointer top-[11px] left-[70px] w-[19px] h-[19px] overflow-hidden object-cover"
+                    alt=""
+                    src="     https://cdn.discordapp.com/attachments/1184864067295395960/1185645863620579388/image.png?ex=65905dc2&is=657de8c2&hm=1a7bb3548d029c6448ddc1acc93872fd4414f13a225919fa8a57f280d4526dfc&"
+                    onClick={handleIncrement}
+                  />
+                  <img
+                    className="absolute top-[12px] cursor-pointer left-[10px] w-[19px] h-[18px] overflow-hidden object-cover"
+                    alt=""
+                    src="   https://cdn.discordapp.com/attachments/1184864067295395960/1185645933438971944/image.png?ex=65905dd2&is=657de8d2&hm=d19e79ee3cb4775a71d1934bddd314bf468c9fecc807534b9f4ceb23e3f66790&"
+                    onClick={handleDecrement}
+                  />
+                </div>
+                <p className="text-white text-[0.7rem] absolute left-5 top-[15rem]">
+                  {" "}
+                  <span className="underline">
+                    {0.01 * countBuyCoin} ETH
+                  </span>{" "}
+                  will be Deducted form your account
+                </p>
+              </div>
+            </div>
           </div>
-          <img
-            className="absolute cursor-pointer top-[11px] left-[70px] w-[19px] h-[19px] overflow-hidden object-cover"
-            alt=""
-            src="     https://cdn.discordapp.com/attachments/1184864067295395960/1185645863620579388/image.png?ex=65905dc2&is=657de8c2&hm=1a7bb3548d029c6448ddc1acc93872fd4414f13a225919fa8a57f280d4526dfc&"
-            onClick={handleIncrement}
-            />
-          <img
-            className="absolute top-[12px] cursor-pointer left-[10px] w-[19px] h-[18px] overflow-hidden object-cover"
-            alt=""
-            src="   https://cdn.discordapp.com/attachments/1184864067295395960/1185645933438971944/image.png?ex=65905dd2&is=657de8d2&hm=d19e79ee3cb4775a71d1934bddd314bf468c9fecc807534b9f4ceb23e3f66790&"
-            onClick={handleDecrement}
-            />
         </div>
-            <p className="text-white text-[0.7rem] absolute left-5 top-[15rem]"> <span className="underline">{0.01*countBuyCoin} ETH</span>   will be Deducted form your account</p>
-      </div>
-    </div>
-            </div></div>
         {/* buycoin end */}
         {/* post modal */}
         <div
-          className={` top-0 left-0 w-full h-full z-10 backdrop-filter backdrop-blur-sm ${
+          className={` top-0 left-0 w-full h-full z-40 backdrop-filter backdrop-blur-sm ${
             isPost ? "fixed" : "hidden"
           } `}
         >
@@ -482,9 +508,14 @@ const Home1 = () => {
                         `Name:${regName}, Username: ${regUsername} , url : ${url} interests: ${selectedInterests}`
                       );
                       console.log("obj1:", obj1);
-                      setSpin(true);
-                      await createUser(obj1);
-                      setSpin(false);
+
+                      await createUser(
+                        obj1,
+                        setSpin,
+                        showSuccessPopup,
+                        setIsAlertInfo
+                      );
+
                       setIsRegister(1);
                     }}
                     className="text-black text-sm font-medium self-center"
@@ -510,7 +541,12 @@ const Home1 = () => {
 
           <div className="relative bottom-[5rem] w-full flex  items-start justify-center  ">
             <div className="flex flex-col gap-[2.25rem] text-left text-[1.25rem] text-white font-inter">
-              <div className="flex flex-row  cursor-not-allowed items-center justify-start gap-[0.63rem]">
+              <div
+                onClick={() => {
+                  navigate("/");
+                }}
+                className="flex flex-row  cursor-pointer items-center justify-start gap-[0.63rem]"
+              >
                 <img
                   className="relative bottom-[0.2rem] w-[1.31rem] h-[1.31rem] overflow-hidden shrink-0"
                   alt=""
@@ -518,13 +554,25 @@ const Home1 = () => {
                 />
                 <div className="relative font-medium ">Home</div>
               </div>
-              <div className="flex flex-row hover:opacity-50 cursor-pointer items-center justify-start gap-[0.63rem]">
+              <div
+                onClick={() => {
+                  navigate("/notifications");
+                }}
+                className="flex flex-row hover:opacity-50 cursor-pointer items-center justify-start gap-[0.63rem]"
+              >
                 <img
                   className="relative w-[1rem] h-[1.19rem]"
                   alt=""
                   src="https://cdn.discordapp.com/attachments/1177493315898314792/1184069785865171014/image.png?ex=658aa1eb&is=65782ceb&hm=dadb492ce11b1f2b9b06b98152270e097702aaa581d1de59d339ebcdba8924fa&"
                 />
-                <div className="relative font-medium">Notifications</div>
+                <div
+                  onClick={() => {
+                    navigate("/notifications");
+                  }}
+                  className="relative font-medium"
+                >
+                  Notifications
+                </div>
               </div>
               <div
                 onClick={() => {
@@ -577,7 +625,12 @@ const Home1 = () => {
           </div>
 
           <div
-            className={`  relative w-[12rem] h-[2.25rem] text-left text-[1rem] text-white font-inter ${
+            onClick={() => {
+              if (num === 1) {
+                navigate("/profile");
+              }
+            }}
+            className={`cursor-pointer  relative w-[12rem] h-[2.25rem] text-left text-[1rem] text-white font-inter ${
               userData.length > 1 ? "" : "hidden"
             }`}
           >
@@ -605,6 +658,15 @@ const Home1 = () => {
               src="https://cdn.discordapp.com/attachments/1177493315898314792/1184074199577415741/image.png?ex=658aa608&is=65783108&hm=49441e880ec9e668ecd4fb83e21c896b03b202d851882189adb757ce47dd3e6f&"
             />
           </div>
+          <a href="https://dsocial.gitbook.io/dsocial/">
+            <div className="absolute top-[37.5rem] left-[0.5rem]">
+              <img
+                className="w-[45px] h-[45px]"
+                src="https://cdn.discordapp.com/attachments/1184864067295395960/1185768064957042849/image.png?ex=6590cf91&is=657e5a91&hm=84c157e2d696e4249b182ad84fcf48f519e7efe0f4ec500e4e7921448d2c3259&"
+                alt=""
+              />
+            </div>
+          </a>
         </div>
         {/* options end */}
 
@@ -614,7 +676,7 @@ const Home1 = () => {
             <div className="relative mx-auto my-auto rounded-[67px] bg-colours-gray-900 w-[39.375rem] h-[2.75rem] overflow-hidden text-left text-[1rem] text-gray font-inter ">
               <input
                 type="text"
-                class="absolute text-white top-[0.75rem] left-[4.06rem] bg-transparent font-medium border-none focus:bg-transparent hover:bg-transparent outline-none"
+                class="absolute text-white top-[0rem] left-[4.06rem] bg-transparent font-medium border-none focus:bg-transparent hover:bg-transparent outline-none"
                 placeholder="Search"
               />
               <img
@@ -688,11 +750,17 @@ const Home1 = () => {
         {/* wallet section */}
         <div className="flex flex-col w-full bg-black">
           <div className="flex w-full justify-around h-[5.75rem] items-center">
-            <div title="Buy Coins" onClick={()=>{
-              setIsBuyCoinModal(true);
-            
-            }} className="relative cursor-pointer rounded-md [background:linear-gradient(106.75deg,_#fdd835,_#fff_49.15%,_#ffd000)] box-border  h-[2.563rem] w-[8.438rem] overflow-hidden text-left text-[0.88rem] text-black font-inter border-t-[1px] border-solid border-cornsilk border-r-[1px] border-l-[1px]">
-              <div title="Buy Coins" className="absolute top-[0.75rem] left-[1.38rem] font-medium">
+            <div
+              title="Buy Coins"
+              onClick={() => {
+                setIsBuyCoinModal(true);
+              }}
+              className="relative cursor-pointer rounded-md [background:linear-gradient(106.75deg,_#fdd835,_#fff_49.15%,_#ffd000)] box-border  h-[2.563rem] w-[8.438rem] overflow-hidden text-left text-[0.88rem] text-black font-inter border-t-[1px] border-solid border-cornsilk border-r-[1px] border-l-[1px]"
+            >
+              <div
+                title="Buy Coins"
+                className="absolute top-[0.75rem] left-[1.38rem] font-medium"
+              >
                 {userBal | 0} coins
               </div>
               <img
@@ -735,16 +803,16 @@ const Home1 = () => {
                 Amit Sinha
               </div>
               <div className="absolute top-[9.44rem] left-[3.81rem] text-[1rem] font-medium">
-                Amit Sinha
+                Ravi Shastri
               </div>
               <div className="absolute top-[13.75rem] left-[3.81rem] text-[1rem] font-medium">
-                Amit Sinha
+                Shubham Kumar
               </div>
               <div className="absolute top-[18.06rem] left-[3.81rem] text-[1rem] font-medium">
-                Amit Sinha
+                Shruti Singh
               </div>
               <div className="absolute top-[6.31rem] left-[3.81rem] text-colours-gray-500">
-                @amitsinha.dso
+                @ravi.dso
               </div>
               <div className="absolute top-[10.63rem] left-[3.81rem] text-colours-gray-500">
                 @amitsinha.dso

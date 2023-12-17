@@ -14,6 +14,8 @@ const Communities = () => {
   const [isRegister, setIsRegister] = useState(1);
   const [regUsername, setRegUsername] = useState("");
   const [num, setNum] = useState(0);
+  const [rewardLikes, setRewardLikes] = useState(0);
+  const [rewardComments, setRewardComments] = useState(0);
 
   console.log("num", num, "type", typeof num);
   function handleUsername(e) {
@@ -39,6 +41,9 @@ const Communities = () => {
     likePost,
     getUserData,
     userPost,
+    getRewardStatus,
+    refresh
+
   } = useContext(Context);
   const handleConnectWallet = async () => {
     await ConnectWallet();
@@ -49,6 +54,16 @@ const Communities = () => {
       console.log("currentAccount useeffect", currentAccount);
       if (currentAccount) {
         const bal = await getUserData(currentAccount);
+        const _reward = await getRewardStatus(currentAccount);
+        console.log("reward score", Number(_reward));
+  
+        const _tempLike = Math.floor(_reward / 1000);
+        const _tempComment = _reward % 1000;
+  
+        console.log("reward score ceil", _tempLike, " comment", _tempComment);
+        setRewardComments(_tempComment);
+        setRewardLikes(_tempLike);
+  
         //  const login =async ()=>{num= await isNewUser()} ;
         //  login();
         // let num= await isNewUser();
@@ -71,7 +86,7 @@ const Communities = () => {
       }
     };
     getBal();
-  }, [currentAccount, createUser, num, userPost, likePost, getUserData]);
+  }, [currentAccount, createUser,refresh, num, userPost, likePost, getUserData]);
   return (
     <div className="bg-black min-h-max  h-[150vh]">
       <div className="flex max-h-[150vh] h-[100vh]">
@@ -145,7 +160,9 @@ const Communities = () => {
 
           <div className="relative bottom-[5rem] w-full flex  items-start justify-center  ">
             <div className="flex flex-col gap-[2.25rem] text-left text-[1.25rem] text-white font-inter">
-              <div className="flex flex-row items-center justify-start gap-[0.63rem]">
+              <div onClick={()=>{
+                navigate('/')
+              }} className="flex flex-row  cursor-pointer items-center justify-start gap-[0.63rem]">
                 <img
                   className="relative bottom-[0.2rem] w-[1.31rem] h-[1.31rem] overflow-hidden shrink-0"
                   alt=""
@@ -153,15 +170,32 @@ const Communities = () => {
                 />
                 <div className="relative font-medium ">Home</div>
               </div>
-              <div className="flex flex-row items-center justify-start gap-[0.63rem]">
+              <div
+                onClick={() => {
+                  navigate("/notifications");
+                }}
+                className="flex flex-row hover:opacity-50 cursor-pointer items-center justify-start gap-[0.63rem]"
+              >
                 <img
                   className="relative w-[1rem] h-[1.19rem]"
                   alt=""
                   src="https://cdn.discordapp.com/attachments/1177493315898314792/1184069785865171014/image.png?ex=658aa1eb&is=65782ceb&hm=dadb492ce11b1f2b9b06b98152270e097702aaa581d1de59d339ebcdba8924fa&"
                 />
-                <div className="relative font-medium">Notifications</div>
+                <div
+                  onClick={() => {
+                    navigate("/notifications");
+                  }}
+                  className="relative font-medium"
+                >
+                  Notifications
+                </div>
               </div>
-              <div className="flex flex-row items-center justify-start gap-[0.63rem]">
+              <div
+                onClick={() => {
+                  navigate("/messages");
+                }}
+                className="flex flex-row hover:opacity-50 cursor-pointer items-center justify-start gap-[0.63rem]"
+              >
                 <img
                   className="relative w-[1.06rem] h-[1rem]"
                   alt=""
@@ -169,13 +203,20 @@ const Communities = () => {
                 />
                 <div className="relative font-medium">Messages</div>
               </div>
-              <div className="flex flex-row items-start justify-start gap-[0.63rem]">
+              <div
+                onClick={() => {
+                  if (num === 1) {
+                    navigate("/communities");
+                  }
+                }}
+                className="flex flex-row hover:opacity-50 cursor-pointer items-start justify-start gap-[0.63rem]"
+              >
                 <img
                   className="relative w-[1.25rem] h-[1.19rem]"
                   alt=""
                   src="https://cdn.discordapp.com/attachments/1177493315898314792/1184070090631675944/image.png?ex=658aa234&is=65782d34&hm=cbd1ac4ff02e23412a1fbc94566b279be521568e7d8bdb10bc865f6052f3d969&"
                 />
-                <div className="relative font-medium">Communities</div>
+                <div className="relative  font-medium">Communities</div>
               </div>
               {/* <div className="flex flex-row items-start justify-start gap-[0.63rem]">
 <img className="relative w-[1.25rem] h-[1.25rem]" alt="" src="https://cdn.discordapp.com/attachments/1177493315898314792/1184069996142415983/image.png?ex=658aa21e&is=65782d1e&hm=0ce679d0e2e97dd09997ae88aa90f3cd824d6d5ab5263d9948b64fa0db0bd636&" />
@@ -422,27 +463,35 @@ const Communities = () => {
             </div>
           </div>
 
-          <div className="relative rounded-2xl [background:linear-gradient(180.13deg,_#202020,_#181818)] ml-10 mt-4 box-border w-[16.938rem] h-[11.13rem] overflow-hidden text-left text-[1rem] text-gray-50 font-inter border-t-[2px] border-solid border-gray-200 border-r-[1px] border-l-[1px]">
+          <div className="relative rounded-2xl [background:linear-gradient(180.13deg,_#202020,_#181818)] ml-10 mt-4 box-border w-[16.938rem] h-[11.13rem] overflow-hidden text-left text-[1rem] text-gray-50 font-inter ">
             <b className="absolute top-[0.94rem] left-[1.31rem] text-[1.13rem] text-white">
               {" "}
               Bounty
             </b>
-            <div className="absolute top-[3.94rem] left-[1rem] rounded-6xs bg-gray-100 box-border w-[15rem] h-[2.19rem] overflow-hidden border-t-[1px] border-solid border-dimgray">
-              <div className="absolute top-[0.5rem] left-[0.81rem] text-xs font-medium">
-                Complete 1 Like
+            <div
+              className={`absolute top-[3.94rem] left-[1rem] rounded-6xs ${
+                rewardLikes >= 1 ? "bg-green-500" : "bg-[#2a2a2a]"
+              } box-border w-[15rem] h-[2.19rem] overflow-hidden border-t-[1px] border-solid border-dimgray`}
+            >
+              <div className="absolute top-[0.5rem] left-[0.rem] font-medium">
+                Complete {rewardLikes}/1 Like
               </div>
               <img
-                className="absolute top-[0.44rem] left-[12.75rem] w-[1.38rem] h-[1.38rem] overflow-hidden"
+                className="absolute top-[0.44rem] left-[13rem] w-[1.38rem] h-[1.38rem] overflow-hidden"
                 alt=""
                 src="https://cdn.discordapp.com/attachments/1177493315898314792/1184074424589234247/image.png?ex=658aa63d&is=6578313d&hm=2b6b6c395d7c9522dca53ed54c6b3bd6c9ec744cfa4550da8112ffd872e6a66d&"
               />
             </div>
-            <div className="absolute top-[7.25rem] left-[0.2rem] rounded-6xs bg-gray-100 box-border w-[15rem] h-[2.19rem] overflow-hidden border-t-[1px] border-solid border-dimgray">
-              <div className="absolute top-[0.5rem] left-[0.81rem] font-medium">
-                Complete 10 Comments
+            <div
+              className={`absolute top-[7.25rem] left-[1rem] rounded-6xs ${
+                rewardComments >= 10 ? "bg-green-500" : "bg-[#2a2a2a]"
+              }  box-border w-[15rem] h-[2.19rem] overflow-hidden border-t-[1px] border-solid border-dimgray`}
+            >
+              <div className="absolute top-[0.5rem] left-[0.5rem] font-medium">
+                Complete {rewardComments}/10 Comments
               </div>
               <img
-                className="absolute top-[0.44rem] left-[12.75rem] w-[1.38rem] h-[1.38rem] overflow-hidden"
+                className="absolute top-[0.44rem] left-[13rem] w-[1.38rem] h-[1.38rem] overflow-hidden"
                 alt=""
                 src="https://cdn.discordapp.com/attachments/1177493315898314792/1184074424589234247/image.png?ex=658aa63d&is=6578313d&hm=2b6b6c395d7c9522dca53ed54c6b3bd6c9ec744cfa4550da8112ffd872e6a66d&"
               />

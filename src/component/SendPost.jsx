@@ -1,6 +1,8 @@
 import React,{useState,useEffect,useContext} from 'react'
 import axios from 'axios';
 import { Context } from "../context/ContextProvider";
+import Alert from '@mui/material/Alert';
+
 
 
 const SendPost = (props) => {
@@ -12,6 +14,9 @@ const SendPost = (props) => {
   const [cid, setCid] = useState('');
   const [url, setUrl] = useState('');
   const [urls, setUrls] = useState('');
+  const [isAlertSuccess,setIsAlertSuccess] = useState(false)
+  const [successAlertContent,setSuccessAlertContent]= useState('');
+  const [isAlertInfo,setIsAlertInfo] = useState(false)
 
 
   const {
@@ -34,6 +39,15 @@ const SendPost = (props) => {
     setFile(event.target.files[0]);
     
   
+    };
+    const showSuccessPopup = (successMessage) => {
+      console.log('ShowSuccess',successMessage);
+      setSuccessAlertContent(successMessage);
+      setIsAlertSuccess(true);
+      setTimeout(() => {
+      setIsAlertSuccess(false);
+  
+      }, 5000); 
     };
 
     const handleUpload = async () => {
@@ -99,6 +113,17 @@ const SendPost = (props) => {
 
       <div className="min-w-[568px] min-h-[30rem] relative bg-black rounded-xl">
         <div className='flex flex-col p-7'>
+           {/* alert success */}
+        <div  className={`absolute z-20 ml-[34rem] mt-10 ${isAlertSuccess?'flex':'hidden'}`}>
+        <Alert severity="success">{successAlertContent}</Alert>
+        </div>
+        {/* alert success end */}
+        {/* alert info */}
+        <div className={`absolute z-20 ml-[34rem] mt-10 ${isAlertInfo?'flex':'hidden'}`}>
+
+        <Alert severity="info">Waiting for Metamask...</Alert>
+        </div>
+        {/* alert info end */}
           <div className='flex'>
         <img  onClick={() => props.close(false)} className="relative right-3 bottom-2 w-auto h-[1rem] overflow-hidden object-cover" alt="" src="https://cdn.discordapp.com/attachments/1177493315898314792/1184480958360076439/image.png?ex=658c20db&is=6579abdb&hm=c246e426d10817641944ad7b6a197d1f2f68d8b0c82aced7a97222e7e40e0f5e&" />
 
@@ -126,9 +151,9 @@ const SendPost = (props) => {
         </div>
 
         <div className='flex mt-5 ml-3 gap-4 h-[200px] border-b-2 border-gray-100 border-solid'>
-          <div>
+          {/* <div>
             <img className='relative rounded-full w-auto h-[2.29rem] object-cover' src="https://cdn.discordapp.com/attachments/1177492390949441610/1184455231728255027/image_32.png?ex=658c08e5&is=657993e5&hm=2515c1925ba753fa5f16fa244df6dc3b9a01cbb1b5531b473b25d6c7c188c622&" alt="" />
-          </div>
+          </div> */}
 
           <div className='w-[90%]'>
             <textarea onChange={handleDescChange} style={{'height': 'calc(100% - 1rem)','scrollbar-width': 'none','-ms-overflow-style': 'none'}}  className='overflow-hidden resize-none appearance-none  leading-tight focus:outline-none focus:shadow-outline bg-transparent outline-none text-white h-[200pxpx]  w-full' type="text" placeholder="What is happening?"/>
@@ -180,7 +205,7 @@ const SendPost = (props) => {
     }
     console.log(obj,"obj")
     props.spin(true);
-    await createPost(obj)
+    await createPost(obj,props.spin,showSuccessPopup,setIsAlertInfo)
     props.count((prev)=>{return prev+1})
   props.spin(false);
 
@@ -194,7 +219,7 @@ const SendPost = (props) => {
       countFunc:props.count
     }
     console.log(obj,"obj")
-await createPrivatePost(obj)
+await createPrivatePost(obj,props.spin,showSuccessPopup,setIsAlertInfo)
 
   props.spin(false);
   
