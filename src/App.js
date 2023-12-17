@@ -23,6 +23,7 @@ import Commingsoon from "./component/Commingsoon";
 import Buycoins from "./component/Buycoins";
 import Withdraw from "./component/Withdraw";
 import Bro from "./component/Bro";
+import Alerts from "./component/Alerts";
 function App() {
   return ( 
     <BrowserRouter>
@@ -33,6 +34,7 @@ function App() {
             <Route path="/home" element={<Home /*state = {state}*/ />} />
             <Route path="/homi" element={<Homi /*state = {state}*/ />} />
             <Route path="/profile" element={<Profile /*state = {state}*/ />} />
+            <Route path="/alerts" element={<Alerts /*state = {state}*/ />} />
 
             <Route path="/buycoins" element={<Buycoins /*state = {state}*/ />} />
             <Route path="/bro" element={<Bro /*state = {state}*/ />} />

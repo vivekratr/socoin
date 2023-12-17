@@ -24,6 +24,22 @@ const Profile1 = () => {
   const [count, setCount] = useState(10);
   const [isWithdrawCoinModal, setIsWithdrawCoinModal] = useState(false);
   const [countWithdraw, setCountWithdraw] = useState(10);
+  const [image1,setImage1] =useState({
+    main: 'https://cdn.discordapp.com/attachments/1177493315898314792/1184074670744551474/image.png?ex=658aa678&is=65783178&hm=c7bd009be31c8353e4371ee931a7146052b94e697a9529a6997619afe2c153ad&',
+    alternate: 'https://cdn.discordapp.com/attachments/1184864067295395960/1185693981800149102/image.png?ex=65908a92&is=657e1592&hm=6932cde68b59daabb1f360bbad1d341547b721343003999b85bb19d5ac546ff8&',
+  })
+  const [image2,setImage2] =useState({
+    main: 'https://cdn.discordapp.com/attachments/1177493315898314792/1184074670744551474/image.png?ex=658aa678&is=65783178&hm=c7bd009be31c8353e4371ee931a7146052b94e697a9529a6997619afe2c153ad&',
+    alternate: 'https://cdn.discordapp.com/attachments/1184864067295395960/1185693981800149102/image.png?ex=65908a92&is=657e1592&hm=6932cde68b59daabb1f360bbad1d341547b721343003999b85bb19d5ac546ff8&',
+  })
+  const [image3,setImage3] =useState({
+    main: 'https://cdn.discordapp.com/attachments/1177493315898314792/1184074670744551474/image.png?ex=658aa678&is=65783178&hm=c7bd009be31c8353e4371ee931a7146052b94e697a9529a6997619afe2c153ad&',
+    alternate: 'https://cdn.discordapp.com/attachments/1184864067295395960/1185693981800149102/image.png?ex=65908a92&is=657e1592&hm=6932cde68b59daabb1f360bbad1d341547b721343003999b85bb19d5ac546ff8&',
+  })
+  const [image4,setImage4] =useState({
+    main: 'https://cdn.discordapp.com/attachments/1177493315898314792/1184074670744551474/image.png?ex=658aa678&is=65783178&hm=c7bd009be31c8353e4371ee931a7146052b94e697a9529a6997619afe2c153ad&',
+    alternate: 'https://cdn.discordapp.com/attachments/1184864067295395960/1185693981800149102/image.png?ex=65908a92&is=657e1592&hm=6932cde68b59daabb1f360bbad1d341547b721343003999b85bb19d5ac546ff8&',
+  })
 
   const handleIncrementWithdraw = () => {
     setCountWithdraw((prevCount) => prevCount + 1);
@@ -568,35 +584,72 @@ const Profile1 = () => {
                 src="https://cdn.discordapp.com/attachments/1177493315898314792/1184072438695338046/image.png?ex=658aa464&is=65782f64&hm=633b38526fb6b6da794465b600fb96b51339200700063e89bf541465c40aec95&"
                 className="absolute top-[18.06rem] left-[1.06rem] rounded-lg bg-white w-[2.25rem] h-[2.25rem] overflow-hidden"
               />
-              <div>
-                <img
-                  className="absolute top-[5.06rem] left-[12.94rem] rounded-lg w-[2.38rem] h-[2.38rem] overflow-hidden"
-                  alt=""
-                  src={
-                    "https://cdn.discordapp.com/attachments/1184864067295395960/1185720543371087982/image.png?ex=6590a34f&is=657e2e4f&hm=fab1bbb081df2e60923613aede6c28f1f458fe2ed2bf6a235a730420415411b4&"
-                  }
-                />
-                <button
-                  className="bg-blue-500 text-white p-2 rounded"
-                  onClick={handleClick}
-                >
-                  Change Image
-                </button>
-              </div>
+             
+             
+             <img
+  onClick={() => {
+    setImage1((prev) => {
+      const newImages = { ...prev };
+      return {
+        ...prev,
+        main: newImages.alternate,
+        alternate: newImages.main,
+      };
+    });
+  }}
+  className="absolute top-[5.06rem] left-[12.94rem] rounded-lg w-[2.38rem] h-[2.38rem] overflow-hidden"
+  alt=""
+  src={image1.main}
+/>
+
+               
+            
               <img
+               onClick={() => {
+                setImage2((prev) => {
+                  const newImages = { ...prev };
+                  return {
+                    ...prev,
+                    main: newImages.alternate,
+                    alternate: newImages.main,
+                  };
+                });
+              }}
                 className="absolute top-[9.38rem] left-[12.94rem] rounded-lg w-[2.38rem] h-[2.38rem] overflow-hidden"
                 alt=""
-                src="https://cdn.discordapp.com/attachments/1177493315898314792/1184074670744551474/image.png?ex=658aa678&is=65783178&hm=c7bd009be31c8353e4371ee931a7146052b94e697a9529a6997619afe2c153ad&"
+                src={image2.main}
               />
               <img
+               onClick={() => {
+                setImage3((prev) => {
+                  const newImages = { ...prev };
+                  return {
+                    ...prev,
+                    main: newImages.alternate,
+                    alternate: newImages.main,
+                  };
+                });
+              }}
                 className="absolute top-[13.69rem] left-[12.94rem] rounded-lg w-[2.38rem] h-[2.38rem] overflow-hidden"
                 alt=""
-                src="https://cdn.discordapp.com/attachments/1177493315898314792/1184074670744551474/image.png?ex=658aa678&is=65783178&hm=c7bd009be31c8353e4371ee931a7146052b94e697a9529a6997619afe2c153ad&"
+                src={image3.main}
+
               />
               <img
+               onClick={() => {
+                setImage4((prev) => {
+                  const newImages = { ...prev };
+                  return {
+                    ...prev,
+                    main: newImages.alternate,
+                    alternate: newImages.main,
+                  };
+                });
+              }}
                 className="absolute top-[18rem] left-[12.94rem] rounded-lg w-[2.38rem] h-[2.38rem] overflow-hidden"
                 alt=""
-                src="https://cdn.discordapp.com/attachments/1177493315898314792/1184074670744551474/image.png?ex=658aa678&is=65783178&hm=c7bd009be31c8353e4371ee931a7146052b94e697a9529a6997619afe2c153ad&"
+                src={image4.main}
+
               />
               <div className="absolute top-[21.88rem] left-[1.06rem] font-medium text-cornflowerblue">
                 Show More

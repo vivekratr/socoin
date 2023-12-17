@@ -20,6 +20,10 @@ const PostCard = (props) => {
   const [inputComment, setInputComment] = useState("");
   const [tipCoin, setTipCoin] = useState(1);
   const [spin, setSpin] = useState(false);
+  const [image1,setImage1] =useState({
+    main: 'https://cdn.discordapp.com/attachments/1177493315898314792/1184074670744551474/image.png?ex=658aa678&is=65783178&hm=c7bd009be31c8353e4371ee931a7146052b94e697a9529a6997619afe2c153ad&',
+    alternate: 'https://cdn.discordapp.com/attachments/1184864067295395960/1185693981800149102/image.png?ex=65908a92&is=657e1592&hm=6932cde68b59daabb1f360bbad1d341547b721343003999b85bb19d5ac546ff8&',
+  })
 
   function handleTextComment(e) {
     setInputComment(e.target.value);
@@ -113,9 +117,19 @@ const PostCard = (props) => {
 
         <div className="relative w-full flex flex-col items-start justify-start gap-[2.31rem] top-6 right-2">
           <img
+           onClick={() => {
+            setImage1((prev) => {
+              const newImages = { ...prev };
+              return {
+                ...prev,
+                main: newImages.alternate,
+                alternate: newImages.main,
+              };
+            });
+          }}
             className="relative rounded-16xl w-[3.25rem] h-[3.25rem] overflow-hidden shrink-0"
             alt=""
-            src="https://cdn.discordapp.com/attachments/1177493315898314792/1184073513712238652/image.png?ex=658aa564&is=65783064&hm=9a2d01e125d34e2b059be14b2801a8664f4f64f0186ebc4bffc04d60157d8eb0&"
+            src={image1.main}
           />
           <span className="text-white h-fit w-fit "> {likess} </span>
           <img
