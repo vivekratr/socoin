@@ -11,7 +11,7 @@ const PostCard = () => {
   return (
     <div className="my-2 max-w-md  h-full mx-auto bg-white rounded-xl shadow-md overflow-hidden mb-4">
         <div onClick={()=>{
-            navigate('/')
+            navigate('/home1')
         }} className='absolute left-[29rem] p-2 cursor-pointer bg-black text-white rounded-md my-2'>Home</div>
       <img className="object-cover object-center w-full h-64" src={image} alt="Post" />
       <div className="p-6">

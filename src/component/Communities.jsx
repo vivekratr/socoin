@@ -42,8 +42,7 @@ const Communities = () => {
     getUserData,
     userPost,
     getRewardStatus,
-    refresh
-
+    refresh,
   } = useContext(Context);
   const handleConnectWallet = async () => {
     await ConnectWallet();
@@ -56,14 +55,14 @@ const Communities = () => {
         const bal = await getUserData(currentAccount);
         const _reward = await getRewardStatus(currentAccount);
         console.log("reward score", Number(_reward));
-  
+
         const _tempLike = Math.floor(_reward / 1000);
         const _tempComment = _reward % 1000;
-  
+
         console.log("reward score ceil", _tempLike, " comment", _tempComment);
         setRewardComments(_tempComment);
         setRewardLikes(_tempLike);
-  
+
         //  const login =async ()=>{num= await isNewUser()} ;
         //  login();
         // let num= await isNewUser();
@@ -86,7 +85,15 @@ const Communities = () => {
       }
     };
     getBal();
-  }, [currentAccount, createUser,refresh, num, userPost, likePost, getUserData]);
+  }, [
+    currentAccount,
+    createUser,
+    refresh,
+    num,
+    userPost,
+    likePost,
+    getUserData,
+  ]);
   return (
     <div className="bg-black min-h-max  h-[150vh]">
       <div className="flex max-h-[150vh] h-[100vh]">
@@ -160,9 +167,12 @@ const Communities = () => {
 
           <div className="relative bottom-[5rem] w-full flex  items-start justify-center  ">
             <div className="flex flex-col gap-[2.25rem] text-left text-[1.25rem] text-white font-inter">
-              <div onClick={()=>{
-                navigate('/')
-              }} className="flex flex-row  cursor-pointer items-center justify-start gap-[0.63rem]">
+              <div
+                onClick={() => {
+                  navigate("/home1");
+                }}
+                className="flex flex-row  cursor-pointer items-center justify-start gap-[0.63rem]"
+              >
                 <img
                   className="relative bottom-[0.2rem] w-[1.31rem] h-[1.31rem] overflow-hidden shrink-0"
                   alt=""

@@ -543,7 +543,7 @@ const Home1 = () => {
             <div className="flex flex-col gap-[2.25rem] text-left text-[1.25rem] text-white font-inter">
               <div
                 onClick={() => {
-                  navigate("/");
+                  navigate("/home1");
                 }}
                 className="flex flex-row  cursor-pointer items-center justify-start gap-[0.63rem]"
               >
@@ -812,16 +812,16 @@ const Home1 = () => {
                 Shruti Singh
               </div>
               <div className="absolute top-[6.31rem] left-[3.81rem] text-colours-gray-500">
-                @ravi.dso
+                @amitsinha.dso
               </div>
               <div className="absolute top-[10.63rem] left-[3.81rem] text-colours-gray-500">
-                @amitsinha.dso
+                @ravi.dso
               </div>
               <div className="absolute top-[14.94rem] left-[3.81rem] text-colours-gray-500">
-                @amitsinha.dso
+                @shubham.dso
               </div>
               <div className="absolute top-[19.25rem] left-[3.81rem] text-colours-gray-500">
-                @amitsinha.dso
+                @shrutisingh.dso
               </div>
               <img
                 alt="e"
@@ -830,7 +830,7 @@ const Home1 = () => {
               />
               <img
                 alt="e"
-                src="https://cdn.discordapp.com/attachments/1177493315898314792/1184072438695338046/image.png?ex=658aa464&is=65782f64&hm=633b38526fb6b6da794465b600fb96b51339200700063e89bf541465c40aec95&"
+                src="    https://cdn.discordapp.com/attachments/1177493315898314792/1184834164336377937/image.png?ex=658d69cd&is=657af4cd&hm=4e6452341bbbbd4598264cbca53b144ed7be7af2da805f001f8895c10f260968&"
                 className="absolute top-[9.44rem] left-[1.06rem] rounded-lg bg-white w-[2.25rem] h-[2.25rem] overflow-hidden"
               />
               <img
@@ -840,7 +840,7 @@ const Home1 = () => {
               />
               <img
                 alt="e"
-                src="https://cdn.discordapp.com/attachments/1177493315898314792/1184072438695338046/image.png?ex=658aa464&is=65782f64&hm=633b38526fb6b6da794465b600fb96b51339200700063e89bf541465c40aec95&"
+                src="  https://cdn.discordapp.com/attachments/1177493315898314792/1184834239817072710/image.png?ex=658d69df&is=657af4df&hm=dc1aded63d23ca814306fb6874df8735201fab2e025c1dda33a892fb1a416c01&"
                 className="absolute top-[18.06rem] left-[1.06rem] rounded-lg bg-white w-[2.25rem] h-[2.25rem] overflow-hidden"
               />
               <img

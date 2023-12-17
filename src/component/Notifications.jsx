@@ -43,7 +43,6 @@ const Notifications = () => {
     userPost,
     getRewardStatus,
     refresh,
-
   } = useContext(Context);
   const handleConnectWallet = async () => {
     await ConnectWallet();
@@ -56,10 +55,10 @@ const Notifications = () => {
         const bal = await getUserData(currentAccount);
         const _reward = await getRewardStatus(currentAccount);
         console.log("reward score", Number(_reward));
-  
+
         const _tempLike = Math.floor(_reward / 1000);
         const _tempComment = _reward % 1000;
-  
+
         console.log("reward score ceil", _tempLike, " comment", _tempComment);
         setRewardComments(_tempComment);
         setRewardLikes(_tempLike);
@@ -85,7 +84,15 @@ const Notifications = () => {
       }
     };
     getBal();
-  }, [currentAccount, createUser,refresh, num, userPost, likePost, getUserData]);
+  }, [
+    currentAccount,
+    createUser,
+    refresh,
+    num,
+    userPost,
+    likePost,
+    getUserData,
+  ]);
   return (
     <div className="bg-black min-h-max  h-[150vh]">
       <div className="flex max-h-[150vh] h-[100vh]">
@@ -159,9 +166,12 @@ const Notifications = () => {
 
           <div className="relative bottom-[5rem] w-full flex  items-start justify-center  ">
             <div className="flex flex-col gap-[2.25rem] text-left text-[1.25rem] text-white font-inter">
-              <div onClick={()=>{
-                navigate('/')
-              }} className="flex flex-row  cursor-pointer items-center justify-start gap-[0.63rem]">
+              <div
+                onClick={() => {
+                  navigate("/home1");
+                }}
+                className="flex flex-row  cursor-pointer items-center justify-start gap-[0.63rem]"
+              >
                 <img
                   className="relative bottom-[0.2rem] w-[1.31rem] h-[1.31rem] overflow-hidden shrink-0"
                   alt=""
@@ -274,10 +284,10 @@ const Notifications = () => {
 
           <div className="relative w-full h-[612px] text-left text-lg text-white font-inter">
             <img
-              onClick={()=>{
-                navigate(-1)
+              onClick={() => {
+                navigate(-1);
               }}
-                    className="absolute cursor-pointer top-[12px] left-[8px] w-7 h-7 overflow-hidden object-cover"
+              className="absolute cursor-pointer top-[12px] left-[8px] w-7 h-7 overflow-hidden object-cover"
               alt=""
               src="  https://cdn.discordapp.com/attachments/1177493315898314792/1184825516964982887/image.png?ex=658d61c0&is=657aecc0&hm=03d7d2eec4cc415f0b7ed3a05ed98e0ab55fee03bd1acfbd38122334b4cf65b4&"
             />

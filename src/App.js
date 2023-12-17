@@ -30,7 +30,7 @@ function App() {
       <div>
         <SocoinProvider>
           <Routes>
-            <Route path="/" element={<Home1 /*state = {state}*/ />} />
+            <Route path="/home1" element={<Home1 /*state = {state}*/ />} />
             <Route path="/home" element={<Home /*state = {state}*/ />} />
             <Route path="/homi" element={<Homi /*state = {state}*/ />} />
             <Route path="/profile" element={<Profile /*state = {state}*/ />} />
@@ -74,7 +74,7 @@ function App() {
             <Route path="/spline" element={<Splinejs /*state = {state}*/ />} />
             <Route path="/bruno" element={<Bruno /*state = {state}*/ />} />
             <Route
-              path="/getstarted"
+              path="/"
               element={<Getstarted /*state = {state}*/ />}
             />
 
