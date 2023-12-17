@@ -1,6 +1,8 @@
 import { Context } from "../context/ContextProvider";
 import React, { useState, useContext, useEffect } from "react";
 import CommentData from "./CommentData";
+import Alert from '@mui/material/Alert';
+
 
 const PostCard = (props) => {
   const {
@@ -24,6 +26,9 @@ const PostCard = (props) => {
     main: 'https://cdn.discordapp.com/attachments/1177493315898314792/1184074670744551474/image.png?ex=658aa678&is=65783178&hm=c7bd009be31c8353e4371ee931a7146052b94e697a9529a6997619afe2c153ad&',
     alternate: 'https://cdn.discordapp.com/attachments/1184864067295395960/1185693981800149102/image.png?ex=65908a92&is=657e1592&hm=6932cde68b59daabb1f360bbad1d341547b721343003999b85bb19d5ac546ff8&',
   })
+  const [isAlertSuccess,setIsAlertSuccess] = useState(false)
+  const [successAlertContent,setSuccessAlertContent]= useState('');
+  const [isAlertInfo,setIsAlertInfo] = useState(false)
 
   function handleTextComment(e) {
     setInputComment(e.target.value);
@@ -60,6 +65,17 @@ const PostCard = (props) => {
   return (
     <div className="flex items-center justify-center">
       <div className=" flex mt-4 h-[33.635rem] w-[36.188rem] hover:bg-[#3B3939]  rounded-lg transition-all duration-700 ease-in-out ">
+          {/* alert success */}
+          <div  className={`absolute z-20 ml-[34rem] mt-10 ${isAlertSuccess?'flex':'hidden'}`}>
+        <Alert severity="success">{successAlertContent}</Alert>
+        </div>
+        {/* alert success end */}
+        {/* alert info */}
+        <div className={`absolute z-20 ml-[34rem] mt-10 ${isAlertInfo?'flex':'hidden'}`}>
+
+        <Alert severity="info">Waiting for Metamask...</Alert>
+        </div>
+        {/* alert info end */}
         {/* spinner */}
         <div
           className={` absolute right-[2.3rem]  items-center justify-center h-full w-full  z-50  ${

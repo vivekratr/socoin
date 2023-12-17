@@ -3,7 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
     "@ethersproject/providers": "^5.7.2",
+    "@mui/material": "^5.15.0",
+    "@mui/styled-engine-sc": "^6.0.0-alpha.8",
     "@popperjs/core": "^2.11.8",
     "@solana/wallet-adapter-phantom": "^0.9.24",
     "@splinetool/react-spline": "^2.2.6",

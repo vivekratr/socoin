@@ -372,8 +372,10 @@ const getEthereumContract = () => {
     }
   }
 
-  async function buyCoin(_coin, _spin) {
+  async function buyCoin(_coin, _spin,_successMessage,_infoMessage) {
     try {
+      _spin(true);
+      _infoMessage(true);
       if (!ethereum) return alert("Please install Phantom wallet");
   
       const contracts = getEthereumContract();
@@ -386,12 +388,16 @@ const getEthereumContract = () => {
           gasLimit: 99000,
         });
         await userDatas.wait();
-  
+        _spin(false);
+        _infoMessage(false);
+        _successMessage(`You Successfully got ${_coin} coins by paying ${_coin*0.01} eth`)
+        setRefresh((prev)=>prev+1)
         console.log("buycoin status", userDatas);
-  
-        window.location.reload();
+
       }
     } catch (error) {
+      _spin(false);
+        _infoMessage(false);
       console.log(error);
     }
   }

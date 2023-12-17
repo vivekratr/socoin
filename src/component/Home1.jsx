@@ -7,6 +7,7 @@ import "reactjs-popup/dist/index.css";
 import PostComponent from "./PostComponent";
 import axios from "axios";
 import SendPost from "./SendPost";
+import Alert from '@mui/material/Alert';
 
 const Home1 = () => {
   const navigate = useNavigate();
@@ -37,6 +38,9 @@ const Home1 = () => {
   const [rewardComments, setRewardComments] = useState(0);
   const [countBuyCoin, setCountBuyCoin] = useState(1);
   const [isBuyCoinModal,setIsBuyCoinModal] =useState(false)
+  const [isAlertSuccess,setIsAlertSuccess] = useState(false)
+  const [successAlertContent,setSuccessAlertContent]= useState('');
+  const [isAlertInfo,setIsAlertInfo] = useState(false)
 
   const handleIncrement = () => {
     setCountBuyCoin((prevCount) => prevCount + 1);
@@ -52,6 +56,18 @@ const Home1 = () => {
   const handleFileChange = (event) => {
     setFile(event.target.files[0]);
   };
+
+  const showSuccessPopup = (successMessage) => {
+    console.log('ShowSuccess',successMessage);
+    setSuccessAlertContent(successMessage);
+    setIsAlertSuccess(true);
+    setTimeout(() => {
+    setIsAlertSuccess(true);
+
+    }, 5000); 
+  };
+
+
 
   const interests = [
     "Sports",
@@ -235,6 +251,17 @@ const Home1 = () => {
   return (
     <div className="bg-black h-full">
       <div className="flex h-[100vh]">
+        {/* alert success */}
+        <div  className={`absolute z-20 ml-[34rem] mt-10 ${isAlertSuccess?'flex':'hidden'}`}>
+        <Alert severity="success">{successAlertContent}</Alert>
+        </div>
+        {/* alert success end */}
+        {/* alert info */}
+        <div className={`absolute z-20 ml-[34rem] mt-10 ${isAlertInfo?'flex':'hidden'}`}>
+
+        <Alert severity="info">Waiting for Metamask...</Alert>
+        </div>
+        {/* alert info end */}
         {/* spinner */}
         <div
           className={` absolute   items-center justify-center h-full w-full  z-50  ${
@@ -287,7 +314,7 @@ const Home1 = () => {
           src="https://cdn.discordapp.com/attachments/1184864067295395960/1185641928847527936/image.png?ex=65905a17&is=657de517&hm=652d84dd8d1a39a6d6ea2850e469a17fb054c4a708f566aab57bc6428afdcb0e&"
           />
         <div onClick={async()=>{
-          await buyCoin(countBuyCoin,'spinner')
+          await buyCoin(countBuyCoin,setSpin,showSuccessPopup,setIsAlertInfo)
         }} className="absolute cursor-pointer top-[174px] left-[147px] rounded-md [background:linear-gradient(106.75deg,_#fdd835,_#fff_49.15%,_#ffd000)] box-border w-[103px] h-[41px] overflow-hidden border-t-[1px] border-solid border-cornsilk border-r-[1px] border-l-[1px]">
           <div className="absolute top-[12px] left-[18px] font-medium">
             Buy Coins
