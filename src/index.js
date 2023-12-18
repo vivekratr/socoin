@@ -10,7 +10,7 @@ import { SocoinProvider } from './context/ContextProvider';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <SocoinProvider>
-    <App />
+    <App /> 
   </SocoinProvider>
 );
 
